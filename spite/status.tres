@@ -1,0 +1,189 @@
+[gd_resource type="AnimationNodeStateMachine" load_steps=44 format=2]
+
+[sub_resource type="AnimationNodeAnimation" id=42]
+animation = "RESET"
+
+[sub_resource type="AnimationNodeAnimation" id=31]
+animation = "idle_walk_up"
+
+[sub_resource type="AnimationNodeAnimation" id=32]
+animation = "idle_walk_left"
+
+[sub_resource type="AnimationNodeAnimation" id=33]
+animation = "idle_walk_right"
+
+[sub_resource type="AnimationNodeAnimation" id=34]
+animation = "idle_walk_down"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id=22]
+auto_triangles = false
+blend_point_0/node = SubResource( 31 )
+blend_point_0/pos = Vector2( 0, -1 )
+blend_point_1/node = SubResource( 32 )
+blend_point_1/pos = Vector2( -1, 0 )
+blend_point_2/node = SubResource( 33 )
+blend_point_2/pos = Vector2( 1, 0 )
+blend_point_3/node = SubResource( 34 )
+blend_point_3/pos = Vector2( 0, 1 )
+triangles = PoolIntArray( 0, 1, 3, 0, 2, 3 )
+blend_mode = 1
+
+[sub_resource type="AnimationNodeAnimation" id=63]
+animation = "idle_weapon_up"
+
+[sub_resource type="AnimationNodeAnimation" id=64]
+animation = "idle_weapon_down"
+
+[sub_resource type="AnimationNodeAnimation" id=65]
+animation = "idle_weapon_right"
+
+[sub_resource type="AnimationNodeAnimation" id=66]
+animation = "idle_weapon_left"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id=67]
+blend_point_0/node = SubResource( 63 )
+blend_point_0/pos = Vector2( 0, -1 )
+blend_point_1/node = SubResource( 64 )
+blend_point_1/pos = Vector2( 0, 1 )
+blend_point_2/node = SubResource( 65 )
+blend_point_2/pos = Vector2( 1, 0 )
+blend_point_3/node = SubResource( 66 )
+blend_point_3/pos = Vector2( -1, 0 )
+blend_mode = 1
+
+[sub_resource type="AnimationNodeAnimation" id=35]
+animation = "walk_up"
+
+[sub_resource type="AnimationNodeAnimation" id=36]
+animation = "walk_down"
+
+[sub_resource type="AnimationNodeAnimation" id=37]
+animation = "walk_left"
+
+[sub_resource type="AnimationNodeAnimation" id=38]
+animation = "walk_right"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id=39]
+blend_point_0/node = SubResource( 35 )
+blend_point_0/pos = Vector2( 0, -1 )
+blend_point_1/node = SubResource( 36 )
+blend_point_1/pos = Vector2( 0, 1 )
+blend_point_2/node = SubResource( 37 )
+blend_point_2/pos = Vector2( -1, 0 )
+blend_point_3/node = SubResource( 38 )
+blend_point_3/pos = Vector2( 1, 0 )
+blend_mode = 1
+
+[sub_resource type="AnimationNodeAnimation" id=43]
+animation = "weapon_r_left"
+
+[sub_resource type="AnimationNodeAnimation" id=44]
+animation = "weapon_r_right"
+
+[sub_resource type="AnimationNodeAnimation" id=45]
+animation = "weapon_r_down"
+
+[sub_resource type="AnimationNodeAnimation" id=46]
+animation = "weapon_r_up"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id=47]
+blend_point_0/node = SubResource( 43 )
+blend_point_0/pos = Vector2( -1, 0 )
+blend_point_1/node = SubResource( 44 )
+blend_point_1/pos = Vector2( 1, 0 )
+blend_point_2/node = SubResource( 45 )
+blend_point_2/pos = Vector2( 0, 1 )
+blend_point_3/node = SubResource( 46 )
+blend_point_3/pos = Vector2( 0, -1 )
+blend_mode = 1
+
+[sub_resource type="AnimationNodeAnimation" id=48]
+animation = "weapon_w_down"
+
+[sub_resource type="AnimationNodeAnimation" id=49]
+animation = "weapon_w_up"
+
+[sub_resource type="AnimationNodeAnimation" id=50]
+animation = "weapon_w_left"
+
+[sub_resource type="AnimationNodeAnimation" id=51]
+animation = "weapon_w_right"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id=52]
+blend_point_0/node = SubResource( 48 )
+blend_point_0/pos = Vector2( 0, 1 )
+blend_point_1/node = SubResource( 49 )
+blend_point_1/pos = Vector2( 0, -1 )
+blend_point_2/node = SubResource( 50 )
+blend_point_2/pos = Vector2( -1, 0 )
+blend_point_3/node = SubResource( 51 )
+blend_point_3/pos = Vector2( 1, 0 )
+blend_mode = 1
+
+[sub_resource type="AnimationNodeAnimation" id=77]
+animation = "weapon_w_up_fw"
+
+[sub_resource type="AnimationNodeAnimation" id=78]
+animation = "weapon_w_right_fw"
+
+[sub_resource type="AnimationNodeAnimation" id=79]
+animation = "weapon_w_left_fw"
+
+[sub_resource type="AnimationNodeAnimation" id=80]
+animation = "weapon_w_down_fw"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id=72]
+blend_point_0/node = SubResource( 77 )
+blend_point_0/pos = Vector2( 0, -1 )
+blend_point_1/node = SubResource( 78 )
+blend_point_1/pos = Vector2( 1, 0 )
+blend_point_2/node = SubResource( 79 )
+blend_point_2/pos = Vector2( -1, 0 )
+blend_point_3/node = SubResource( 80 )
+blend_point_3/pos = Vector2( 0, 1 )
+blend_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=40]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=41]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=53]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=54]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=68]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=69]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=70]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=71]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=73]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=74]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=75]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=76]
+
+[resource]
+resource_local_to_scene = true
+states/RESET/node = SubResource( 42 )
+states/RESET/position = Vector2( 874, 157.348 )
+states/idle_walk/node = SubResource( 22 )
+states/idle_walk/position = Vector2( 486, 157.348 )
+states/idle_weapon/node = SubResource( 67 )
+states/idle_weapon/position = Vector2( 209, 157.348 )
+states/walk/node = SubResource( 39 )
+states/walk/position = Vector2( 706, 157.348 )
+states/weapon_r/node = SubResource( 47 )
+states/weapon_r/position = Vector2( 209, -19 )
+states/weapon_w/node = SubResource( 52 )
+states/weapon_w/position = Vector2( 69, 339 )
+states/weapon_w_fw/node = SubResource( 72 )
+states/weapon_w_fw/position = Vector2( 312.281, 339 )
+transitions = [ "idle_walk", "walk", SubResource( 40 ), "walk", "idle_walk", SubResource( 41 ), "idle_walk", "weapon_r", SubResource( 53 ), "weapon_r", "idle_walk", SubResource( 54 ), "weapon_r", "idle_weapon", SubResource( 68 ), "idle_weapon", "weapon_w", SubResource( 69 ), "weapon_w", "idle_weapon", SubResource( 70 ), "idle_weapon", "idle_walk", SubResource( 71 ), "idle_weapon", "weapon_w_fw", SubResource( 73 ), "weapon_w_fw", "idle_weapon", SubResource( 74 ), "weapon_w", "weapon_w_fw", SubResource( 75 ), "weapon_w_fw", "weapon_w", SubResource( 76 ) ]
+start_node = "idle_walk"
+graph_offset = Vector2( -105.719, -124.18 )

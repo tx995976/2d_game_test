@@ -1,0 +1,590 @@
+[gd_scene load_steps=36 format=2]
+
+[ext_resource path="res://ani_png/tex_1 (2).png" type="Texture" id=1]
+[ext_resource path="res://spite/spite_1.gd" type="Script" id=2]
+[ext_resource path="res://spite/player_state_machine.gd" type="Script" id=3]
+[ext_resource path="res://spite/p_idle.gd" type="Script" id=4]
+[ext_resource path="res://spite/p_walk.gd" type="Script" id=5]
+[ext_resource path="res://spite/p_ready_weapen.gd" type="Script" id=6]
+[ext_resource path="res://spite/status.tres" type="AnimationNodeStateMachine" id=7]
+[ext_resource path="res://spite/sprite_action.gd" type="Script" id=8]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 10, 8 )
+
+[sub_resource type="Animation" id=7]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Vector2( 1, 2 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 98 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("player_state_machine/p_ready_weapen:flag_gun_r")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=23]
+resource_name = "idle_walk_down"
+length = 0.1
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 1 ]
+}
+
+[sub_resource type="Animation" id=24]
+resource_name = "idle_walk_left"
+length = 0.1
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 13 ]
+}
+
+[sub_resource type="Animation" id=25]
+resource_name = "idle_walk_right"
+length = 0.1
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 25 ]
+}
+
+[sub_resource type="Animation" id=26]
+resource_name = "idle_walk_up"
+length = 0.1
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 37 ]
+}
+
+[sub_resource type="Animation" id=27]
+resource_name = "idle_weapon_down"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 106 ]
+}
+
+[sub_resource type="Animation" id=28]
+resource_name = "idle_weapon_left"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 115 ]
+}
+
+[sub_resource type="Animation" id=29]
+resource_name = "idle_weapon_right"
+length = 0.989
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 128 ]
+}
+
+[sub_resource type="Animation" id=30]
+resource_name = "idle_weapon_up"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 135 ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "walk_down"
+length = 0.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2 ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "walk_left"
+length = 0.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.200423, 0.400847 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 13, 12, 14 ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "walk_right"
+length = 0.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( 0, 2 ), Vector2( 1, 2 ), Vector2( 2, 2 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "walk_up"
+length = 0.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.200423, 0.400847 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 37, 36, 38 ]
+}
+
+[sub_resource type="Animation" id=18]
+resource_name = "weapon_r_down"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 98, 101, 102 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("player_state_machine/p_ready_weapen:flag_gun_r")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.3 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=19]
+resource_name = "weapon_r_left"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 110, 113, 114 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("player_state_machine/p_ready_weapen:flag_gun_r")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.3 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=20]
+resource_name = "weapon_r_right"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 122, 125, 126 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("player_state_machine/p_ready_weapen:flag_gun_r")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.3 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=21]
+resource_name = "weapon_r_up"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 133, 135 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("player_state_machine/p_ready_weapen:flag_gun_r")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.3 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=13]
+resource_name = "weapon_w_down"
+length = 0.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 102, 103, 104 ]
+}
+
+[sub_resource type="Animation" id=31]
+resource_name = "weapon_w_down_fw"
+length = 0.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 104, 102, 103 ]
+}
+
+[sub_resource type="Animation" id=14]
+resource_name = "weapon_w_left"
+length = 0.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 114, 115, 116 ]
+}
+
+[sub_resource type="Animation" id=32]
+resource_name = "weapon_w_left_fw"
+length = 0.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 116, 115, 114 ]
+}
+
+[sub_resource type="Animation" id=16]
+resource_name = "weapon_w_right"
+length = 0.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 126, 127, 128 ]
+}
+
+[sub_resource type="Animation" id=33]
+resource_name = "weapon_w_right_fw"
+length = 0.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 128, 127, 126 ]
+}
+
+[sub_resource type="Animation" id=17]
+resource_name = "weapon_w_up"
+length = 0.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 180, 181, 182 ]
+}
+
+[sub_resource type="Animation" id=34]
+resource_name = "weapon_w_up_fw"
+length = 0.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 182, 181, 180 ]
+}
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=11]
+
+[node name="player_node" type="KinematicBody2D"]
+collision_mask = 15
+script = ExtResource( 2 )
+
+[node name="player_state_machine" type="Node" parent="."]
+script = ExtResource( 3 )
+start_state = NodePath("p_walk")
+
+[node name="p_idle" type="Node" parent="player_state_machine"]
+script = ExtResource( 4 )
+
+[node name="p_walk" type="Node" parent="player_state_machine"]
+script = ExtResource( 5 )
+
+[node name="p_ready_weapen" type="Node" parent="player_state_machine"]
+script = ExtResource( 6 )
+flag_gun_r = true
+
+[node name="sprite_action" type="Node" parent="."]
+script = ExtResource( 8 )
+
+[node name="Collision_player" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 5 )
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( 1.00533, 1 )
+texture = ExtResource( 1 )
+hframes = 12
+vframes = 16
+frame = 98
+region_rect = Rect2( 108, 394, 26, 44 )
+
+[node name="player_animation" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 7 )
+anims/idle_walk_down = SubResource( 23 )
+anims/idle_walk_left = SubResource( 24 )
+anims/idle_walk_right = SubResource( 25 )
+anims/idle_walk_up = SubResource( 26 )
+anims/idle_weapon_down = SubResource( 27 )
+anims/idle_weapon_left = SubResource( 28 )
+anims/idle_weapon_right = SubResource( 29 )
+anims/idle_weapon_up = SubResource( 30 )
+anims/walk_down = SubResource( 3 )
+anims/walk_left = SubResource( 4 )
+anims/walk_right = SubResource( 6 )
+anims/walk_up = SubResource( 5 )
+anims/weapon_r_down = SubResource( 18 )
+anims/weapon_r_left = SubResource( 19 )
+anims/weapon_r_right = SubResource( 20 )
+anims/weapon_r_up = SubResource( 21 )
+anims/weapon_w_down = SubResource( 13 )
+anims/weapon_w_down_fw = SubResource( 31 )
+anims/weapon_w_left = SubResource( 14 )
+anims/weapon_w_left_fw = SubResource( 32 )
+anims/weapon_w_right = SubResource( 16 )
+anims/weapon_w_right_fw = SubResource( 33 )
+anims/weapon_w_up = SubResource( 17 )
+anims/weapon_w_up_fw = SubResource( 34 )
+
+[node name="ani_player_tree" type="AnimationTree" parent="."]
+tree_root = ExtResource( 7 )
+anim_player = NodePath("../player_animation")
+active = true
+parameters/playback = SubResource( 11 )
+parameters/idle_walk/blend_position = Vector2( 0.000859857, 0.0131333 )
+parameters/idle_weapon/blend_position = Vector2( -0.477214, -0.083871 )
+parameters/walk/blend_position = Vector2( -0.39123, 0.617261 )
+parameters/weapon_r/blend_position = Vector2( -0.0232158, -0.5 )
+parameters/weapon_w/blend_position = Vector2( -0.0180568, 0.558282 )
+parameters/weapon_w_fw/blend_position = Vector2( -0.317804, -0.630551 )
+
+[node name="aim_ray" type="RayCast2D" parent="."]
+enabled = true
+
+[node name="camera" type="Camera2D" parent="."]
+current = true
+drag_margin_left = 0.5
+drag_margin_top = 0.5
+
+[node name="gun_ray" type="Line2D" parent="."]
+points = PoolVector2Array( 0, 0, 0, 0 )
+width = 1.0
+default_color = Color( 0.92549, 0.164706, 0.14902, 1 )
+texture_mode = 1
+begin_cap_mode = 2
+end_cap_mode = 2
+round_precision = 2
