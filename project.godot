@@ -9,6 +9,21 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Line2D",
+"class": "AntialiasedLine2D",
+"language": "GDScript",
+"path": "res://addons/antialiased_line2d/antialiased_line2d.gd"
+}, {
+"base": "Polygon2D",
+"class": "AntialiasedPolygon2D",
+"language": "GDScript",
+"path": "res://addons/antialiased_line2d/antialiased_polygon2d.gd"
+}, {
+"base": "Polygon2D",
+"class": "AntialiasedRegularPolygon2D",
+"language": "GDScript",
+"path": "res://addons/antialiased_line2d/antialiased_regular_polygon2d.gd"
+}, {
 "base": "Node",
 "class": "G_input",
 "language": "GDScript",
@@ -25,6 +40,9 @@ _global_script_classes=[ {
 "path": "res://spite/p_status.gd"
 } ]
 _global_script_class_icons={
+"AntialiasedLine2D": "res://addons/antialiased_line2d/antialiased_line2d.svg",
+"AntialiasedPolygon2D": "res://addons/antialiased_line2d/antialiased_polygon2d.svg",
+"AntialiasedRegularPolygon2D": "res://addons/antialiased_line2d/antialiased_regular_polygon2d.svg",
 "G_input": "",
 "p_default_sprite": "",
 "p_st": ""
@@ -38,10 +56,15 @@ config/icon="res://icon.png"
 [autoload]
 
 _G_input="*res://global_sp/key_input.gd"
+AntialiasedLine2DTexture="*res://addons/antialiased_line2d/texture.gd"
 
 [display]
 
 window/vsync/use_vsync=false
+
+[editor_plugins]
+
+enabled=PoolStringArray( "res://addons/antialiased_line2d/plugin.cfg" )
 
 [gui]
 

@@ -9,7 +9,6 @@ onready var play_status: int = 0   #
 
 func _ready():
 	print("ok")
-	
 	pass 
 	
 func _unhandled_input(_event: InputEvent):

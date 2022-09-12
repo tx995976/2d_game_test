@@ -1,8 +1,8 @@
 extends p_st
 
 onready var p_node := owner as p_default_sprite
-onready var ani_player := get_node("%s/player_animation" % owner.get_path()) as AnimationPlayer
-onready var ani_tree := get_node("%s/ani_player_tree" % owner.get_path()) as AnimationTree
+onready var ani_player := owner.get_node("player_animation") as AnimationPlayer
+onready var ani_tree := owner.get_node("ani_player_tree") as AnimationTree
 onready var ani_status := ani_tree["parameters/playback"] as AnimationNodeStateMachinePlayback
 
 
@@ -13,6 +13,7 @@ var line_vec := Vector2.ZERO
 
 
 export(int) var walk_speed = 100
+export(int) var gun_range = 500
 export(bool) var flag_gun_r = false
 
 func _ready():
@@ -33,21 +34,21 @@ func p_update_physics(delta: float):
 	#move
 	p_node._direct = Input.get_vector("ui_left","ui_right","ui_up","ui_down")
 	p_node._mouse_direct = p_node.get_local_mouse_position()
-	_aim_ray.cast_to =p_node.get_local_mouse_position() * 2
-	print()
+	_aim_ray.cast_to =p_node._mouse_direct * gun_range
 
-	ani_tree["parameters/weapon_w/blend_position"] = p_node._mouse_direct
-	ani_tree["parameters/weapon_w_fw/blend_position"] = p_node._mouse_direct
 
 	if(p_node._direct == Vector2.ZERO):
 		ani_tree["parameters/idle_weapon/blend_position"] = p_node._mouse_direct
 		ani_status.travel("idle_weapon")
 	else:
 		p_node._last_direct = p_node._mouse_direct
-		if(p_node._direc_str == p_node._mouse_direc_str):
-			ani_status.travel("weapon_w")
+		var vec_direc := p_node._mouse_direct
+		if(p_node._mouse_move_deg < 0):
+			vec_direc.y -= 1.1
 		else:
-			ani_status.travel("weapon_w_fw")
+			vec_direc.y += 1.1
+		ani_tree["parameters/weapon_w/blend_position"] = vec_direc
+		ani_status.travel("weapon_w")
 		
 	p_node.move_and_collide(p_node._direct.normalized() * walk_speed * delta)
 	#move#
@@ -63,9 +64,6 @@ func p_update_physics(delta: float):
 		_gun_ray.set_point_position(1,line_vec)
 
 	#action#
-
-
-
 	return
 
 func p_input_event(_input: InputEvent):

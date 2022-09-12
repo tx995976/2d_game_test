@@ -53,7 +53,7 @@ func _state_change(new_st: String,change_mode : int):
 	elif change_mode == 2:
 		state_now = state_map[new_st]
 		state_stack.push_front(state_now)
-		
+
 	state_now.enter_st()		
 	return
 
@@ -64,6 +64,7 @@ func _unhandled_input(event: InputEvent):
 
 func _process(_delta: float):
 	state_now.p_update()
+	return
 
 func _physics_process(delta: float):
 	state_now.p_update_physics(delta)
