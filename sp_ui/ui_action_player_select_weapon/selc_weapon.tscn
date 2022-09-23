@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://byg4gpbpcgjhj"]
+
+[ext_resource type="Script" path="res://sp_ui/ui_action_player_select_weapon/weapon_select.gd" id="1"]
+
+[node name="panel_select" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1")
+panel_twe = 200.0
+
+[node name="mid_pos" type="Marker2D" parent="."]
+position = Vector2(512, 300)

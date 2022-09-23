@@ -1,30 +1,30 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://spite/spite_1.tscn" type="PackedScene" id=1]
+[ext_resource path="res://spite/player/spite_1.tscn" type="PackedScene" id=1]
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 4.0
-margin_top = 3.0
-margin_right = 4.0
-margin_bottom = 3.0
+offset_left = 4.0
+offset_top = 3.0
+offset_right = 4.0
+offset_bottom = 3.0
 
 [node name="Panel" type="Panel" parent="."]
-margin_left = 263.0
-margin_top = 217.0
-margin_right = 652.0
-margin_bottom = 472.0
+offset_left = 263.0
+offset_top = 217.0
+offset_right = 652.0
+offset_bottom = 472.0
 
 [node name="myb" type="Button" parent="Panel"]
 unique_name_in_owner = true
 anchor_right = 0.023
 anchor_bottom = 0.017
-margin_left = 66.0
-margin_top = 92.0
-margin_right = 179.133
-margin_bottom = 107.325
+offset_left = 66.0
+offset_top = 92.0
+offset_right = 179.133
+offset_bottom = 107.325
 text = "click me"
 
-[node name="KinematicBody2D" parent="." instance=ExtResource( 1 )]
+[node name="CharacterBody2D" parent="." instance=ExtResource( 1 )]
 position = Vector2( 56, 69 )

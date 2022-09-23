@@ -1,19 +1,24 @@
 extends Node
+
 class_name G_input
 
-
 # Node_ref
-var player_node : Node
+var player_node : p_default_sprite
+var node_ui_weapon_select : ui_weapon_selector
+#var node_ui_weapon_select : ui_weapon_selector
 
-onready var play_status: int = 0   #
+@onready var play_status: int = 0   
 
 func _ready():
-	print("ok")
+	self.process_mode = Node.PROCESS_MODE_ALWAYS
+	#print("ok")
 	pass 
 	
-func _unhandled_input(_event: InputEvent):
-
-	pass
+func _unhandled_input(event: InputEvent):
+	if(Input.is_action_just_pressed("ui_select_weapon")):
+		node_ui_weapon_select.show_panel()
+	
+	return
 	
 
 	
