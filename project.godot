@@ -39,6 +39,11 @@ _global_script_classes=[{
 "language": &"GDScript",
 "path": "res://spite/battle_bullet/bullet_pool.gd"
 }, {
+"base": "RichTextLabel",
+"class": &"ui_text_richtext_node",
+"language": &"GDScript",
+"path": "res://sp_ui/ui_text_viewer/text_richtext_node.gd"
+}, {
 "base": "Panel",
 "class": &"ui_weapon_lable",
 "language": &"GDScript",
@@ -56,6 +61,7 @@ _global_script_class_icons={
 "p_st": "",
 "sp_bullet": "",
 "sp_bullet_pool": "",
+"ui_text_richtext_node": "",
 "ui_weapon_lable": "",
 "ui_weapon_selector": ""
 }

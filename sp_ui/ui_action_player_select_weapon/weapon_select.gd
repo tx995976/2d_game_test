@@ -13,7 +13,7 @@ var mid_pos : Vector2
 var array_panel := []
 var selected_panel : ui_weapon_lable = null :
 	get:
-		return selected_panel # TODOConverter40 Non existent get function 
+		return selected_panel 
 	set(value):
 		if(selected_panel and value.name != selected_panel.name):
 			selected_panel._mouse_exit()

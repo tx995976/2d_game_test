@@ -605,10 +605,10 @@ states/walk_weapon_back/position = Vector2(264, 360)
 states/weapon_r/node = SubResource("AnimationNodeBlendSpace2D_uosp0")
 states/weapon_r/position = Vector2(264, 79)
 transitions = ["idle_walk", "walk", SubResource("AnimationNodeStateMachineTransition_yfkgc"), "walk", "idle_walk", SubResource("AnimationNodeStateMachineTransition_24q0h"), "Start", "idle_walk", SubResource("AnimationNodeStateMachineTransition_5o53t"), "idle_walk", "weapon_r", SubResource("AnimationNodeStateMachineTransition_lf1om"), "weapon_r", "idle_weapon", SubResource("AnimationNodeStateMachineTransition_8kakv"), "idle_weapon", "walk_weapon", SubResource("AnimationNodeStateMachineTransition_2irco"), "walk_weapon", "idle_weapon", SubResource("AnimationNodeStateMachineTransition_3wqky"), "walk_weapon_back", "walk_weapon", SubResource("AnimationNodeStateMachineTransition_7v7qd"), "walk_weapon", "walk_weapon_back", SubResource("AnimationNodeStateMachineTransition_bghoe")]
-graph_offset = Vector2(0, 138.891)
+graph_offset = Vector2(0, 18.291)
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_fknd3"]
-graph_offset = Vector2(-233.461, -9.1953)
+graph_offset = Vector2(-370.474, 67.9595)
 nodes/output/position = Vector2(381, 103)
 nodes/sp_action/node = SubResource("AnimationNodeStateMachine_j4d44")
 nodes/sp_action/position = Vector2(-160, 120)
@@ -622,6 +622,7 @@ polygon = PackedVector2Array(-10, 30, 5, 30, -2, 26)
 
 [node name="player_node" type="CharacterBody2D"]
 collision_mask = 15
+platform_on_leave = 2
 script = ExtResource("2")
 
 [node name="player_state_machine" type="Node" parent="."]
@@ -636,6 +637,9 @@ script = ExtResource("5")
 
 [node name="p_ready_weapen" type="Node" parent="player_state_machine"]
 script = ExtResource("6")
+walk_speed = null
+gun_range = null
+flag_gun_r = null
 
 [node name="sprite_action" type="Node" parent="."]
 script = ExtResource("8")
@@ -654,7 +658,6 @@ libraries = {
 }
 
 [node name="Collision_player" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(0, 5)
 shape = SubResource("1")
 
@@ -695,7 +698,6 @@ antialiased = true
 [node name="gun_light" type="PointLight2D" parent="."]
 light_mask = 15
 enabled = false
-color = Color(0.282, 0.282, 0.3, 1)
 energy = 0.5
 range_item_cull_mask = 15
 shadow_enabled = true

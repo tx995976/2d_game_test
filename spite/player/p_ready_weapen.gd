@@ -6,6 +6,7 @@ extends p_st
 @onready var _aim_ray := owner.get_node("aim_ray") as RayCast2D
 @onready var _gun_ray := owner.get_node("gun_ray") as Line2D
 @onready var _gun_light := owner.get_node("gun_light") as PointLight2D
+
 @onready var node_map_res := get_node("/root/global_map_res") as G_map_res
 
 @onready var val_weapon_r_blend := Vector2.ZERO :
@@ -42,7 +43,7 @@ func _ready():
 	pass
 	
 func _res_init():
-	node_sp_bullet_pool = await node_map_res.get_sp_bullet_pool()
+	node_sp_bullet_pool = await node_map_res.res_sp_bullet_pool
 	msg_bullet_shoot.connect(node_sp_bullet_pool._shoot_bullet)
 	pass
 
@@ -111,8 +112,5 @@ func _unhandled_input(_input: InputEvent):
 	return
 	
 signal msg_bullet_shoot(pos,direct,dmg)
-
-
-
 
 

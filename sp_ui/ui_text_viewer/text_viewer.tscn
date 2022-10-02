@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=3 uid="uid://b4bflpiq2nv1x"]
+
+[ext_resource type="Script" path="res://sp_ui/ui_text_viewer/text_viewer.gd" id="1_flimi"]
+[ext_resource type="PackedScene" uid="uid://bxoh53jdbfdkt" path="res://sp_ui/ui_text_viewer/text_richtext_node.tscn" id="2_s83ea"]
+
+[node name="ui_text_viewer" type="VBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -752.0
+offset_bottom = -448.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_flimi")
+
+[node name="text_richtext_node" parent="." instance=ExtResource("2_s83ea")]
+anchor_top = 0.0
+anchor_bottom = 0.0
+offset_top = 0.0
+offset_right = 400.0
+offset_bottom = 17.0
+text = "游戏开始于:  %.2f"
+
+[node name="text_richtext_node2" parent="." instance=ExtResource("2_s83ea")]
+anchor_top = 0.0
+anchor_bottom = 0.0
+offset_top = 21.0
+offset_right = 400.0
+offset_bottom = 38.0
+text = "游戏开始于:  %.2f3333"
+txt_static = "游戏开始于:  %.2f3333
+"

@@ -12,7 +12,7 @@ region_rect = Rect2(428, 192, 8, 10)
 [node name="item_light" type="PointLight2D" parent="."]
 self_modulate = Color(0, 0, 0, 1)
 light_mask = 0
-color = Color(0.13, 0.13, 0.13, 1)
+color = Color(0.615686, 0.615686, 0.615686, 1)
 energy = 1.5
 range_item_cull_mask = 15
 shadow_enabled = true

@@ -6,13 +6,13 @@ class_name sp_bullet
 @export var bullet_speed = 0.0
 @export var bullet_range = 0.0
 
+@export_flags_2d_physics var mask_active := 0x0E
+@export_flags_2d_physics var mask_off := 0x00
+
 var _direct : Vector2
 var info_collide : KinematicCollision2D = null
 var bullet_dmg : float
 var shoot_range :float
-
-const mask_active := 0x0E
-const mask_off := 0x00
 
 func _ready():
 	set_physics_process(false)
