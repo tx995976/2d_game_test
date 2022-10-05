@@ -1,19 +1,10 @@
-[gd_resource type="AudioBusLayout" load_steps=3 format=3 uid="uid://cek3324p4wuyx"]
-
-[sub_resource type="AudioEffectReverb" id="1"]
-resource_name = "Reverb"
-
-[sub_resource type="AudioEffectAmplify" id="2"]
-resource_name = "Amplify"
+[gd_resource type="AudioBusLayout" format=3 uid="uid://cek3324p4wuyx"]
 
 [resource]
-bus/0/effect/0/effect = SubResource("1")
-bus/0/effect/0/enabled = false
-bus/0/effect/1/effect = SubResource("2")
-bus/0/effect/1/enabled = false
+bus/0/volume_db = 0.662756
 bus/1/name = &"New Bus"
 bus/1/solo = false
 bus/1/mute = false
 bus/1/bypass_fx = false
-bus/1/volume_db = 0.0
+bus/1/volume_db = -0.328256
 bus/1/send = &"Master"

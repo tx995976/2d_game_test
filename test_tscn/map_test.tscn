@@ -6,8 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://1ryttgpfbx31" path="res://spite/map_mover_lift/map_mover_lift.tscn" id="3_mha57"]
 [ext_resource type="PackedScene" uid="uid://boq41ck54xhts" path="res://spite/battle_bullet/bullet_pool.tscn" id="4_1mcye"]
 [ext_resource type="PackedScene" uid="uid://byg4gpbpcgjhj" path="res://sp_ui/ui_action_player_select_weapon/weapon_selector.tscn" id="5_gn4in"]
-
-[sub_resource type="NavigationPolygon" id="NavigationPolygon_dyhwk"]
+[ext_resource type="PackedScene" uid="uid://b4bflpiq2nv1x" path="res://sp_ui/ui_text_viewer/text_viewer.tscn" id="7_xnyd7"]
 
 [node name="map" type="Node2D"]
 metadata/_edit_lock_ = true
@@ -35,10 +34,6 @@ layer_1/z_index = 0
 layer_1/tile_data = PackedInt32Array(-393194, 37, 65536, 5046304, 37, 65536, 5963802, 458788, 17)
 metadata/_edit_lock_ = true
 
-[node name="NavigationRegion2d" type="NavigationRegion2D" parent="tiles/tile_ground"]
-navpoly = SubResource("NavigationPolygon_dyhwk")
-enabled = false
-
 [node name="player_node" parent="tiles" instance=ExtResource("2")]
 position = Vector2(292, 352)
 z_index = 5
@@ -50,6 +45,7 @@ top_level = true
 position = Vector2(830, 288)
 fl_len = [0.0, 1400.0]
 time_lift = 20.0
+next_floor = 0
 
 [node name="Marker2d" type="Marker2D" parent="tiles"]
 position = Vector2(830, 1688)
@@ -57,3 +53,5 @@ position = Vector2(830, 1688)
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="panel_select" parent="CanvasLayer" instance=ExtResource("5_gn4in")]
+
+[node name="ui_text_viewer" parent="CanvasLayer" instance=ExtResource("7_xnyd7")]

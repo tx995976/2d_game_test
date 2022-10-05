@@ -1,0 +1,69 @@
+字幕数据约定
+
+all_header:{
+    type : (int)(1,2,3){txt,wait,clear}
+    pos : (str){info,top,talk}
+    income_type : (int){ONE_OUT,ALL_OUT}
+
+    time : (str)(unix_time)
+    time_direct : (int){1,-1}
+
+    str : ''
+    str_color : ''
+
+    name : ''
+    name_color : ''
+
+    sleep_time : (float)
+    appear_time : (float)
+}
+
+info:{
+    type : (int)(1,2,3){txt,wait,clear}
+    income_type : (int){ONE_OUT,ALL_OUT}
+
+    has_time : (bool)
+    time : (str)(unix_time)
+    time_direct : (bool){}
+
+    str : ''
+    str_color : ''
+   
+    appear_time : (float)
+}
+
+top:{
+    type : (int)(1,2,3){txt,wait,clear}
+    income_type : (int){ONE_OUT,ALL_OUT}
+
+    has_time : (bool)
+    time : (str)(unix_time)
+    time_direct : (bool){}
+
+    str : ''
+    str_color : ''
+
+    appear_time : (float)
+}
+
+talk:{
+    type : (int)(1,2,3){txt,wait,clear}
+    income_type : (int){ONE_OUT,ALL_OUT}
+
+    str : ''
+    str_color : ''
+
+    name : ''
+    name_color : ''
+
+    appear_time : (float)
+}
+
+wait:{
+    pos : (str){info,top,talk}
+    sleep_time : (float)
+}
+
+clear:{
+    pos : (str){info,top,talk}
+}

@@ -25,6 +25,7 @@ bg_color = Color(0.137255, 0.137255, 0.137255, 0.54902)
 
 [resource]
 default_font = ExtResource("1_wb8m7")
+default_font_size = 14
 Button/colors/font_color_focus = Color(0.0313726, 0.027451, 0.027451, 1)
 Button/colors/font_color_hover = Color(0.0313726, 0.027451, 0.027451, 1)
 Button/styles/focus = SubResource("1")

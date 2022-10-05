@@ -1,32 +1,52 @@
-[gd_scene load_steps=3 format=3 uid="uid://b4bflpiq2nv1x"]
+[gd_scene load_steps=4 format=3 uid="uid://b4bflpiq2nv1x"]
 
 [ext_resource type="Script" path="res://sp_ui/ui_text_viewer/text_viewer.gd" id="1_flimi"]
-[ext_resource type="PackedScene" uid="uid://bxoh53jdbfdkt" path="res://sp_ui/ui_text_viewer/text_richtext_node.tscn" id="2_s83ea"]
+[ext_resource type="Script" path="res://sp_ui/ui_text_viewer/text_text_container.gd" id="2_05pir"]
+[ext_resource type="Script" path="res://sp_ui/ui_text_viewer/text_json_loader.gd" id="3_q2ft4"]
 
-[node name="ui_text_viewer" type="VBoxContainer"]
+[node name="ui_text_viewer" type="Control"]
+custom_minimum_size = Vector2i(400, 300)
+layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -752.0
-offset_bottom = -448.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("1_flimi")
+metadata/_edit_lock_ = true
 
-[node name="text_richtext_node" parent="." instance=ExtResource("2_s83ea")]
-anchor_top = 0.0
-anchor_bottom = 0.0
-offset_top = 0.0
-offset_right = 400.0
-offset_bottom = 17.0
-text = "游戏开始于:  %.2f"
+[node name="info_viewer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 80.0
+offset_top = 224.0
+offset_right = 420.0
+offset_bottom = 416.0
+script = ExtResource("2_05pir")
+limit_txt = 10
+metadata/_edit_group_ = true
 
-[node name="text_richtext_node2" parent="." instance=ExtResource("2_s83ea")]
-anchor_top = 0.0
-anchor_bottom = 0.0
-offset_top = 21.0
-offset_right = 400.0
-offset_bottom = 38.0
-text = "游戏开始于:  %.2f3333"
-txt_static = "游戏开始于:  %.2f3333
-"
+[node name="top_viewer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 672.0
+offset_top = 88.0
+offset_right = 1133.0
+offset_bottom = 129.0
+script = ExtResource("2_05pir")
+limit_txt = 2
+metadata/_edit_group_ = true
+
+[node name="talk_viewer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 376.0
+offset_top = 512.0
+offset_right = 896.0
+offset_bottom = 580.0
+auto_translate = false
+script = ExtResource("2_05pir")
+limit_txt = 4
+metadata/_edit_group_ = true
+
+[node name="loader" type="Node" parent="."]
+script = ExtResource("3_q2ft4")

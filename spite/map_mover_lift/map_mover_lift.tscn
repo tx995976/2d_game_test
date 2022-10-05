@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://spite/map_mover_lift/map_mover_lift.gd" id="1_2yfxf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o08vm"]
-size = Vector2(95, 94)
+size = Vector2(110, 128)
 
 [node name="map_mover_lift" type="Area2D"]
 collision_layer = 2
@@ -22,7 +22,7 @@ layer_0/tile_data = PackedInt32Array(0, 36, 20, 65536, 36, 21, 1, 65572, 20, 655
 metadata/_edit_lock_ = true
 
 [node name="CollisionPolygon2d" type="CollisionShape2D" parent="."]
-position = Vector2(47.5, 49)
+position = Vector2(57, 48)
 shape = SubResource("RectangleShape2D_o08vm")
 metadata/_edit_lock_ = true
 

@@ -5,17 +5,21 @@
 
 [node name="text_richtext_node" type="RichTextLabel"]
 light_mask = 0
-custom_minimum_size = Vector2i(200, 10)
+custom_minimum_size = Vector2i(200, 20)
 anchors_preset = -1
 anchor_top = 0.5
 anchor_bottom = 0.5
 offset_top = -324.0
 offset_right = 406.0
 offset_bottom = -301.0
+mouse_filter = 2
 theme = ExtResource("1_b602o")
+theme_override_font_sizes/normal_font_size = 18
 bbcode_enabled = true
-fit_content_height = true
+scroll_active = false
+shortcut_keys_enabled = false
 visible_characters_behavior = 3
 script = ExtResource("1_uov2d")
 flag_txt_type = 0
-txt_static = "游戏开始于:  %.2f"
+txt_static = ""
+time_txt_out = 2.0
