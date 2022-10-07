@@ -14,13 +14,13 @@ metadata/_edit_lock_ = true
 [node name="global_set" type="Node" parent="."]
 script = ExtResource("3")
 
-[node name="tiles" type="Node2D" parent="."]
+[node name="world2d" type="Node2D" parent="."]
 unique_name_in_owner = true
 modulate = Color(0.24, 0.24, 0.24, 1)
 light_mask = 0
 metadata/_edit_lock_ = true
 
-[node name="tile_ground" parent="tiles" instance=ExtResource("1")]
+[node name="tile_ground" parent="world2d" instance=ExtResource("1")]
 light_mask = 6
 position = Vector2(270, 263)
 layer_0/name = "ground"
@@ -34,24 +34,25 @@ layer_1/z_index = 0
 layer_1/tile_data = PackedInt32Array(-393194, 37, 65536, 5046304, 37, 65536, 5963802, 458788, 17)
 metadata/_edit_lock_ = true
 
-[node name="player_node" parent="tiles" instance=ExtResource("2")]
+[node name="player_node" parent="world2d" instance=ExtResource("2")]
 position = Vector2(292, 352)
 z_index = 5
 
-[node name="pool" parent="tiles" instance=ExtResource("4_1mcye")]
+[node name="pool" parent="world2d" instance=ExtResource("4_1mcye")]
 top_level = true
 
-[node name="map_mover_lift" parent="tiles" instance=ExtResource("3_mha57")]
+[node name="map_mover_lift" parent="world2d" instance=ExtResource("3_mha57")]
 position = Vector2(830, 288)
 fl_len = [0.0, 1400.0]
 time_lift = 20.0
 next_floor = 0
 
-[node name="Marker2d" type="Marker2D" parent="tiles"]
+[node name="Marker2d" type="Marker2D" parent="world2d"]
 position = Vector2(830, 1688)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="panel_select" parent="CanvasLayer" instance=ExtResource("5_gn4in")]
+panel_twe = 150.0
 
 [node name="ui_text_viewer" parent="CanvasLayer" instance=ExtResource("7_xnyd7")]

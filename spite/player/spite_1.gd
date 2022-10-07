@@ -3,20 +3,14 @@ extends CharacterBody2D
 class_name p_default_sprite
 
 var _direct := Vector2.ZERO :
-	get:
-		return _direct 
 	set(mod_value):
 		if(mod_value != _direct):
 			_direct = mod_value  
 var _mouse_direct := Vector2.ZERO :
-	get:
-		return _mouse_direct 
 	set(mod_value):
 		_mouse_direct = mod_value.normalized()
 		_mouse_move_deg  = _mouse_direct.dot(_direct)  
 var flag_allow_input := true :
-	get:
-		return flag_allow_input
 	set(value):
 		flag_allow_input = value
 		self.set_process_unhandled_input(value)

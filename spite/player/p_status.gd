@@ -2,7 +2,7 @@ extends Node
 
 class_name p_st
 
-signal p_st_change(st,mode)
+signal p_st_change(mode,st)
 
 func _ready():
 	set_physics_process(false)

@@ -1,11 +1,15 @@
 extends Control
 
 @export var num_txt := 20
+@export_file var scirpt_json_path : String :
+	set(value):
+		txt_loader._load_json(value)
+		return
 
 @onready var txt_info := get_node("info_viewer") as ui_text_container
 @onready var txt_top := get_node("top_viewer") as ui_text_container
 @onready var txt_talk := get_node("talk_viewer") as ui_text_container
-@onready var txt_loader := get_node("loader") as Node
+@onready var txt_loader := get_node("loader") as ui_text_json_loader
 
 var res_node_txt := preload("res://sp_ui/ui_text_viewer/text_richtext_node.tscn")
 

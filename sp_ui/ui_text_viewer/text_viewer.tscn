@@ -17,33 +17,33 @@ script = ExtResource("1_flimi")
 metadata/_edit_lock_ = true
 
 [node name="info_viewer" type="VBoxContainer" parent="."]
-layout_mode = 0
 offset_left = 80.0
 offset_top = 224.0
 offset_right = 420.0
 offset_bottom = 416.0
+mouse_filter = 2
 script = ExtResource("2_05pir")
 limit_txt = 10
 metadata/_edit_group_ = true
 
 [node name="top_viewer" type="VBoxContainer" parent="."]
-layout_mode = 1
 anchors_preset = -1
 offset_left = 672.0
 offset_top = 88.0
 offset_right = 1133.0
 offset_bottom = 129.0
+mouse_filter = 2
 script = ExtResource("2_05pir")
 limit_txt = 2
 metadata/_edit_group_ = true
 
 [node name="talk_viewer" type="VBoxContainer" parent="."]
-layout_mode = 0
 offset_left = 376.0
 offset_top = 512.0
 offset_right = 896.0
 offset_bottom = 580.0
 auto_translate = false
+mouse_filter = 2
 script = ExtResource("2_05pir")
 limit_txt = 4
 metadata/_edit_group_ = true

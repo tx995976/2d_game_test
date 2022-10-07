@@ -12,8 +12,6 @@ var mid_pos : Vector2
 
 var array_panel := []
 var selected_panel : ui_weapon_lable = null :
-	get:
-		return selected_panel 
 	set(value):
 		if(selected_panel and value.name != selected_panel.name):
 			selected_panel._mouse_exit()
@@ -41,7 +39,6 @@ func show_panel():
 	visible = true
 	set_process_input(true)
 	get_tree().call_group("ui_weapon_panel","_panel_open")
-	Engine.time_scale = 0.2
 	#get_tree().paused = true
 	return
 
@@ -49,24 +46,17 @@ func end_select():
 	set_process_input(false)
 	#get_tree().paused = false
 	get_tree().call_group_flags(SceneTree.GROUP_CALL_DEFAULT,"ui_weapon_panel","_panel_close")
-	Engine.time_scale = 1.0
 	if(selected_panel):
 		await selected_panel.panel_tween_finish
 	print("close")
 	visible = false
 	return
 
-func panel_change(value : ui_weapon_lable):
-	if(selected_panel and value.name != selected_panel.name):
-		selected_panel._mouse_exit()
-	selected_panel = value
-	return
-
 func _ready():
 	visible = false
 	G_input.node_ui_weapon_select = self
 	set_process_input(false)
-	mid_pos = size / 2
+	mid_pos = node_mid.position
 	init_panel()
 	
 	return

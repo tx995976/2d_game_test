@@ -52,7 +52,6 @@ func _physics_process(delta: float):
 
 #signal
 signal msg_bullet_stop(obj)
-
 #signal
 
 

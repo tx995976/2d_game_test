@@ -1,4 +1,4 @@
-[gd_scene load_steps=75 format=3 uid="uid://xby5o0t5eov4"]
+[gd_scene load_steps=76 format=3 uid="uid://xby5o0t5eov4"]
 
 [ext_resource type="Texture2D" uid="uid://cgn5qdlw86frn" path="res://ani_png/tex_1 (2).png" id="1"]
 [ext_resource type="Script" path="res://spite/player/spite_1.gd" id="2"]
@@ -220,6 +220,22 @@ tracks/0/keys = {
 "values": [Rect2(54, 206, 32, 50), Rect2(6, 208, 32, 48), Rect2(102, 208, 32, 48)]
 }
 
+[sub_resource type="Animation" id="Animation_2vihd"]
+resource_name = "walk_weapon_fire_right "
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Rect2(398, 656, 34, 46), Rect2(350, 654, 34, 48)]
+}
+
 [sub_resource type="Animation" id="Animation_3c7ie"]
 resource_name = "walk_weapon_r_down"
 length = 0.3
@@ -415,6 +431,7 @@ _data = {
 "walk_left": SubResource("Animation_eaaoe"),
 "walk_right": SubResource("Animation_ty8xk"),
 "walk_up": SubResource("Animation_f0mi8"),
+"walk_weapon_fire_right ": SubResource("Animation_2vihd"),
 "walk_weapon_r_down": SubResource("Animation_3c7ie"),
 "walk_weapon_r_left": SubResource("Animation_aab6u"),
 "walk_weapon_r_right": SubResource("Animation_78o0j"),
@@ -639,7 +656,7 @@ script = ExtResource("5")
 script = ExtResource("6")
 walk_speed = null
 gun_range = null
-flag_gun_r = null
+flag_gun_r = true
 
 [node name="sprite_action" type="Node" parent="."]
 script = ExtResource("8")
@@ -658,7 +675,7 @@ libraries = {
 }
 
 [node name="Collision_player" type="CollisionShape2D" parent="."]
-position = Vector2(0, 5)
+position = Vector2(-4, 8)
 shape = SubResource("1")
 
 [node name="ani_player_tree" type="AnimationTree" parent="."]
@@ -674,9 +691,13 @@ parameters/sp_action/walk_weapon_back/blend_position = Vector2(-0.79492, 0.00892
 parameters/sp_action/weapon_r/blend_position = Vector2(-0.70461, -0.0267857)
 
 [node name="camera" type="Camera2D" parent="."]
+ignore_rotation = false
 current = true
+process_callback = 0
+smoothing_enabled = true
 drag_left_margin = 0.5
 drag_top_margin = 0.5
+editor_draw_drag_margin = true
 
 [node name="aim_ray" type="RayCast2D" parent="."]
 light_mask = 4
