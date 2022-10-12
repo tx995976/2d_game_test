@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://c1ogus0t2cgaq"]
+[gd_scene load_steps=10 format=3 uid="uid://c1ogus0t2cgaq"]
 
-[ext_resource type="PackedScene" uid="uid://dusfnysi2d4hx" path="res://spite/player/spite_1.tscn" id="2"]
+[ext_resource type="PackedScene" uid="uid://cxou84lmsfkqs" path="res://spite/player/spite_1.tscn" id="2"]
 [ext_resource type="TileSet" uid="uid://dekurae0mmchj" path="res://map/tileset_sc.tres" id="2_0jbbr"]
 [ext_resource type="PackedScene" uid="uid://1ryttgpfbx31" path="res://spite/map_mover_lift/map_mover_lift.tscn" id="3_mha57"]
 [ext_resource type="PackedScene" uid="uid://boq41ck54xhts" path="res://spite/battle_bullet/bullet_pool.tscn" id="4_1mcye"]
 [ext_resource type="PackedScene" uid="uid://byg4gpbpcgjhj" path="res://sp_ui/ui_action_player_select_weapon/weapon_selector.tscn" id="5_gn4in"]
+[ext_resource type="PackedScene" uid="uid://c4n8ofyh463ea" path="res://spite/enemy_normal_zombie/sprite_normal_zombie.tscn" id="5_ojyk3"]
 [ext_resource type="PackedScene" uid="uid://cptrqewq8413g" path="res://sp_ui/ui_text_viewer/text_viewer.tscn" id="7_xnyd7"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_23wke"]
@@ -32,8 +33,8 @@ layer_1/enabled = true
 layer_1/modulate = Color(1, 1, 1, 1)
 layer_1/y_sort_enabled = false
 layer_1/y_sort_origin = 0
-layer_1/z_index = 0
-layer_1/tile_data = PackedInt32Array(-393194, 37, 65536, 5046304, 37, 65536, 5963802, 458788, 17)
+layer_1/z_index = 1
+layer_1/tile_data = PackedInt32Array(-393194, 37, 65536, 5046304, 37, 65536, 5963802, 458788, 17, -327688, 37, 65536, -393210, 37, 65536, -393183, 37, 65536, 327669, 37, 65536, -196619, 37, 65536)
 metadata/_edit_lock_ = true
 
 [node name="player_node" parent="world2d" instance=ExtResource("2")]
@@ -46,12 +47,16 @@ top_level = true
 [node name="map_mover_lift" parent="world2d" instance=ExtResource("3_mha57")]
 light_mask = 15
 material = SubResource("CanvasItemMaterial_23wke")
-position = Vector2(830, 288)
+position = Vector2(831, 288)
 fl_len = [0.0, 1400.0]
 time_lift = 20.0
 
 [node name="Marker2d" type="Marker2D" parent="world2d"]
 position = Vector2(830, 1688)
+metadata/_edit_lock_ = true
+
+[node name="sprite_normal_zombie" parent="world2d" instance=ExtResource("5_ojyk3")]
+position = Vector2(182, 377)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

@@ -17,5 +17,4 @@ func p_exit():
 	set_process_unhandled_input(false)
 	pass
 
-
 signal p_st_change(mode,st)

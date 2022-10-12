@@ -26,7 +26,7 @@ func _init_bullet(pos: Vector2,direct: Vector2,dmg: float):
 
 func _bullet_hit(value):
 	if(info_collide and info_collide.get_collider().has_method("_action_be_hit")):
-		info_collide.collider.call_deferred("_action_be_hit",bullet_dmg)
+		info_collide.get_collider().call_deferred("_action_be_hit",bullet_dmg)
 	info_collide = null
 	return
 

@@ -21,6 +21,7 @@ func _spite_enter(sp_node: Node2D):
 
 func _spite_exit(sp_node: Node2D):
 	sp_node.remove_from_group("in_lift")
+	print("%s exit" % sp_node)
 	pass
 	
 func _lift_start():

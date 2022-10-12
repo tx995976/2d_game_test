@@ -28,14 +28,8 @@ var view_mov_deg := 0.0
 #move,view
 
 #action_callback
-func _action_be_hit():
-	pass
 
 #action_callback
 
 func _unhandled_input(event):
-	#input_data
-	mov_dir = Input.get_vector("action_left","action_right","action_up","action_down")
-	view_dir = get_local_mouse_position()
-	#
 	pass
