@@ -29,6 +29,11 @@ _global_script_classes=[{
 "language": &"GDScript",
 "path": "res://spite/player/p_status.gd"
 }, {
+"base": "AnimationTree",
+"class": &"sp_anim_tree",
+"language": &"GDScript",
+"path": "res://spite/sprite_class/sprite_anim_root.gd"
+}, {
 "base": "CharacterBody2D",
 "class": &"sp_bullet",
 "language": &"GDScript",
@@ -42,19 +47,19 @@ _global_script_classes=[{
 "base": "CharacterBody2D",
 "class": &"sp_player_root",
 "language": &"GDScript",
-"path": "res://spite/sprite_player_root.gd"
+"path": "res://spite/sprite_class/sprite_player_root.gd"
 }, {
 "base": "Node",
 "class": &"sp_st_machine",
 "language": &"GDScript",
-"path": "res://spite/sprite_state_machine.gd"
+"path": "res://spite/sprite_class/sprite_state_machine.gd"
 }, {
 "base": "VBoxContainer",
 "class": &"ui_text_container",
 "language": &"GDScript",
-"path": "res://sp_ui/ui_text_viewer/text_text_container.gd"
+"path": "res://sp_ui/ui_text_viewer/text_container.gd"
 }, {
-"base": "Node",
+"base": "RefCounted",
 "class": &"ui_text_json_loader",
 "language": &"GDScript",
 "path": "res://sp_ui/ui_text_viewer/text_json_loader.gd"
@@ -63,6 +68,11 @@ _global_script_classes=[{
 "class": &"ui_text_richtext_node",
 "language": &"GDScript",
 "path": "res://sp_ui/ui_text_viewer/text_richtext_node.gd"
+}, {
+"base": "Control",
+"class": &"ui_text_viewer",
+"language": &"GDScript",
+"path": "res://sp_ui/ui_text_viewer/text_viewer.gd"
 }, {
 "base": "Panel",
 "class": &"ui_weapon_lable",
@@ -79,6 +89,7 @@ _global_script_class_icons={
 "G_map_res": "",
 "p_default_sprite": "",
 "p_st": "",
+"sp_anim_tree": "",
 "sp_bullet": "",
 "sp_bullet_pool": "",
 "sp_player_root": "",
@@ -86,6 +97,7 @@ _global_script_class_icons={
 "ui_text_container": "",
 "ui_text_json_loader": "",
 "ui_text_richtext_node": "",
+"ui_text_viewer": "",
 "ui_weapon_lable": "",
 "ui_weapon_selector": ""
 }

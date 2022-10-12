@@ -53,7 +53,7 @@ func _exit_node():
 	tween.tween_property(self,"modulate",Color(1,1,1,0),1.0)
 	await tween.finished
 	txt_destroy.emit(self)	
-	get_parent().remove_child(self)
+	owner.remove_child(self)
 
 	#basic
 	flag_flush_delta = false

@@ -88,9 +88,8 @@ func _physics_process(delta: float):
 	p_node.move_and_collide(p_node._direct.normalized() * walk_speed * delta)
 	#move#
 
-	#action
+	#gun_view
 	if(flag_gun_r):
-		_aim_ray.force_raycast_update()
 		_gun_light.rotation = p_node._mouse_direct.angle()
 		line_vec = _aim_ray.target_position
 		#print(line_vec)
@@ -99,12 +98,12 @@ func _physics_process(delta: float):
 			#print("player : %s ray : %s pos : %s" % [p_node.position,_aim_ray.get_collision_point(),line_vec])
 		_gun_ray.set_point_position(1,line_vec)
 
-	#action#
+	#gun_view
 	return
 
 func _unhandled_input(_input: InputEvent):
 	if(Input.is_action_just_released("battle_weapon_ready")):
-		p_st_change.emit("walk",1)
+		p_st_change.emit(sp_st_machine.ST_swap,"p_walk")
 	if(Input.is_action_just_pressed("weapon_func_light")):
 		_gun_light.enabled = !_gun_light.enabled
 	if(Input.is_action_just_pressed("action_weapon_fire")):

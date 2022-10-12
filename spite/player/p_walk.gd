@@ -40,7 +40,7 @@ func _physics_process(delta: float):
 
 func _unhandled_input(event):
 	if(Input.is_action_just_pressed("battle_weapon_ready")):
-		p_st_change.emit("weapon_ready",1)
+		p_st_change.emit(sp_st_machine.ST_swap,"p_ready_weapon")
 	return
 
 func p_exit():

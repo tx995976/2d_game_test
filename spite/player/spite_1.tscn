@@ -1,13 +1,13 @@
-[gd_scene load_steps=76 format=3 uid="uid://xby5o0t5eov4"]
+[gd_scene load_steps=77 format=3 uid="uid://dusfnysi2d4hx"]
 
 [ext_resource type="Texture2D" uid="uid://cgn5qdlw86frn" path="res://ani_png/tex_1 (2).png" id="1"]
 [ext_resource type="Script" path="res://spite/player/spite_1.gd" id="2"]
-[ext_resource type="Script" path="res://spite/player/player_state_machine.gd" id="3"]
+[ext_resource type="Script" path="res://spite/sprite_class/sprite_state_machine.gd" id="2_wtqut"]
 [ext_resource type="Script" path="res://spite/player/p_idle.gd" id="4"]
 [ext_resource type="Script" path="res://spite/player/p_walk.gd" id="5"]
 [ext_resource type="Script" path="res://spite/player/p_ready_weapen.gd" id="6"]
 [ext_resource type="Script" path="res://spite/player/sprite_action.gd" id="8"]
-[ext_resource type="Texture2D" uid="uid://yuemk05sk8fh" path="res://ani_png/light_weapon.png" id="9"]
+[ext_resource type="Texture2D" uid="uid://c83djiy88mfjr" path="res://spite/player/light.png" id="8_gay6b"]
 
 [sub_resource type="Animation" id="Animation_r6cjf"]
 length = 0.001
@@ -254,7 +254,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../player_state_machine/p_ready_weapen:flag_gun_r")
+tracks/1/path = NodePath("../player_state_machine/p_ready_weapon:flag_gun_r")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -282,7 +282,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../player_state_machine/p_ready_weapen:flag_gun_r")
+tracks/1/path = NodePath("../player_state_machine/p_ready_weapon:flag_gun_r")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -310,7 +310,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../player_state_machine/p_ready_weapen:flag_gun_r")
+tracks/1/path = NodePath("../player_state_machine/p_ready_weapon:flag_gun_r")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -338,7 +338,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../player_state_machine/p_ready_weapen:flag_gun_r")
+tracks/1/path = NodePath("../player_state_machine/p_ready_weapon:flag_gun_r")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -443,7 +443,7 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="1"]
-size = Vector2(20, 16)
+size = Vector2(22, 28)
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_n56v7"]
 animation = &"idle_walk_down"
@@ -633,6 +633,9 @@ node_connections = [&"output", 0, &"sp_action"]
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_6366p"]
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_6p6wk"]
+light_mode = 1
+
 [sub_resource type="OccluderPolygon2D" id="38"]
 cull_mode = 2
 polygon = PackedVector2Array(-10, 30, 5, 30, -2, 26)
@@ -643,8 +646,8 @@ platform_on_leave = 2
 script = ExtResource("2")
 
 [node name="player_state_machine" type="Node" parent="."]
-script = ExtResource("3")
-start_state = NodePath("p_walk")
+script = ExtResource("2_wtqut")
+start_state = "p_walk"
 
 [node name="p_idle" type="Node" parent="player_state_machine"]
 script = ExtResource("4")
@@ -652,10 +655,8 @@ script = ExtResource("4")
 [node name="p_walk" type="Node" parent="player_state_machine"]
 script = ExtResource("5")
 
-[node name="p_ready_weapen" type="Node" parent="player_state_machine"]
+[node name="p_ready_weapon" type="Node" parent="player_state_machine"]
 script = ExtResource("6")
-walk_speed = null
-gun_range = null
 flag_gun_r = true
 
 [node name="sprite_action" type="Node" parent="."]
@@ -675,7 +676,7 @@ libraries = {
 }
 
 [node name="Collision_player" type="CollisionShape2D" parent="."]
-position = Vector2(-4, 8)
+position = Vector2(0, 3)
 shape = SubResource("1")
 
 [node name="ani_player_tree" type="AnimationTree" parent="."]
@@ -705,25 +706,26 @@ collision_mask = 14
 
 [node name="gun_ray" type="Line2D" parent="."]
 show_behind_parent = true
-light_mask = 14
+light_mask = 6
+material = SubResource("CanvasItemMaterial_6p6wk")
 points = PackedVector2Array(0, 0, 0, 0)
 width = 1.0
-default_color = Color(0.92549, 0.164706, 0.14902, 1)
+default_color = Color(1, 0.0431373, 0.0470588, 1)
 texture_mode = 1
 begin_cap_mode = 2
 end_cap_mode = 2
 sharp_limit = 4.0
 round_precision = 2
-antialiased = true
 
 [node name="gun_light" type="PointLight2D" parent="."]
-light_mask = 15
+light_mask = 0
 enabled = false
-energy = 0.5
+energy = 1.5
+blend_mode = 2
 range_item_cull_mask = 15
 shadow_enabled = true
-shadow_item_cull_mask = 14
-texture = ExtResource("9")
+shadow_item_cull_mask = 4
+texture = ExtResource("8_gay6b")
 offset = Vector2(290, 0)
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]

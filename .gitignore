@@ -8,3 +8,4 @@ addons/
 *.ttf
 .vscode/
 *.dll
+.VSCodeCounter/

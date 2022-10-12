@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://b4bflpiq2nv1x"]
+[gd_scene load_steps=5 format=3 uid="uid://cptrqewq8413g"]
 
 [ext_resource type="Script" path="res://sp_ui/ui_text_viewer/text_viewer.gd" id="1_flimi"]
-[ext_resource type="Script" path="res://sp_ui/ui_text_viewer/text_text_container.gd" id="2_05pir"]
-[ext_resource type="Script" path="res://sp_ui/ui_text_viewer/text_json_loader.gd" id="3_q2ft4"]
+[ext_resource type="Script" path="res://sp_ui/ui_text_viewer/container_info.gd" id="2_rebv8"]
+[ext_resource type="Script" path="res://sp_ui/ui_text_viewer/container_top.gd" id="3_tl253"]
+[ext_resource type="Script" path="res://sp_ui/ui_text_viewer/container_talk.gd" id="4_425a0"]
 
 [node name="ui_text_viewer" type="Control"]
 custom_minimum_size = Vector2i(400, 300)
@@ -16,37 +17,37 @@ mouse_filter = 2
 script = ExtResource("1_flimi")
 metadata/_edit_lock_ = true
 
-[node name="info_viewer" type="VBoxContainer" parent="."]
+[node name="info" type="VBoxContainer" parent="."]
 offset_left = 80.0
 offset_top = 224.0
 offset_right = 420.0
 offset_bottom = 416.0
 mouse_filter = 2
-script = ExtResource("2_05pir")
+script = ExtResource("2_rebv8")
 limit_txt = 10
+re_init_str = "[color=%s]%s[/color]"
 metadata/_edit_group_ = true
 
-[node name="top_viewer" type="VBoxContainer" parent="."]
+[node name="top" type="VBoxContainer" parent="."]
 anchors_preset = -1
 offset_left = 672.0
 offset_top = 88.0
 offset_right = 1133.0
 offset_bottom = 129.0
 mouse_filter = 2
-script = ExtResource("2_05pir")
+script = ExtResource("3_tl253")
 limit_txt = 2
+re_init_str = "[color=%s]%s[/color]"
 metadata/_edit_group_ = true
 
-[node name="talk_viewer" type="VBoxContainer" parent="."]
+[node name="talk" type="VBoxContainer" parent="."]
 offset_left = 376.0
 offset_top = 512.0
 offset_right = 896.0
 offset_bottom = 580.0
 auto_translate = false
 mouse_filter = 2
-script = ExtResource("2_05pir")
-limit_txt = 4
+script = ExtResource("4_425a0")
+limit_txt = 3
+re_init_str = "[color=%s]%s[/color] [color=%s]%s[/color]"
 metadata/_edit_group_ = true
-
-[node name="loader" type="Node" parent="."]
-script = ExtResource("3_q2ft4")

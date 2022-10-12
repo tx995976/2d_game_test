@@ -27,12 +27,11 @@ var extra_move := Vector2.ZERO :
 var view_mov_deg := 0.0
 #move,view
 
-#Properties
-@export var health : float
-@export var speed_normal : float
+#action_callback
+func _action_be_hit():
+	pass
 
-
-#Properties
+#action_callback
 
 func _unhandled_input(event):
 	#input_data

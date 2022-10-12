@@ -24,13 +24,8 @@ var _last_direct := Vector2.RIGHT
 var _mouse_move_deg := 1.0
 var _mouse_pos := Vector2.ZERO
 
-@onready var node_input := get_node("/root/_G_input") as G_input
 @onready var node_map_res := get_node("/root/global_map_res") as global_map_res
 
-func _ready():
-	node_input.player_node = self
-	return
-	
 func _unhandled_input(event):
 	#input_data
 	_direct = Input.get_vector("action_left","action_right","action_up","action_down")

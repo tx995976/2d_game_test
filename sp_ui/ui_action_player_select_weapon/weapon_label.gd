@@ -7,7 +7,7 @@ signal panel_tween_finish
 
 @export var time_tween : float
 
-var res_shader := preload("res://sp_ui/ui_action_player_select_weapon/label_shader.tres") as Shader
+#var res_shader := preload("res://sp_ui/ui_action_player_select_weapon/label_shader.tres") as Shader
 
 var node_Tween
 var flag_select := false
@@ -19,8 +19,8 @@ func _ready():
 	add_to_group("ui_weapon_panel")
 	self.mouse_entered.connect(_mouse_enter)
 	#self.connect("mouse_exited",self,"_mouse_exit")
-	material = ShaderMaterial.new()
-	material.shader = res_shader
+	#material = ShaderMaterial.new()
+	#material.shader = res_shader
 
 	return
 

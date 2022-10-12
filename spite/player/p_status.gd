@@ -2,8 +2,6 @@ extends Node
 
 class_name p_st
 
-signal p_st_change(mode,st)
-
 func _ready():
 	set_physics_process(false)
 	set_process_unhandled_input(false)
@@ -18,3 +16,6 @@ func p_exit():
 	set_physics_process(false)
 	set_process_unhandled_input(false)
 	pass
+
+
+signal p_st_change(mode,st)
