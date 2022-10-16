@@ -1,0 +1,30 @@
+[gd_resource type="VisualShader" load_steps=4 format=3 uid="uid://cvndxcs2yn6je"]
+
+[sub_resource type="VisualShaderNodeBooleanParameter" id="VisualShaderNodeBooleanParameter_e2xij"]
+parameter_name = "light_shine"
+default_value_enabled = true
+default_value = true
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_ypdpm"]
+input_name = "time"
+
+[sub_resource type="VisualShaderNodeSwitch" id="VisualShaderNodeSwitch_50os0"]
+default_input_values = [0, false, 1, true, 2, false]
+op_type = 5
+
+[resource]
+code = "shader_type canvas_item;
+
+
+"
+graph_offset = Vector2(136.336, -40.8776)
+mode = 1
+flags/light_only = false
+nodes/fragment/0/position = Vector2(894.44, 69.88)
+nodes/fragment/2/node = SubResource("VisualShaderNodeBooleanParameter_e2xij")
+nodes/fragment/2/position = Vector2(47.3599, 99.7)
+nodes/fragment/3/node = SubResource("VisualShaderNodeInput_ypdpm")
+nodes/fragment/3/position = Vector2(323.336, 364.122)
+nodes/fragment/4/node = SubResource("VisualShaderNodeSwitch_50os0")
+nodes/fragment/4/position = Vector2(376.336, 43.6224)
+nodes/fragment/connections = PackedInt32Array(2, 0, 4, 1)

@@ -2,7 +2,7 @@ extends p_st
 
 @export var walk_speed: int = 150
 
-@onready var p_node := owner as p_default_sprite
+@onready var p_node := owner as sp_player_root
 @onready var ani_tree := owner.get_node("ani_player_tree") as AnimationTree
 @onready var sp_status := ani_tree.get("parameters/sp_action/playback") as AnimationNodeStateMachinePlayback
 @onready var val_idle_walk_blend := Vector2.ZERO :
@@ -21,20 +21,20 @@ func _ready():
 
 func enter_st():
 	super()
-	val_idle_walk_blend = p_node._last_direct
+	val_idle_walk_blend = p_node.view_dir
 	sp_status.travel("idle_walk")
 	return
 
 func _physics_process(delta: float):
 
-	val_walk_blend = p_node._direct
-	collision_info = p_node.move_and_collide(p_node._direct.normalized() * walk_speed * delta)
+	val_walk_blend = p_node.mov_dir
+	collision_info = p_node.move_and_collide(p_node.mov_dir.normalized() * walk_speed * delta)
 
-	if(p_node._direct == Vector2.ZERO):
+	if(p_node.mov_dir == Vector2.ZERO):
 		sp_status.travel("idle_walk")
 	else:
-		val_idle_walk_blend = p_node._direct
-		p_node._last_direct = p_node._direct
+		val_idle_walk_blend = p_node.mov_dir
+		p_node.view_dir = p_node.mov_dir
 		sp_status.travel("walk")
 	return
 

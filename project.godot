@@ -19,11 +19,6 @@ _global_script_classes=[{
 "language": &"GDScript",
 "path": "res://global_sp/global_map_res.gd"
 }, {
-"base": "CharacterBody2D",
-"class": &"p_default_sprite",
-"language": &"GDScript",
-"path": "res://spite/player/spite_1.gd"
-}, {
 "base": "Node",
 "class": &"p_st",
 "language": &"GDScript",
@@ -92,7 +87,6 @@ _global_script_classes=[{
 _global_script_class_icons={
 "G_input": "",
 "G_map_res": "",
-"p_default_sprite": "",
 "p_st": "",
 "sp_anim_tree": "",
 "sp_bullet": "",
@@ -112,7 +106,7 @@ _global_script_class_icons={
 
 config/name="2d Test"
 run/main_scene="res://test_tscn/map_test.tscn"
-config/features=PackedStringArray("4.0")
+config/features=PackedStringArray("4.0", "C#")
 config/icon="res://icon.png"
 
 [autoload]
@@ -120,14 +114,21 @@ config/icon="res://icon.png"
 _G_input="*res://global_sp/key_input.gd"
 global_map_res="*res://global_sp/global_map_res.gd"
 
+[debug]
+
+gdscript/warnings/unused_parameter=0
+
 [display]
 
-window/vsync/vsync_mode=0
 window/vsync/use_vsync=false
 
 [dotnet]
 
 project/assembly_name="2d Test"
+
+[editor]
+
+node_naming/name_casing=2
 
 [gui]
 
@@ -222,10 +223,9 @@ action_weapon_fire={
 
 [physics]
 
-common/enable_pause_aware_picking=true
+common/physics_ticks_per_second=64
 
 [rendering]
 
-2d/snapping/use_gpu_pixel_snap=true
 environment/default_environment="res://default_env.tres"
 scaling_3d/physics_engine="GodotPhysics2D"

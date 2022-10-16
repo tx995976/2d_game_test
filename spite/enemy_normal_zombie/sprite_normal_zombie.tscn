@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://c4n8ofyh463ea"]
+[gd_scene load_steps=45 format=3 uid="uid://c4n8ofyh463ea"]
 
 [ext_resource type="Script" path="res://spite/sprite_class/sp_state_machine.gd" id="1_36lex"]
 [ext_resource type="Script" path="res://spite/enemy_normal_zombie/sprite_normal_zombie.gd" id="1_l3j1u"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://b3j8nuvp0mmox" path="res://spite/enemy_normal_zombie/normal_texture.png" id="3_itgw3"]
 [ext_resource type="Script" path="res://spite/enemy_normal_zombie/st_walk.gd" id="4_txder"]
 [ext_resource type="Script" path="res://spite/enemy_normal_zombie/zombie_agent.gd" id="6_4gdg6"]
+[ext_resource type="Script" path="res://spite/enemy_normal_zombie/zombie_anim_tree.gd" id="6_ia3c7"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_10wj0"]
 animation = &"sp_animation_zombie/att_down"
@@ -77,24 +78,33 @@ blend_point_3/pos = Vector2(1, 0)
 blend_mode = 1
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_wrqdo"]
+auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8q8wq"]
+advance_condition = &"walk"
+advance_expression = "para_walk != Vector2.Zero"
+advance_expression_base_node = NodePath("anim_tree")
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ngfn8"]
+advance_condition = &"walk"
+advance_expression = "para_walk == Vector2.Zero"
+advance_expression_base_node = NodePath("anim_tree")
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_1hly1"]
-switch_mode = 1
+switch_mode = 2
+auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_3tca0"]
-states/End/position = Vector2(1060, 53)
+states/End/position = Vector2(699, 171)
 states/Start/position = Vector2(699, 237)
 states/att/node = SubResource("AnimationNodeBlendSpace2D_yr3dy")
-states/att/position = Vector2(540, 104)
+states/att/position = Vector2(540, 136)
 states/idle/node = SubResource("AnimationNodeBlendSpace2D_gh0ky")
 states/idle/position = Vector2(540, 237)
 states/walk/node = SubResource("AnimationNodeBlendSpace2D_l1wqs")
 states/walk/position = Vector2(375, 237)
 transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_wrqdo"), "idle", "walk", SubResource("AnimationNodeStateMachineTransition_8q8wq"), "walk", "idle", SubResource("AnimationNodeStateMachineTransition_ngfn8"), "att", "idle", SubResource("AnimationNodeStateMachineTransition_1hly1")]
+graph_offset = Vector2(61.1786, 27.8721)
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_nnaih"]
 graph_offset = Vector2(-189.848, -118.799)
@@ -351,11 +361,15 @@ script = ExtResource("3_0d8mf")
 
 [node name="walk" type="Node" parent="sp_st_machine"]
 script = ExtResource("4_txder")
-speed = 100.0
+speed = 70.0
 
-[node name="collsion" type="CollisionPolygon2D" parent="."]
+[node name="collsion_body" type="CollisionPolygon2D" parent="."]
 position = Vector2(-6, -3)
-polygon = PackedVector2Array(2, -5, 10, -5, 10, 22, 2, 22)
+polygon = PackedVector2Array(-5, -4, 16, -4, 10, 25, 2, 25)
+
+[node name="collsion_head" type="CollisionPolygon2D" parent="."]
+position = Vector2(-6, -2)
+polygon = PackedVector2Array(-1, -5, 13, -5, 13, -13, -1, -13)
 
 [node name="tex" type="Sprite2D" parent="."]
 texture = ExtResource("3_itgw3")
@@ -367,9 +381,11 @@ tree_root = SubResource("AnimationNodeBlendTree_nnaih")
 anim_player = NodePath("anim_player")
 active = true
 parameters/zombie_st_tree/playback = SubResource("AnimationNodeStateMachinePlayback_8o0rk")
-parameters/zombie_st_tree/att/blend_position = Vector2(-0.0048216, 0.0068028)
-parameters/zombie_st_tree/idle/blend_position = Vector2(-0.309547, -0.00581396)
-parameters/zombie_st_tree/walk/blend_position = Vector2(0.0106075, 0.009009)
+parameters/zombie_st_tree/conditions/walk = false
+parameters/zombie_st_tree/att/blend_position = Vector2(0.590864, -0.021834)
+parameters/zombie_st_tree/idle/blend_position = Vector2(0, 0)
+parameters/zombie_st_tree/walk/blend_position = Vector2(0, 0)
+script = ExtResource("6_ia3c7")
 
 [node name="anim_player" type="AnimationPlayer" parent="anim_tree"]
 libraries = {

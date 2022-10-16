@@ -11,7 +11,6 @@ var mov_dir := Vector2.ZERO :
 var view_dir := Vector2.ZERO :
 	set(value):
 		view_dir = value.normalized()
-		view_mov_deg  = view_dir.dot(mov_dir)  
 
 var extra_move := Vector2.ZERO :
 	set(value):
@@ -24,12 +23,8 @@ var extra_move := Vector2.ZERO :
 		self.set_process_unhandled_input(value)
 		return
 
-var view_mov_deg := 0.0
+var view_mov_deg := 0.0 :
+	get:
+		return view_dir.dot(mov_dir)
 #move,view
 
-#action_callback
-
-#action_callback
-
-func _unhandled_input(event):
-	pass

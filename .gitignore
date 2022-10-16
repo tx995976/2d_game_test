@@ -1,4 +1,3 @@
-
 .mono/
 .import/
 *.png
@@ -9,3 +8,6 @@ addons/
 .vscode/
 *.dll
 .VSCodeCounter/
+.vs/
+*.mp3
+*.wav

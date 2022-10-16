@@ -3,7 +3,7 @@ extends Node
 class_name G_input
 
 # Node_ref
-var player_node : p_default_sprite
+var player_node : sp_player_root
 var node_ui_weapon_select : ui_weapon_selector
 #var node_ui_weapon_select : ui_weapon_selector
 

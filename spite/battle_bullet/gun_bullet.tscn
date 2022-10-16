@@ -12,11 +12,11 @@ z_index = 2
 collision_layer = 0
 collision_mask = 14
 script = ExtResource("2")
-bullet_speed = 1200.0
+bullet_speed = 2000.0
 bullet_range = 1200.0
 
 [node name="tex" type="Sprite2D" parent="."]
-light_mask = 0
+light_mask = 15
 texture = ExtResource("1")
 region_enabled = true
 region_rect = Rect2(71, 19, 9, 1)

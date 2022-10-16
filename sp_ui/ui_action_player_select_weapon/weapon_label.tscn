@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://c6tyd6fppi86h"]
 
 [ext_resource type="Theme" uid="uid://bd7khbkl0olux" path="res://theme/weapon.tres" id="1"]
-[ext_resource type="Shader" uid="uid://lg4i6poq7f4f" path="res://sp_ui/ui_action_player_select_weapon/label_shader.tres" id="1_usklr"]
+[ext_resource type="Shader" uid="uid://by0vq8w3lf82q" path="res://sp_ui/ui_action_player_select_weapon/label_shader.tres" id="1_usklr"]
 [ext_resource type="Texture2D" uid="uid://c3cstoju0irv3" path="res://sp_ui/ui_action_player_select_weapon/gun.png" id="2"]
 [ext_resource type="Texture2D" uid="uid://df8s6w8sejpss" path="res://sp_ui/ui_action_player_select_weapon/weapon_label_zzz.png" id="3"]
 [ext_resource type="Script" path="res://sp_ui/ui_action_player_select_weapon/weapon_label.gd" id="4"]

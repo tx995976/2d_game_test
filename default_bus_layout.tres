@@ -1,10 +1,21 @@
-[gd_resource type="AudioBusLayout" format=3 uid="uid://cek3324p4wuyx"]
+[gd_resource type="AudioBusLayout" load_steps=2 format=3 uid="uid://cek3324p4wuyx"]
+
+[sub_resource type="AudioEffectLowPassFilter" id="AudioEffectLowPassFilter_5cxr4"]
+resource_name = "LowPassFilter"
 
 [resource]
-bus/0/volume_db = 0.662756
-bus/1/name = &"New Bus"
+bus/0/volume_db = -0.197157
+bus/1/name = &"world2d"
 bus/1/solo = false
 bus/1/mute = false
 bus/1/bypass_fx = false
-bus/1/volume_db = -0.328256
+bus/1/volume_db = 0.0717049
 bus/1/send = &"Master"
+bus/1/effect/0/effect = SubResource("AudioEffectLowPassFilter_5cxr4")
+bus/1/effect/0/enabled = false
+bus/2/name = &"background"
+bus/2/solo = false
+bus/2/mute = false
+bus/2/bypass_fx = false
+bus/2/volume_db = -5.88194
+bus/2/send = &"world2d"

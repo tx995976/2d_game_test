@@ -1,6 +1,6 @@
 extends p_st
 
-@onready var p_node : p_default_sprite = owner
+@onready var p_node : sp_player_root = owner
 
 func _ready():
 	print(owner.name)

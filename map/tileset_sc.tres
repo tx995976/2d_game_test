@@ -1,8 +1,8 @@
-[gd_resource type="TileSet" load_steps=21 format=3 uid="uid://dekurae0mmchj"]
+[gd_resource type="TileSet" load_steps=21 format=3 uid="uid://csintt4xsdf01"]
 
 [ext_resource type="Texture2D" uid="uid://dglkexjnc7ren" path="res://map/新学校2A5.png" id="1"]
 [ext_resource type="Texture2D" uid="uid://c2in6e5b6xyv2" path="res://map/新学校B.png" id="2"]
-[ext_resource type="PackedScene" uid="uid://dniobxpo4wb3n" path="res://map/map_item_light/item_light_1.tscn" id="3_x46y0"]
+[ext_resource type="PackedScene" uid="uid://dyy6fjbf21f1p" path="res://map/map_item/item_light_1.tscn" id="3_1nhgw"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_kna86"]
 
@@ -1137,7 +1137,7 @@ texture = ExtResource("1")
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_17gfy"]
 resource_name = "item_light"
-scenes/1/scene = ExtResource("3_x46y0")
+scenes/1/scene = ExtResource("3_1nhgw")
 
 [resource]
 occlusion_layer_0/light_mask = 6
