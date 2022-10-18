@@ -649,6 +649,7 @@ platform_on_leave = 2
 script = ExtResource("2")
 
 [node name="aim_ray" type="RayCast2D" parent="."]
+visible = false
 light_mask = 4
 collision_mask = 14
 script = ExtResource("8_m0cbn")
@@ -656,7 +657,7 @@ speed_view = 0.007
 
 [node name="gun_ray" type="Line2D" parent="aim_ray"]
 show_behind_parent = true
-light_mask = 15
+light_mask = 0
 material = SubResource("ShaderMaterial_3pgi5")
 points = PackedVector2Array(0, 0, 400, 0)
 width = 1.0
@@ -692,6 +693,7 @@ region_rect = Rect2(6, 16, 32, 48)
 metadata/_edit_lock_ = true
 
 [node name="Collision_player" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0, 3)
 shape = SubResource("1")
 metadata/_edit_lock_ = true
@@ -719,7 +721,6 @@ libraries = {
 ignore_rotation = false
 current = true
 process_callback = 0
-smoothing_enabled = true
 drag_left_margin = 0.5
 drag_top_margin = 0.5
 editor_draw_drag_margin = true
@@ -729,7 +730,7 @@ metadata/_edit_lock_ = true
 light_mask = 0
 position = Vector2(4, 3)
 enabled = false
-energy = 3.0
+energy = 2.0
 blend_mode = 2
 range_item_cull_mask = 15
 shadow_enabled = true

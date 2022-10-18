@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://cyn04lfx6nnsc"]
+
+[ext_resource type="Texture2D" uid="uid://c2in6e5b6xyv2" path="res://map/新学校B.png" id="1_w0dlx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4mq0s"]
+size = Vector2(27, 25)
+
+[node name="ev_button" type="Sprite2D"]
+texture = ExtResource("1_w0dlx")
+region_enabled = true
+region_rect = Rect2(108, 256, 8, 10)
+
+[node name="area_button" type="Area2D" parent="."]
+monitorable = false
+
+[node name="collision_shape_2d" type="CollisionShape2D" parent="area_button"]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_4mq0s")

@@ -6,5 +6,5 @@ extends sp_player_root
 func _unhandled_input(event):
 	#input_data
 	mov_dir = Input.get_vector("action_left","action_right","action_up","action_down")
-	#view_dir = get_local_mouse_position()
+	view_dir = get_local_mouse_position()
 	pass

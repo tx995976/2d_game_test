@@ -5,8 +5,9 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_a5bv4"]
 
-[node name="Node2D" type="Sprite2D"]
+[node name="light" type="Sprite2D"]
 light_mask = 4
+z_index = 1
 texture = ExtResource("1_rdlw7")
 region_enabled = true
 region_rect = Rect2(428, 192, 8, 10)
@@ -15,10 +16,9 @@ region_rect = Rect2(428, 192, 8, 10)
 light_mask = 0
 material = SubResource("ShaderMaterial_a5bv4")
 color = Color(1, 1, 1, 0)
-energy = 3.0
+energy = 2.0
 blend_mode = 2
 range_item_cull_mask = 15
-shadow_item_cull_mask = 9
+shadow_item_cull_mask = 6
 texture = ExtResource("2_ssly5")
-texture_scale = 3.0
 height = 0.25

@@ -81,14 +81,8 @@ blend_mode = 1
 auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8q8wq"]
-advance_condition = &"walk"
-advance_expression = "para_walk != Vector2.Zero"
-advance_expression_base_node = NodePath("anim_tree")
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ngfn8"]
-advance_condition = &"walk"
-advance_expression = "para_walk == Vector2.Zero"
-advance_expression_base_node = NodePath("anim_tree")
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_1hly1"]
 switch_mode = 2
@@ -348,26 +342,29 @@ _data = {
 }
 
 [node name="sprite_normal_zombie" type="CharacterBody2D"]
+z_index = 4
 collision_layer = 8
-collision_mask = 7
+collision_mask = 15
 script = ExtResource("1_l3j1u")
 
-[node name="sp_st_machine" type="Node" parent="."]
+[node name="st_machine" type="Node" parent="."]
 script = ExtResource("1_36lex")
 start_state = "idle"
 
-[node name="idle" type="Node" parent="sp_st_machine"]
+[node name="idle" type="Node" parent="st_machine"]
 script = ExtResource("3_0d8mf")
 
-[node name="walk" type="Node" parent="sp_st_machine"]
+[node name="walk" type="Node" parent="st_machine"]
 script = ExtResource("4_txder")
 speed = 70.0
 
 [node name="collsion_body" type="CollisionPolygon2D" parent="."]
+visible = false
 position = Vector2(-6, -3)
 polygon = PackedVector2Array(-5, -4, 16, -4, 10, 25, 2, 25)
 
 [node name="collsion_head" type="CollisionPolygon2D" parent="."]
+visible = false
 position = Vector2(-6, -2)
 polygon = PackedVector2Array(-1, -5, 13, -5, 13, -13, -1, -13)
 
@@ -381,7 +378,6 @@ tree_root = SubResource("AnimationNodeBlendTree_nnaih")
 anim_player = NodePath("anim_player")
 active = true
 parameters/zombie_st_tree/playback = SubResource("AnimationNodeStateMachinePlayback_8o0rk")
-parameters/zombie_st_tree/conditions/walk = false
 parameters/zombie_st_tree/att/blend_position = Vector2(0.590864, -0.021834)
 parameters/zombie_st_tree/idle/blend_position = Vector2(0, 0)
 parameters/zombie_st_tree/walk/blend_position = Vector2(0, 0)
@@ -394,5 +390,8 @@ libraries = {
 }
 
 [node name="NavigationAgent2d" type="NavigationAgent2D" parent="."]
+avoidance_enabled = true
 script = ExtResource("6_4gdg6")
-allow_mouse_input = true
+
+[node name="navigation_obstacle_2d" type="NavigationObstacle2D" parent="."]
+radius = 20.0

@@ -35,7 +35,6 @@ var line_vec := Vector2.ZERO
 
 #in_game_ready
 var node_sp_bullet_pool : sp_bullet_pool
-
 #in_game_ready
 
 func _ready():
@@ -50,7 +49,7 @@ func _res_init():
 	
 func enter_st():
 	super()
-	Input.mouse_mode = Input.MOUSE_MODE_CONFINED_HIDDEN
+	#Input.mouse_mode = Input.MOUSE_MODE_CONFINED_HIDDEN
 	val_weapon_r_blend = p_node.view_dir
 	sp_status.travel("idle_weapon")
 	_gun_light.visible = true
@@ -60,7 +59,7 @@ func p_exit():
 	super()
 	flag_gun_r = false
 	_gun_light.visible = false
-	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	#Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	return
 
 func _physics_process(delta: float):

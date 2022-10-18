@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://bghhqs722k0xo"]
+
+[ext_resource type="Script" path="res://event/event_target_area/ev_target_area.cs" id="1_sjuma"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f67bl"]
+resource_local_to_scene = true
+size = Vector2(100, 100)
+
+[node name="ev_target_area" type="Area2D"]
+collision_layer = 64
+monitorable = false
+script = ExtResource("1_sjuma")
+
+[node name="collsion" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_f67bl")

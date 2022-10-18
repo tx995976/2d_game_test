@@ -11,3 +11,4 @@ addons/
 .vs/
 *.mp3
 *.wav
+.*

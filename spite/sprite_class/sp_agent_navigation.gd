@@ -2,7 +2,7 @@ extends NavigationAgent2D
 
 class_name sp_navigation_agent
 
-@export var allow_mouse_input : bool :
+@export var allow_mouse_input : bool = true:
 	set(value):
 		set_process_unhandled_input(value)
 		return
@@ -12,7 +12,7 @@ class_name sp_navigation_agent
 var flag_mov := 0.0
 
 func _ready():
-	set_process_unhandled_input(false)
+	set_process_unhandled_input(allow_mouse_input)
 	target_reached.connect(self._target_reached)
 	pass
 

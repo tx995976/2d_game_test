@@ -23,7 +23,6 @@ func _ready():
 	
 	_active = true
 	state_now = st_map[start_state] as p_st
-
 	state_now.enter_st()
 	return
 	
@@ -32,6 +31,7 @@ func _state_change(change_mode : int,st_str: String):
 	if not _active:
 		return
 	print("change_to %s" % st_str)
+	st_change.emit(st_str)
 	state_now.p_exit()
 	match change_mode:
 		ST_push:
@@ -43,3 +43,6 @@ func _state_change(change_mode : int,st_str: String):
 			state_now = st_stack.pop_back()
 	state_now.enter_st()
 	return
+
+
+signal st_change(str)
