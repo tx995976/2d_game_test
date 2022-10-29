@@ -1,11 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://dyy6fjbf21f1p"]
+[gd_scene load_steps=4 format=3 uid="uid://cts3fneqquxs4"]
 
-[ext_resource type="Texture2D" uid="uid://c2in6e5b6xyv2" path="res://map/新学校B.png" id="1_rdlw7"]
-[ext_resource type="Texture2D" uid="uid://b1dl7hjnthipi" path="res://map/map_item/light_item_1.png" id="2_ssly5"]
+[ext_resource type="Texture2D" uid="uid://c2in6e5b6xyv2" path="res://map/map_tiles/新学校B.png" id="1_rdlw7"]
+[ext_resource type="Texture2D" uid="uid://cysnqn6b8csq1" path="res://map/map_item/light_1/light.png" id="2_3jdcy"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_a5bv4"]
 
-[node name="light" type="Sprite2D"]
+[node name="node_2d" type="Node2D"]
+
+[node name="light" type="Sprite2D" parent="."]
 light_mask = 4
 z_index = 1
 texture = ExtResource("1_rdlw7")
@@ -20,5 +22,5 @@ energy = 2.0
 blend_mode = 2
 range_item_cull_mask = 15
 shadow_item_cull_mask = 6
-texture = ExtResource("2_ssly5")
+texture = ExtResource("2_3jdcy")
 height = 0.25

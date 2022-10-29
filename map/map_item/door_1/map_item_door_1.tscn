@@ -1,0 +1,153 @@
+[gd_scene load_steps=8 format=3 uid="uid://c5e6qyqv7w182"]
+
+[ext_resource type="Script" path="res://map/map_item/door_1/map_item_door_1.cs" id="1_82ym6"]
+[ext_resource type="Texture2D" uid="uid://cku8lo5styv1x" path="res://map/map_item/door_1/door_bone.png" id="2_vrt4g"]
+[ext_resource type="Texture2D" uid="uid://ksnab6kdmu53" path="res://map/map_item/door_1/door_mask.png" id="3_ct3c0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7a54d"]
+size = Vector2(112, 65)
+
+[sub_resource type="Animation" id="Animation_felmq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("collision_shape_2d:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("door_mask:region_rect")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(8, 17, 113, 79)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:z_index")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("door_mask:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 9)]
+}
+
+[sub_resource type="Animation" id="Animation_xyja6"]
+resource_name = "door_open"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("door_mask:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Rect2(8, 17, 112, 79), Rect2(8, 86, 112, 10)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("collision_shape_2d:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.1, 2.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:z_index")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1.1, 2.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [1, 6]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("door_mask:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 9), Vector2(0, -25)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6t0od"]
+_data = {
+"RESET": SubResource("Animation_felmq"),
+"door_open": SubResource("Animation_xyja6")
+}
+
+[node name="node_2d" type="Node2D"]
+z_index = 1
+script = ExtResource("1_82ym6")
+
+[node name="map_item_door_1" type="StaticBody2D" parent="."]
+z_index = 1
+
+[node name="door_bone" type="Sprite2D" parent="map_item_door_1"]
+texture = ExtResource("2_vrt4g")
+
+[node name="door_mask" type="Sprite2D" parent="map_item_door_1"]
+position = Vector2(0, 9)
+texture = ExtResource("3_ct3c0")
+region_enabled = true
+region_rect = Rect2(8, 17, 113, 79)
+
+[node name="collision_shape_2d" type="CollisionShape2D" parent="map_item_door_1"]
+position = Vector2(1, 2.5)
+shape = SubResource("RectangleShape2D_7a54d")
+
+[node name="button" type="Button" parent="."]
+offset_left = -116.0
+offset_top = -46.0
+offset_right = -68.0
+offset_bottom = -15.0
+text = "open"
+
+[node name="ani" type="AnimationPlayer" parent="."]
+root_node = NodePath("../map_item_door_1")
+method_call_mode = 1
+libraries = {
+"": SubResource("AnimationLibrary_6t0od")
+}
+
+[connection signal="pressed" from="button" to="." method="_action_be_trigger"]

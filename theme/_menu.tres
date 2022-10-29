@@ -1,6 +1,6 @@
-[gd_resource type="Theme" load_steps=5 format=3 uid="uid://n4a6xsjqxh0i"]
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://1fkgo118ixhj"]
 
-[ext_resource type="FontFile" uid="uid://dakv0rg2ebo7a" path="res://fonts/ARIALN.TTF" id="1_wb8m7"]
+[ext_resource type="FontFile" uid="uid://dakv0rg2ebo7a" path="res://theme/fonts/ARIALN.TTF" id="1_wb8m7"]
 
 [sub_resource type="StyleBoxFlat" id="1"]
 bg_color = Color(1, 1, 1, 0.666667)

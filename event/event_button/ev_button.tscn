@@ -1,18 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://cyn04lfx6nnsc"]
+[gd_scene load_steps=4 format=3 uid="uid://cu3cgqy6wa3qm"]
 
-[ext_resource type="Texture2D" uid="uid://c2in6e5b6xyv2" path="res://map/新学校B.png" id="1_w0dlx"]
+[ext_resource type="Script" path="res://event/event_button/ev_trigger_button.cs" id="1_k2pu7"]
+[ext_resource type="Texture2D" uid="uid://c2in6e5b6xyv2" path="res://map/map_tiles/新学校B.png" id="1_w0dlx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4mq0s"]
-size = Vector2(27, 25)
+size = Vector2(28.875, 26.875)
 
-[node name="ev_button" type="Sprite2D"]
+[node name="area_button" type="Area2D"]
+monitorable = false
+script = ExtResource("1_k2pu7")
+
+[node name="collision_shape_2d" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_4mq0s")
+
+[node name="ev_button" type="Sprite2D" parent="."]
 texture = ExtResource("1_w0dlx")
 region_enabled = true
 region_rect = Rect2(108, 256, 8, 10)
-
-[node name="area_button" type="Area2D" parent="."]
-monitorable = false
-
-[node name="collision_shape_2d" type="CollisionShape2D" parent="area_button"]
-position = Vector2(0, 1)
-shape = SubResource("RectangleShape2D_4mq0s")

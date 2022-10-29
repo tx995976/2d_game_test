@@ -1,4 +1,4 @@
-[gd_scene load_steps=80 format=3 uid="uid://cxou84lmsfkqs"]
+[gd_scene load_steps=79 format=3 uid="uid://cxou84lmsfkqs"]
 
 [ext_resource type="Texture2D" uid="uid://cgn5qdlw86frn" path="res://ani_png/tex_1 (2).png" id="1"]
 [ext_resource type="Script" path="res://spite/player/spite_1.gd" id="2"]
@@ -7,7 +7,6 @@
 [ext_resource type="Script" path="res://spite/player/p_idle.gd" id="4"]
 [ext_resource type="Script" path="res://spite/player/p_walk.gd" id="5"]
 [ext_resource type="Script" path="res://spite/player/p_ready_weapen.gd" id="6"]
-[ext_resource type="Script" path="res://spite/player/sprite_action.gd" id="8"]
 [ext_resource type="Texture2D" uid="uid://c83djiy88mfjr" path="res://spite/player/light.png" id="8_gay6b"]
 [ext_resource type="Script" path="res://spite/player/aim_ray.gd" id="8_m0cbn"]
 [ext_resource type="Script" path="res://spite/player/gun_light.gd" id="11_n2wls"]
@@ -682,8 +681,7 @@ walk_speed = 120
 [node name="p_ready_weapon" type="Node" parent="player_state_machine"]
 script = ExtResource("6")
 
-[node name="sprite_action" type="Node" parent="."]
-script = ExtResource("8")
+[node name="player_item_machine" type="Node" parent="."]
 
 [node name="Sprite2d" type="Sprite2D" parent="."]
 scale = Vector2(1.00533, 1)

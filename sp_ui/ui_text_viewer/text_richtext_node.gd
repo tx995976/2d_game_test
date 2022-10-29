@@ -9,6 +9,7 @@ enum {ONE_OUT,ALL_OUT}
 @export_multiline var txt_static : String
 
 @export var flag_flush_delta : bool  = false
+
 @export var txt_time_left := 0.0
 @export var time_direct := 1
 @export var time_txt_out : float

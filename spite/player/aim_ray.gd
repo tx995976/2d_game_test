@@ -10,6 +10,7 @@ extends RayCast2D
 	set(value):
 		set_physics_process(value)
 		set_process_unhandled_input(value)
+		look_at(get_global_mouse_position())
 		visible = value
 
 func _ready():

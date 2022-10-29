@@ -390,8 +390,9 @@ libraries = {
 }
 
 [node name="NavigationAgent2d" type="NavigationAgent2D" parent="."]
+path_desired_distance = 30.0
+target_desired_distance = 30.0
 avoidance_enabled = true
 script = ExtResource("6_4gdg6")
 
 [node name="navigation_obstacle_2d" type="NavigationObstacle2D" parent="."]
-radius = 20.0

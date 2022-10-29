@@ -31,6 +31,7 @@ func _lift_start():
 	
 	p_pos = position
 	set_physics_process(true)
+
 	await tween.finished
 	set_physics_process(false)
 	num_floor = next_floor
@@ -41,6 +42,3 @@ func _physics_process(delta):
 	p_pos = position
 	get_tree().set_group("in_lift","extra_move",self.delta_trans)
 	pass
-
-
-

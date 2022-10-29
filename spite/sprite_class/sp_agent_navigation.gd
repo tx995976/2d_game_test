@@ -13,7 +13,7 @@ var flag_mov := 0.0
 
 func _ready():
 	set_process_unhandled_input(allow_mouse_input)
-	target_reached.connect(self._target_reached)
+	navigation_finished.connect(self._target_reached)
 	pass
 
 func _target_reached():
