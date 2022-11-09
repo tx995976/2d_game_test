@@ -5,7 +5,7 @@ using static Godot.GD;
 	//触发器(按钮)
 	@主动检测 sp -> area
 	@ui同步 -> "%ui_tips"
-	@触发
+	@触发 player ->[Input]"action_pressed"
 
 */
 public partial class ev_trigger_button : ev_trigger_root
@@ -42,6 +42,7 @@ public partial class ev_trigger_button : ev_trigger_root
 		if(target_type == tar_limit.Once)
 			Monitoring = false;
 		ui_node._exit_tips();
+		GetTree().CallGroup(("group_triggeer_"+this.Name),"_action_be_trigger");
 	}
 
 }

@@ -676,7 +676,6 @@ script = ExtResource("4")
 
 [node name="p_walk" type="Node" parent="player_state_machine"]
 script = ExtResource("5")
-walk_speed = 120
 
 [node name="p_ready_weapon" type="Node" parent="player_state_machine"]
 script = ExtResource("6")

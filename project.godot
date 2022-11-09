@@ -24,11 +24,6 @@ _global_script_classes=[{
 "language": &"GDScript",
 "path": "res://spite/sprite_class/sp_status.gd"
 }, {
-"base": "Resource",
-"class": &"res_text_script",
-"language": &"GDScript",
-"path": "res://package_res/res_text_viewer_script/res_text_script.gd"
-}, {
 "base": "AnimationTree",
 "class": &"sp_anim_tree",
 "language": &"GDScript",
@@ -93,7 +88,6 @@ _global_script_class_icons={
 "G_input": "",
 "G_map_res": "",
 "p_st": "",
-"res_text_script": "",
 "sp_anim_tree": "",
 "sp_bullet": "",
 "sp_bullet_pool": "",
@@ -111,7 +105,7 @@ _global_script_class_icons={
 [application]
 
 config/name="2d Test"
-run/main_scene="res://test_tscn/map_test.tscn"
+run/main_scene="res://sp_ui/ui_text_viewer_cs/richtxt_node.tscn"
 config/features=PackedStringArray("4.0", "C#")
 config/icon="res://icon.png"
 
@@ -123,6 +117,7 @@ global_map_res="*res://global_sp/global_map_res.gd"
 [debug]
 
 gdscript/warnings/unused_parameter=0
+gdscript/warnings/return_value_discarded=0
 
 [dotnet]
 

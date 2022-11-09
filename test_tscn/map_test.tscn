@@ -23,7 +23,7 @@ outlines = [PackedVector2Array(-129, -115, -127, 305, 559, 303, 560, -115)]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_16jgq"]
 
-[node name="map" type="Node2D"]
+[node name="root" type="Node"]
 metadata/_edit_lock_ = true
 
 [node name="world2d" type="Node2D" parent="."]
@@ -79,7 +79,6 @@ shape = SubResource("RectangleShape2D_6dy1c")
 
 [node name="button1" parent="world2d/tile_1/trigger" instance=ExtResource("5_1dl8n")]
 position = Vector2(148, 135)
-target_type = 1
 
 [node name="navigation_region_2d" type="NavigationRegion2D" parent="world2d/tile_1"]
 navpoly = SubResource("NavigationPolygon_ue7ed")
@@ -108,9 +107,14 @@ metadata/_edit_lock_ = true
 [node name="ui_text_viewer" parent="ui_canvas" instance=ExtResource("7_xnyd7")]
 unique_name_in_owner = true
 material = SubResource("CanvasItemMaterial_16jgq")
+custom_minimum_size = Vector2(400, 300)
 scirpt_json_path = "res://sp_ui/ui_text_viewer/test_txt.json"
 
 [node name="ui_tips" parent="ui_canvas" instance=ExtResource("10_bveg7")]
 unique_name_in_owner = true
+offset_left = -26.0
+offset_top = -9.0
+offset_right = -26.0
+offset_bottom = -9.0
 
 [editable path="world2d/tile_1/trigger/area_1"]

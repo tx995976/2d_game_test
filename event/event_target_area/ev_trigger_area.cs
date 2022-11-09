@@ -3,13 +3,12 @@ using static Godot.GD;
 
 //触发器(区域)
 /*
-@主动检测 area -> sp
-@[signal]body_enter ->  sp_enter
-@sp_enter -> [node]:_action_be_target()
-@in_game_event -> (Node)event_handler
+	@主动检测 area -> sp
+	@sp_enter -> [node]:_action_be_target()
+	@in_game_event -> (Node)event_handler
 
-@触发次数:(一次,多次)
-@通知单位:(Group[ev_area_id])
+	@触发次数:(一次,多次)
+	@通知单位:(Group[ev_area_id])
 */
 public partial class ev_trigger_area : ev_trigger_root
 {
@@ -26,8 +25,7 @@ public partial class ev_trigger_area : ev_trigger_root
 		if(flag_tar && target_type == tar_limit.Once)
 			return;
 		flag_tar = true;
-		GetTree().CallGroup(("ev_area_"+this.Name),"_action_be_trigger");
-
+		GetTree().CallGroup(("group_triggeer_"+this.Name),"_action_be_trigger");
 		#if DEBUG
 		Print((object)(body.Name+" trigger!"));
 		#endif

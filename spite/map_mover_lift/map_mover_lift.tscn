@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://wdwbvbdcqo0a"]
 
-[ext_resource type="TileSet" uid="uid://qxpll73usx81" path="res://map/map_tiles/tileset_sc.tres" id="1_0q5uy"]
+[ext_resource type="TileSet" uid="uid://ctpihslikhwc6" path="res://map/map_tiles/tileset_sc.tres" id="1_0q5uy"]
 [ext_resource type="Script" path="res://spite/map_mover_lift/sp_map_lifter.cs" id="1_tl4ij"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o08vm"]

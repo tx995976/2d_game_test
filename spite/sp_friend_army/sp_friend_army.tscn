@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://bctc4eprslshk"]
+
+[ext_resource type="Script" path="res://spite/sprite_class/sp_controller.cs" id="1_y0nns"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_lgbb2"]
+graph_offset = Vector2(-325.145, -41.9375)
+
+[node name="sp_friend_army" type="CharacterBody2D"]
+
+[node name="node" type="Node" parent="."]
+
+[node name="collision_polygon_2d" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-74, -51, 93, -48, 79, 65, -54, 78)
+
+[node name="animation_tree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeBlendTree_lgbb2")
+anim_player = NodePath("animation_player")
+
+[node name="animation_player" type="AnimationPlayer" parent="animation_tree"]
+
+[node name="controller" type="Node" parent="."]
+script = ExtResource("1_y0nns")

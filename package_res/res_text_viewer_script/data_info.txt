@@ -1,0 +1,18 @@
+字幕数据约定
+
+all_header:{
+	type : (int)(1,2,3){txt,wait,clear}
+	pos : (str)
+	str : ''
+	sleep_time : (float)
+	time_left : (float)
+}
+
+wait:{
+	pos : (str)
+	sleep_time : (float)
+}
+
+clear:{
+	pos : (str)
+}
