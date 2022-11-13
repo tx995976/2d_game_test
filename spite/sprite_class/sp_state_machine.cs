@@ -3,22 +3,27 @@ using System;
 using Godot.Collections;
 using System.Collections.Generic;
 
+/*
+# 下推状态自动机
+	@st_mode->(swap,return,push)
+
+*/
 
 public partial class sp_state_machine : Node
 {
 	[Export]
-	Godot.Collections.Dictionary<string,sp_status> st_map = new Godot.Collections.Dictionary<string, sp_status>();
+	Godot.Collections.Dictionary<string,sp_status> st_map;
 
 	Stack<sp_status> st_stack = new Stack<sp_status>();
 	
 	[Export]
-	bool is_active;
+	public bool is_active;
 
 	[Export]
-	string start_state;
+	public sp_status start_state;
 
 	[Export]
-	sp_status status_now;
+	public sp_status status_now;
 
 	public enum st_mode{
 		st_push,
@@ -27,14 +32,17 @@ public partial class sp_state_machine : Node
 	}
 
 	public override void _Ready(){
-		foreach(var child in GetChildren()){
-
-			st_map[child.Name] = (sp_status)child;
+		st_map = new Godot.Collections.Dictionary<string,sp_status>();
+		//init sp_status
+		foreach(sp_status child in GetChildren()){
+			st_map[child.Name] = child;
+			child.status_change += _state_change;
 		}
-
-		is_active = true;
-		status_now = st_map[start_state];
-		status_now.enter_st();
+		//enter_st
+		if(is_active){
+			status_now = start_state;
+			status_now.enter_st();
+		}
 	}
 
 	public void _state_change(int mode,string name_st){
@@ -45,7 +53,7 @@ public partial class sp_state_machine : Node
 		GD.Print($"change to {status_now.Name}");
 		#endif
 
-		status_now.exit_st();
+		status_now?.exit_st();
 		switch((st_mode)mode){
 			case st_mode.st_push:
 				st_stack.Push(status_now);
@@ -59,8 +67,12 @@ public partial class sp_state_machine : Node
 				break;
 		}
 
+		EmitSignal(nameof(this.state_change),name_st);
 		status_now.enter_st();
 		return;
 	}
+
+	[Signal]
+	public delegate void state_changeEventHandler(string name);
 
 }

@@ -2,6 +2,8 @@ using Godot;
 using System;
 using static Godot.GD;
 
+namespace map_mover_lift;
+
 public partial class sp_map_lifter : Area2D{
 	[Export(PropertyHint.ArrayType)]
 	int[] floor_len;

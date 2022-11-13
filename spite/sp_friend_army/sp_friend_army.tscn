@@ -1,22 +1,495 @@
-[gd_scene load_steps=3 format=3 uid="uid://bctc4eprslshk"]
+[gd_scene load_steps=33 format=3]
 
+[ext_resource type="Script" path="res://spite/sp_friend_army/sp_friend1_root.cs" id="1_07h1g"]
 [ext_resource type="Script" path="res://spite/sprite_class/sp_controller.cs" id="1_y0nns"]
+[ext_resource type="Texture2D" uid="uid://cgn5qdlw86frn" path="res://ani_png/tex_1 (2).png" id="2_vuqgp"]
+[ext_resource type="Script" path="res://spite/sprite_class/sp_state_machine.cs" id="4_yvkqw"]
+[ext_resource type="Script" path="res://spite/sp_friend_army/st_idle.cs" id="5_wfd2n"]
+[ext_resource type="Script" path="res://spite/sp_friend_army/st_walk.cs" id="6_n0o35"]
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_38oh2"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_lgbb2"]
-graph_offset = Vector2(-325.145, -41.9375)
+graph_offset = Vector2(-361.755, -23.8515)
+nodes/sp_status/node = SubResource("AnimationNodeStateMachine_38oh2")
+nodes/sp_status/position = Vector2(-122.245, 129.206)
 
-[node name="sp_friend_army" type="CharacterBody2D"]
+[sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_ajolk"]
 
-[node name="node" type="Node" parent="."]
+[sub_resource type="Animation" id="Animation_r6cjf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(6, 16, 32, 48)]
+}
+
+[sub_resource type="Animation" id="Animation_7tvui"]
+resource_name = "idle_walk_down"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(54, 14, 32, 48)]
+}
+
+[sub_resource type="Animation" id="Animation_0dord"]
+resource_name = "idle_walk_left"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(58, 78, 22, 48)]
+}
+
+[sub_resource type="Animation" id="Animation_le02r"]
+resource_name = "idle_walk_right"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(60, 142, 22, 48)]
+}
+
+[sub_resource type="Animation" id="Animation_lt8cf"]
+resource_name = "idle_walk_up"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(54, 206, 32, 48)]
+}
+
+[sub_resource type="Animation" id="Animation_s50tk"]
+resource_name = "idle_weapon_r_down"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(346, 526, 33, 48)]
+}
+
+[sub_resource type="Animation" id="Animation_qolnu"]
+resource_name = "idle_weapon_r_left"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(384, 592, 35, 48)]
+}
+
+[sub_resource type="Animation" id="Animation_ras2d"]
+resource_name = "idle_weapon_r_right"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(398, 656, 34, 46)]
+}
+
+[sub_resource type="Animation" id="Animation_o6aix"]
+resource_name = "idle_weapon_r_up"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(393, 721, 32, 48)]
+}
+
+[sub_resource type="Animation" id="Animation_75kta"]
+resource_name = "walk_down"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [Rect2(54, 14, 32, 50), Rect2(6, 16, 32, 48), Rect2(102, 16, 32, 48)]
+}
+
+[sub_resource type="Animation" id="Animation_eaaoe"]
+resource_name = "walk_left"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [Rect2(58, 78, 22, 48), Rect2(10, 80, 22, 46), Rect2(106, 80, 22, 46)]
+}
+
+[sub_resource type="Animation" id="Animation_ty8xk"]
+resource_name = "walk_right"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [Rect2(60, 142, 22, 48), Rect2(12, 144, 22, 46), Rect2(108, 144, 22, 46)]
+}
+
+[sub_resource type="Animation" id="Animation_f0mi8"]
+resource_name = "walk_up"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [Rect2(54, 206, 32, 50), Rect2(6, 208, 32, 48), Rect2(102, 208, 32, 48)]
+}
+
+[sub_resource type="Animation" id="Animation_2vihd"]
+resource_name = "walk_weapon_fire_right "
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Rect2(398, 656, 34, 46), Rect2(350, 654, 34, 48)]
+}
+
+[sub_resource type="Animation" id="Animation_3c7ie"]
+resource_name = "walk_weapon_r_down"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [Rect2(57, 526, 33, 48), Rect2(201, 526, 33, 50), Rect2(298, 528, 33, 48)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../player_state_machine/p_ready_weapon:flag_gun_r")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_aab6u"]
+resource_name = "walk_weapon_r_left"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [Rect2(109, 592, 23, 46), Rect2(201, 590, 27, 48), Rect2(336, 590, 35, 48)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../player_state_machine/p_ready_weapon:flag_gun_r")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_78o0j"]
+resource_name = "walk_weapon_r_right"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [Rect2(111, 656, 23, 46), Rect2(255, 654, 27, 48), Rect2(350, 654, 34, 48)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../player_state_machine/p_ready_weapon:flag_gun_r")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_5p7of"]
+resource_name = "walk_weapon_r_up "
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [Rect2(57, 719, 32, 50), Rect2(153, 719, 32, 48), Rect2(249, 719, 32, 50)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../player_state_machine/p_ready_weapon:flag_gun_r")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_i0lmw"]
+resource_name = "walk_weapon_w_down"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [Rect2(346, 526, 33, 50), Rect2(298, 528, 33, 48), Rect2(394, 528, 33, 48)]
+}
+
+[sub_resource type="Animation" id="Animation_x40qu"]
+resource_name = "walk_weapon_w_left"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [Rect2(336, 590, 35, 48), Rect2(288, 592, 35, 46), Rect2(384, 592, 35, 46)]
+}
+
+[sub_resource type="Animation" id="Animation_0ures"]
+resource_name = "walk_weapon_w_right"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [Rect2(350, 654, 34, 48), Rect2(302, 656, 34, 46), Rect2(398, 656, 34, 46)]
+}
+
+[sub_resource type="Animation" id="Animation_s1i4e"]
+resource_name = "walk_weapon_w_up"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [Rect2(345, 719, 32, 48), Rect2(297, 721, 32, 50), Rect2(393, 721, 32, 48)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1mkcw"]
+_data = {
+"RESET": SubResource("Animation_r6cjf"),
+"idle_walk_down": SubResource("Animation_7tvui"),
+"idle_walk_left": SubResource("Animation_0dord"),
+"idle_walk_right": SubResource("Animation_le02r"),
+"idle_walk_up": SubResource("Animation_lt8cf"),
+"idle_weapon_r_down": SubResource("Animation_s50tk"),
+"idle_weapon_r_left": SubResource("Animation_qolnu"),
+"idle_weapon_r_right": SubResource("Animation_ras2d"),
+"idle_weapon_r_up": SubResource("Animation_o6aix"),
+"walk_down": SubResource("Animation_75kta"),
+"walk_left": SubResource("Animation_eaaoe"),
+"walk_right": SubResource("Animation_ty8xk"),
+"walk_up": SubResource("Animation_f0mi8"),
+"walk_weapon_fire_right ": SubResource("Animation_2vihd"),
+"walk_weapon_r_down": SubResource("Animation_3c7ie"),
+"walk_weapon_r_left": SubResource("Animation_aab6u"),
+"walk_weapon_r_right": SubResource("Animation_78o0j"),
+"walk_weapon_r_up ": SubResource("Animation_5p7of"),
+"walk_weapon_w_down": SubResource("Animation_i0lmw"),
+"walk_weapon_w_left": SubResource("Animation_x40qu"),
+"walk_weapon_w_right": SubResource("Animation_0ures"),
+"walk_weapon_w_up": SubResource("Animation_s1i4e")
+}
+
+[node name="sp_friend_army" type="CharacterBody2D" node_paths=PackedStringArray("basic_state")]
+motion_mode = 1
+platform_on_leave = 2
+script = ExtResource("1_07h1g")
+speed = 150
+basic_state = NodePath("st_machine_sp")
 
 [node name="collision_polygon_2d" type="CollisionPolygon2D" parent="."]
-polygon = PackedVector2Array(-74, -51, 93, -48, 79, 65, -54, 78)
+polygon = PackedVector2Array(-9, -14, 10, -14, 9, 21, -8, 21)
 
 [node name="animation_tree" type="AnimationTree" parent="."]
 tree_root = SubResource("AnimationNodeBlendTree_lgbb2")
-anim_player = NodePath("animation_player")
+anim_player = NodePath("player_animation")
+parameters/sp_status/playback = SubResource("AnimationNodeStateMachinePlayback_ajolk")
 
-[node name="animation_player" type="AnimationPlayer" parent="animation_tree"]
+[node name="player_animation" type="AnimationPlayer" parent="animation_tree"]
+root_node = NodePath("../../Sprite2d")
+method_call_mode = 1
+libraries = {
+"": SubResource("AnimationLibrary_1mkcw")
+}
+
+[node name="Sprite2d" type="Sprite2D" parent="."]
+scale = Vector2(1.00533, 1)
+texture = ExtResource("2_vuqgp")
+region_enabled = true
+region_rect = Rect2(6, 16, 32, 48)
 
 [node name="controller" type="Node" parent="."]
 script = ExtResource("1_y0nns")
+
+[node name="st_machine_sp" type="Node" parent="." node_paths=PackedStringArray("start_state")]
+script = ExtResource("4_yvkqw")
+is_active = true
+start_state = NodePath("idle")
+
+[node name="idle" type="Node" parent="st_machine_sp"]
+script = ExtResource("5_wfd2n")
+
+[node name="walk" type="Node" parent="st_machine_sp"]
+script = ExtResource("6_n0o35")
+
+[node name="st_machine_item" type="Node" parent="."]
+script = ExtResource("4_yvkqw")
