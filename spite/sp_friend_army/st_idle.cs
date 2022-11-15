@@ -1,9 +1,11 @@
 using Godot;
 using System;
 
-using mode_st = sp_state_machine.st_mode;
+using sp_player_collections;
 
-namespace sp_friend_1; 
+namespace sp_player_friend_1;
+
+using mode_st = sp_state_machine.st_mode;
 
 public partial class st_idle : sp_status
 {

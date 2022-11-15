@@ -3,6 +3,8 @@ using System;
 using Godot.Collections;
 using System.Collections.Generic;
 
+namespace sp_player_collections;
+
 /*
 # 下推状态自动机
 	@st_mode->(swap,return,push)
@@ -39,10 +41,8 @@ public partial class sp_state_machine : Node
 			child.status_change += _state_change;
 		}
 		//enter_st
-		if(is_active){
-			status_now = start_state;
-			status_now.enter_st();
-		}
+		status_now = start_state;
+		status_now?.enter_st();
 	}
 
 	public void _state_change(int mode,string name_st){

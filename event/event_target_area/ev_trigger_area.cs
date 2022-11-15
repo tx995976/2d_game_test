@@ -1,6 +1,8 @@
 using Godot;
 using static Godot.GD;
 
+
+namespace ev_collection;
 //触发器(区域)
 /*
 	@主动检测 area -> sp

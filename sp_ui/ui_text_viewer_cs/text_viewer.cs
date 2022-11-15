@@ -3,6 +3,8 @@ using Godot.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
+namespace ui_collections;
+
 public partial class text_viewer : Control{
 
 	[Export(PropertyHint.File)]

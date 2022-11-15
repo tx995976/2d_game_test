@@ -38,12 +38,17 @@ public partial class sp_aim_line : RayCast2D
 		TargetPosition = ray_lenth;
     }
 
+	//鼠标滑行时触发
 	public void action_mouse(){
-
+		LookAt(GetGlobalMousePosition());
 	}
 
     public override void _PhysicsProcess(double delta){
-		
+		var pos_coll = ray_lenth;
+		if(IsColliding()){
+			pos_coll.x = (GetCollisionPoint() - GlobalPosition).Length();
+		}
+		node_line.SetPointPosition(1,pos_coll);
     }
 
 

@@ -1,6 +1,8 @@
 using Godot;
 using static Godot.GD;
 
+namespace ev_collection;
+
 public partial class ev_trigger_root : Area2D
 {
 
@@ -18,6 +20,6 @@ public partial class ev_trigger_root : Area2D
 
     //处理状态恢复(重置)
     public virtual void st_reset(){}
-    
+
 
 }

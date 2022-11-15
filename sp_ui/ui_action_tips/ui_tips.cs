@@ -2,6 +2,7 @@ using Godot;
 using System;
 using Godot.Collections;
 
+namespace ui_collections;
 
 public partial class ui_tips : Control
 {
@@ -32,9 +33,5 @@ public partial class ui_tips : Control
 		tips_now.Visible = false;
 		tips_now = null;
 	}
-
-
-
-
 
 }

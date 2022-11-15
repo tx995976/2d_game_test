@@ -1,6 +1,9 @@
 using Godot;
 using static Godot.GD;
 
+using ui_collections;
+
+namespace ev_collection;
 /*
 	//触发器(按钮)
 	@主动检测 sp -> area

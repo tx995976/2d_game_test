@@ -1,6 +1,8 @@
 using Godot;
 using System;
 
+using ev_collection;
+
 public partial class map_item_button_1 : ev_trigger_button
 {
 	public override void _action_be_pressed()

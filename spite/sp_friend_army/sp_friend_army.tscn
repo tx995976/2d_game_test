@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3]
+[gd_scene load_steps=33 format=3 uid="uid://rbcis7s0mro0"]
 
 [ext_resource type="Script" path="res://spite/sp_friend_army/sp_friend1_root.cs" id="1_07h1g"]
 [ext_resource type="Script" path="res://spite/sprite_class/sp_controller.cs" id="1_y0nns"]
@@ -8,11 +8,14 @@
 [ext_resource type="Script" path="res://spite/sp_friend_army/st_walk.cs" id="6_n0o35"]
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_38oh2"]
+states/Start/position = Vector2(266, 100)
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_lgbb2"]
-graph_offset = Vector2(-361.755, -23.8515)
+graph_offset = Vector2(-303.288, -71.3665)
+nodes/output/position = Vector2(540, 140)
 nodes/sp_status/node = SubResource("AnimationNodeStateMachine_38oh2")
-nodes/sp_status/position = Vector2(-122.245, 129.206)
+nodes/sp_status/position = Vector2(0, 100)
+node_connections = [&"output", 0, &"sp_status"]
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_ajolk"]
 

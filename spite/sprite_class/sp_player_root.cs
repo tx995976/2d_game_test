@@ -1,6 +1,7 @@
 using Godot;
 using System;
 
+namespace sp_player_collections;
 /*
 @人物实体 基类
 
@@ -11,9 +12,8 @@ using System;
 	@通过代码控制器
 
 #管理额外属性(attribute)
-#特殊状态转移
+#特殊状态转移(e.g dead)
 */
-
 public partial class sp_player_root : CharacterBody2D
 {
 
@@ -38,9 +38,9 @@ public partial class sp_player_root : CharacterBody2D
 	[Export]
 	public float armor;
 
+	//基本状态机
 	[Export]
 	public sp_state_machine basic_state;
-
 
 	public float view_mov_deg
 	{
@@ -49,12 +49,27 @@ public partial class sp_player_root : CharacterBody2D
 		}
 	}
 
+	public InputEvent action_input{
+		set{
+			EmitSignal(nameof(action_event),value);
+		}
+	}
+
+	//if need
+	public InputEvent mouse_input{
+		set{
+			EmitSignal(nameof(action_mouse),value);
+		}
+	}	
+		
+
 	public virtual void _action_be_hit(){}
 
 	[Signal]
 	public delegate void action_eventEventHandler(InputEvent action);
 
 	[Signal]
-	public delegate void action_mouseEventHandler();
+	public delegate void action_mouseEventHandler(); //if need
+
 
 }

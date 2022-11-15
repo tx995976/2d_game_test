@@ -2,6 +2,7 @@ using Godot;
 using Godot.Collections;
 using System.Collections;
 
+namespace sp_player_collections;
 
 /*
 #人物基础物理控制器 -> action_event
@@ -35,15 +36,16 @@ public partial class sp_controller : Node
     }
 
 
-    //动作 [@event]--player_node--> sp_status[process_action()]
+    //动作 [@event].player_node--> sp_status[process_action()]
     public override void _UnhandledInput(InputEvent @event){
         if(!(@event is InputEventMouseMotion)){
-            node_player.EmitSignal(nameof(node_player.action_event),@event);
+            node_player.action_input = @event;
             //GD.Print($"ev {@event.AsText()} pressed : {@event.IsPressed()}");
         }
         else{
-            node_player.EmitSignal(nameof(node_player.action_event),@event);
+            node_player.mouse_input = @event;
         }
+        
     }
 
 
