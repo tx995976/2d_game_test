@@ -7,7 +7,7 @@ class_name ui_weapon_selector
 
 @export var panel_twe: float = 100.0
 
-var res_weapon_panel := preload("res://sp_ui/ui_action_player_select_weapon/weapon_label.tscn")
+var res_weapon_panel := preload("res://sp_ui/ui_items_label/ui_select_panel.tscn")
 var mid_pos : Vector2
 
 var array_panel := []

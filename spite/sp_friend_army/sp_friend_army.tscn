@@ -452,41 +452,38 @@ _data = {
 "walk_weapon_w_up": SubResource("Animation_s1i4e")
 }
 
-[node name="sp_friend_army" type="CharacterBody2D" node_paths=PackedStringArray("basic_state")]
+[node name="sp_friend_army" type="CharacterBody2D"]
 motion_mode = 1
 platform_on_leave = 2
 script = ExtResource("1_07h1g")
 speed = 150
-basic_state = NodePath("st_machine_sp")
 
-[node name="collision_polygon_2d" type="CollisionPolygon2D" parent="."]
+[node name="collsion" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(-9, -14, 10, -14, 9, 21, -8, 21)
 
-[node name="animation_tree" type="AnimationTree" parent="."]
-tree_root = SubResource("AnimationNodeBlendTree_lgbb2")
-anim_player = NodePath("player_animation")
-parameters/sp_status/playback = SubResource("AnimationNodeStateMachinePlayback_ajolk")
-
-[node name="player_animation" type="AnimationPlayer" parent="animation_tree"]
-root_node = NodePath("../../Sprite2d")
-method_call_mode = 1
-libraries = {
-"": SubResource("AnimationLibrary_1mkcw")
-}
-
-[node name="Sprite2d" type="Sprite2D" parent="."]
+[node name="texture_pack" type="Sprite2D" parent="."]
 scale = Vector2(1.00533, 1)
 texture = ExtResource("2_vuqgp")
 region_enabled = true
 region_rect = Rect2(6, 16, 32, 48)
 
+[node name="animation_tree" type="AnimationTree" parent="texture_pack"]
+tree_root = SubResource("AnimationNodeBlendTree_lgbb2")
+anim_player = NodePath("../player_animation")
+parameters/sp_status/playback = SubResource("AnimationNodeStateMachinePlayback_ajolk")
+
+[node name="player_animation" type="AnimationPlayer" parent="texture_pack"]
+method_call_mode = 1
+libraries = {
+"": SubResource("AnimationLibrary_1mkcw")
+}
+
 [node name="controller" type="Node" parent="."]
 script = ExtResource("1_y0nns")
 
-[node name="st_machine_sp" type="Node" parent="." node_paths=PackedStringArray("start_state")]
+[node name="st_machine_sp" type="Node" parent="."]
 script = ExtResource("4_yvkqw")
 is_active = true
-start_state = NodePath("idle")
 
 [node name="idle" type="Node" parent="st_machine_sp"]
 script = ExtResource("5_wfd2n")

@@ -4,34 +4,32 @@ using Godot.Collections;
 
 namespace ui_collections;
 
-public partial class ui_tips : Control
+public partial class ui_tips : TextureRect
 {
-	[Export]
-	public Dictionary<string,TextureRect> tips_list;
-
-	[Export]
-	TextureRect tips_now;
+	[Export] 
+	public Dictionary<StringName,Texture2D> tips_list;
 
 	public override void _Ready(){
 		var arr_child = GetChildren();
-
+		/*
 		foreach (Node it in arr_child){
 			tips_list.Add(it.Name,it as TextureRect);
 		}
+		*/
 	}
 
 	public void _show_tips(string tips){
-		if(tips_now != null)
-			tips_now.Visible = false;
-		tips_now = tips_list[tips];
-		tips_now.Visible = true;
+		if(Texture != null)
+			Visible = false;
+		Texture = tips_list[tips];
+		Visible = true;
 	}
 
 	public void _exit_tips(){
-		if(tips_now == null)
+		if(Texture == null)
 			return;
-		tips_now.Visible = false;
-		tips_now = null;
+		Visible = false;
+		Texture = null;
 	}
 
 }

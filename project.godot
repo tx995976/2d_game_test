@@ -77,12 +77,12 @@ _global_script_classes=[{
 "base": "Panel",
 "class": &"ui_weapon_lable",
 "language": &"GDScript",
-"path": "res://sp_ui/ui_action_player_select_weapon/weapon_label.gd"
+"path": "res://sp_ui/ui_items_label/weapon_label.gd"
 }, {
 "base": "Control",
 "class": &"ui_weapon_selector",
 "language": &"GDScript",
-"path": "res://sp_ui/ui_action_player_select_weapon/weapon_select.gd"
+"path": "res://sp_ui/ui_items_label/weapon_select.gd"
 }]
 _global_script_class_icons={
 "G_input": "",
@@ -108,11 +108,6 @@ config/name="2d Test"
 run/main_scene="res://sp_ui/ui_text_viewer_cs/richtxt_node.tscn"
 config/features=PackedStringArray("4.0", "C#")
 config/icon="res://icon.png"
-
-[autoload]
-
-_G_input="*res://global_sp/key_input.gd"
-global_map_res="*res://global_sp/global_map_res.gd"
 
 [debug]
 

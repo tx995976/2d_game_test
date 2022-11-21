@@ -1,16 +1,13 @@
-[gd_scene load_steps=15 format=3 uid="uid://cogvt2amrnv80"]
+[gd_scene load_steps=11 format=3 uid="uid://bb4u07xrs1tqa"]
 
 [ext_resource type="TileSet" uid="uid://ctpihslikhwc6" path="res://map/map_tiles/tileset_sc.tres" id="1_xb6ci"]
 [ext_resource type="PackedScene" uid="uid://cxou84lmsfkqs" path="res://spite/player/spite_1.tscn" id="2"]
 [ext_resource type="PackedScene" uid="uid://wdwbvbdcqo0a" path="res://spite/map_mover_lift/map_mover_lift.tscn" id="3_mha57"]
 [ext_resource type="PackedScene" uid="uid://boq41ck54xhts" path="res://spite/battle_bullet/bullet_pool.tscn" id="4_1mcye"]
 [ext_resource type="PackedScene" uid="uid://pg3633pm7ica" path="res://map/map_item/button_1/button_1.tscn" id="5_1dl8n"]
-[ext_resource type="PackedScene" uid="uid://byg4gpbpcgjhj" path="res://sp_ui/ui_action_player_select_weapon/weapon_selector.tscn" id="5_gn4in"]
 [ext_resource type="PackedScene" uid="uid://c5e6qyqv7w182" path="res://map/map_item/door_1/map_item_door_1.tscn" id="7_aev1m"]
 [ext_resource type="PackedScene" uid="uid://b1as7kjhcsq58" path="res://event/event_target_area/ev_target_area.tscn" id="7_tvich"]
-[ext_resource type="PackedScene" uid="uid://cptrqewq8413g" path="res://sp_ui/ui_text_viewer/text_viewer.tscn" id="7_xnyd7"]
 [ext_resource type="AudioStream" uid="uid://bgfpfvbvfciux" path="res://audio/music/void/4_End_Credits_Pt_1_z.mp3" id="8_a7tfs"]
-[ext_resource type="PackedScene" uid="uid://bvkg47ng0tnb1" path="res://sp_ui/ui_action_tips/ui_tips.tscn" id="10_bveg7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6dy1c"]
 resource_local_to_scene = true
@@ -20,8 +17,6 @@ size = Vector2(114.5, 95)
 vertices = PackedVector2Array(560, -115, 559, 303, -127, 305, -129, -115)
 polygons = [PackedInt32Array(0, 1, 2, 3)]
 outlines = [PackedVector2Array(-129, -115, -127, 305, 559, 303, 560, -115)]
-
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_16jgq"]
 
 [node name="root" type="Node"]
 metadata/_edit_lock_ = true
@@ -61,10 +56,9 @@ z_index = 1
 floor_len = PackedInt32Array(0, 1300)
 time_left = 10.0
 
-[node name="map_item_door_1" parent="world2d/tile_1/map_items" node_paths=PackedStringArray("trigger_node") instance=ExtResource("7_aev1m")]
+[node name="map_item_door_1" parent="world2d/tile_1/map_items" instance=ExtResource("7_aev1m")]
 position = Vector2(68, 103)
 st_door = true
-trigger_node = NodePath("../../trigger/button1")
 
 [node name="trigger" type="CanvasGroup" parent="world2d/tile_1"]
 position = Vector2(-270, -263)
@@ -98,23 +92,5 @@ bus = &"background"
 
 [node name="ui_canvas" type="CanvasLayer" parent="."]
 unique_name_in_owner = true
-
-[node name="panel_select" parent="ui_canvas" instance=ExtResource("5_gn4in")]
-unique_name_in_owner = true
-panel_twe = 150.0
-metadata/_edit_lock_ = true
-
-[node name="ui_text_viewer" parent="ui_canvas" instance=ExtResource("7_xnyd7")]
-unique_name_in_owner = true
-material = SubResource("CanvasItemMaterial_16jgq")
-custom_minimum_size = Vector2(400, 300)
-scirpt_json_path = "res://sp_ui/ui_text_viewer/test_txt.json"
-
-[node name="ui_tips" parent="ui_canvas" instance=ExtResource("10_bveg7")]
-unique_name_in_owner = true
-offset_left = -26.0
-offset_top = -9.0
-offset_right = -26.0
-offset_bottom = -9.0
 
 [editable path="world2d/tile_1/trigger/area_1"]

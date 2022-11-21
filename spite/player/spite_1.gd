@@ -1,6 +1,6 @@
 extends sp_player_root
 
-@onready var node_map_res := get_node("/root/global_map_res") as global_map_res
+#@onready var node_map_res := get_node("/root/global_map_res") as global_map_res
 
 
 func _unhandled_input(event):

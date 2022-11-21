@@ -2,17 +2,21 @@ using Godot;
 using System;
 
 namespace sp_player_collections;
+/*
+#人物状态
+	@process_action() ---> 状态特有动作
+
+*/
+
 
 public partial class sp_status : Node
 {
-
 	public sp_player_root node_player;
 
 	public override void _Ready(){
 		SetPhysicsProcess(false);
 		SetProcessUnhandledInput(false);
 		node_player = Owner as sp_player_root;
-		
 	}
 
 	public virtual void enter_st(){
