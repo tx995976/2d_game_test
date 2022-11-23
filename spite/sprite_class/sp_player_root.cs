@@ -28,6 +28,7 @@ public partial class sp_player_root : CharacterBody2D
 	[Export]
 	public int speed;
 
+	/*
 	//attribute for battle
 	[Export]
 	public float health;
@@ -37,6 +38,7 @@ public partial class sp_player_root : CharacterBody2D
 
 	[Export]
 	public float armor;
+	*/
 
 	//基本状态机
 	[Export]
@@ -51,6 +53,8 @@ public partial class sp_player_root : CharacterBody2D
 
 	public InputEvent action_input{
 		set{
+			//GD.Print("get");
+			//action_input_node?.process_action(value);
 			EmitSignal(nameof(action_event),value);
 		}
 	}
@@ -58,9 +62,13 @@ public partial class sp_player_root : CharacterBody2D
 	//if need
 	public InputEvent mouse_input{
 		set{
+			//action_input_node?.process_action(value);
 			EmitSignal(nameof(action_mouse),value);
 		}
-	}	
+	}
+
+	public Vector2 inp_mov_dir = Vector2.Zero;
+	public Vector2 inp_view_dir = Vector2.Zero;
 		
 
 	public virtual void _action_be_hit(){}
@@ -71,5 +79,6 @@ public partial class sp_player_root : CharacterBody2D
 	[Signal]
 	public delegate void action_mouseEventHandler(); //if need
 
-
+	//test
+	public sp_status action_input_node;
 }

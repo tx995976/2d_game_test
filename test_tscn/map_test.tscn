@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://bb4u07xrs1tqa"]
 
 [ext_resource type="TileSet" uid="uid://ctpihslikhwc6" path="res://map/map_tiles/tileset_sc.tres" id="1_xb6ci"]
-[ext_resource type="PackedScene" uid="uid://cxou84lmsfkqs" path="res://spite/player/spite_1.tscn" id="2"]
+[ext_resource type="PackedScene" uid="uid://ctbun4821kbi0" path="res://spite/player/spite_1.tscn" id="2"]
 [ext_resource type="PackedScene" uid="uid://wdwbvbdcqo0a" path="res://spite/map_mover_lift/map_mover_lift.tscn" id="3_mha57"]
 [ext_resource type="PackedScene" uid="uid://boq41ck54xhts" path="res://spite/battle_bullet/bullet_pool.tscn" id="4_1mcye"]
 [ext_resource type="PackedScene" uid="uid://pg3633pm7ica" path="res://map/map_item/button_1/button_1.tscn" id="5_1dl8n"]
@@ -32,6 +32,7 @@ top_level = true
 
 [node name="tile_1" type="TileMap" parent="world2d"]
 light_mask = 6
+texture_filter = 1
 position = Vector2(270, 263)
 tile_set = ExtResource("1_xb6ci")
 format = 2

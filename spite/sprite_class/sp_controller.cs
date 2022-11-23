@@ -21,7 +21,6 @@ public partial class sp_controller : Node
         SetProcessUnhandledInput(true);
         node_player = Owner as sp_player_root;
 
-
         /*
         tmp_action.Action = "action_up";
         tmp_action.Pressed = false;
@@ -29,10 +28,9 @@ public partial class sp_controller : Node
         */
     }
 
-
     public override void _PhysicsProcess(double delta){
-        node_player.mov_dir = Input.GetVector("action_left","action_right","action_up","action_down");
-        node_player.view_dir = node_player.GetLocalMousePosition();
+        node_player.inp_mov_dir = Input.GetVector("action_left","action_right","action_up","action_down");
+        node_player.inp_view_dir = node_player.GetLocalMousePosition();
     }
 
 

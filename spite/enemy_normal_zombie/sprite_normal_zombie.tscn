@@ -1,9 +1,9 @@
-[gd_scene load_steps=45 format=3 uid="uid://c4n8ofyh463ea"]
+[gd_scene load_steps=45 format=3]
 
 [ext_resource type="Script" path="res://spite/sprite_class/sp_state_machine.gd" id="1_36lex"]
 [ext_resource type="Script" path="res://spite/enemy_normal_zombie/sprite_normal_zombie.gd" id="1_l3j1u"]
 [ext_resource type="Script" path="res://spite/enemy_normal_zombie/st_idle.gd" id="3_0d8mf"]
-[ext_resource type="Texture2D" uid="uid://b3j8nuvp0mmox" path="res://spite/enemy_normal_zombie/normal_texture.png" id="3_itgw3"]
+[ext_resource type="Texture2D" uid="uid://b3j8nuvp0mmox" path="res://texture/monster_tex/normal_texture.png" id="3_itgw3"]
 [ext_resource type="Script" path="res://spite/enemy_normal_zombie/st_walk.gd" id="4_txder"]
 [ext_resource type="Script" path="res://spite/enemy_normal_zombie/zombie_agent.gd" id="6_4gdg6"]
 [ext_resource type="Script" path="res://spite/enemy_normal_zombie/zombie_anim_tree.gd" id="6_ia3c7"]

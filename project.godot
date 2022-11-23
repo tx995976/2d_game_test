@@ -12,12 +12,12 @@ _global_script_classes=[{
 "base": "Node",
 "class": &"G_input",
 "language": &"GDScript",
-"path": "res://global_sp/key_input.gd"
+"path": "res://autoload/key_input.gd"
 }, {
 "base": "Node",
 "class": &"G_map_res",
 "language": &"GDScript",
-"path": "res://global_sp/global_map_res.gd"
+"path": "res://autoload/global_map_res.gd"
 }, {
 "base": "Node",
 "class": &"p_st",
