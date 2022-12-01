@@ -1,6 +1,6 @@
-[gd_scene load_steps=79 format=3 uid="uid://ctbun4821kbi0"]
+[gd_scene load_steps=79 format=3]
 
-[ext_resource type="Texture2D" uid="uid://cgn5qdlw86frn" path="res://spite/player/tex_1 (2).png" id="1"]
+[ext_resource type="Texture2D" uid="uid://cgn5qdlw86frn" path="res://texture/charater_tex/tex_1 (2).png" id="1"]
 [ext_resource type="Script" path="res://spite/player/spite_1.gd" id="2"]
 [ext_resource type="Script" path="res://spite/sprite_class/sp_state_machine.gd" id="2_wtqut"]
 [ext_resource type="Shader" uid="uid://dglk3s7kp3il" path="res://spite/player/gun_line.tres" id="3_w6a71"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3]
+[gd_scene load_steps=45 format=3 uid="uid://cyh0b8lqbvoin"]
 
 [ext_resource type="Script" path="res://spite/sprite_class/sp_state_machine.gd" id="1_36lex"]
 [ext_resource type="Script" path="res://spite/enemy_normal_zombie/sprite_normal_zombie.gd" id="1_l3j1u"]
@@ -101,13 +101,13 @@ transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition
 graph_offset = Vector2(61.1786, 27.8721)
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_nnaih"]
-graph_offset = Vector2(-189.848, -118.799)
+graph_offset = Vector2(-87.4715, -176.156)
 nodes/output/position = Vector2(623, 55)
 nodes/zombie_st_tree/node = SubResource("AnimationNodeStateMachine_3tca0")
 nodes/zombie_st_tree/position = Vector2(217.764, 56.4445)
 node_connections = [&"output", 0, &"zombie_st_tree"]
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_8o0rk"]
+[sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_upp65"]
 
 [sub_resource type="Animation" id="Animation_exc0t"]
 length = 0.001
@@ -371,19 +371,18 @@ polygon = PackedVector2Array(-1, -5, 13, -5, 13, -13, -1, -13)
 [node name="tex" type="Sprite2D" parent="."]
 texture = ExtResource("3_itgw3")
 region_enabled = true
-region_rect = Rect2(292, 80, 28, 46)
+region_rect = Rect2(58, 80, 24, 46)
 
-[node name="anim_tree" type="AnimationTree" parent="."]
+[node name="anim_tree" type="AnimationTree" parent="tex"]
 tree_root = SubResource("AnimationNodeBlendTree_nnaih")
 anim_player = NodePath("anim_player")
-active = true
-parameters/zombie_st_tree/playback = SubResource("AnimationNodeStateMachinePlayback_8o0rk")
+parameters/zombie_st_tree/playback = SubResource("AnimationNodeStateMachinePlayback_upp65")
 parameters/zombie_st_tree/att/blend_position = Vector2(0.590864, -0.021834)
 parameters/zombie_st_tree/idle/blend_position = Vector2(0, 0)
 parameters/zombie_st_tree/walk/blend_position = Vector2(0, 0)
 script = ExtResource("6_ia3c7")
 
-[node name="anim_player" type="AnimationPlayer" parent="anim_tree"]
+[node name="anim_player" type="AnimationPlayer" parent="tex/anim_tree"]
 libraries = {
 "": SubResource("AnimationLibrary_rfijy"),
 "sp_animation_zombie": SubResource("AnimationLibrary_q2sbu")

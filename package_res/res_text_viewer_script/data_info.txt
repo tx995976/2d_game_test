@@ -3,7 +3,7 @@
 all_header:{
 	type : (int)(1,2,3){txt,wait,clear}
 	pos : (str)
-	str : ''
+	str : '' --> 使用[BBcode]
 	sleep_time : (float)
 	time_left : (float)
 }

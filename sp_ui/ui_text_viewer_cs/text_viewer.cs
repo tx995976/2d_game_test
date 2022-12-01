@@ -11,7 +11,7 @@ public partial class text_viewer : Control{
 	string path_richtext;
 
 	public enum task_type{
-		tp_wait,
+		tp_wait, //在package_text中有意义
 		tp_txt,
 		tp_clear
 	}
@@ -58,19 +58,10 @@ public partial class text_viewer : Control{
 		return new text_richtext_node();
 	}
 
-	async public Task _show_one_msg(Dictionary para){
+	public void _show_one_msg(Dictionary para){
 		switch((task_type)(int)para["type"]){
-			case task_type.tp_wait:
-				var sleep_timer = GetTree().CreateTimer((double)para["sleep_time"]);
-				await ToSignal(sleep_timer,"timeout");
-				break;
 			case task_type.tp_txt:
 				container_list[(string)para["pos"]]._init_text(para);
-				if(!para.ContainsKey("sleep_time"))
-					return;
-				// bug? -> sleep_timer #define place; 
-				sleep_timer = GetTree().CreateTimer((double)para["sleep_time"]);
-				await ToSignal(sleep_timer,"timeout");
 				break;
 			case task_type.tp_clear:
 				container_list[(string)para["pos"]]._clear_child();
@@ -80,7 +71,11 @@ public partial class text_viewer : Control{
 
 	async public void _exec_txt_res(Array<Dictionary> pack){
 		foreach(Dictionary txt in pack){
-			await _show_one_msg(txt);
+			_show_one_msg(txt);
+			if(txt.ContainsKey("sleep_time")){ 
+				var sleep_timer = GetTree().CreateTimer((double)txt["sleep_time"]);
+				await ToSignal(sleep_timer,"timeout");
+			}
 		}
 	}
 

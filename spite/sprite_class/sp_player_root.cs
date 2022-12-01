@@ -46,9 +46,7 @@ public partial class sp_player_root : CharacterBody2D
 
 	public float view_mov_deg
 	{
-		get{
-			return view_dir.Dot(mov_dir);
-		}
+		get => view_dir.Dot(mov_dir);
 	}
 
 	public InputEvent action_input{

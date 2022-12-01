@@ -4,8 +4,8 @@ using System;
 
 public partial class res_text_pack : Resource
 {
-    [Export]
-    Array<Dictionary> pack_txt;
+	[Export]
+	Array<Dictionary> pack_txt;
 
 
 

@@ -18,7 +18,7 @@ public partial class sp_aim_line : RayCast2D
 	public Line2D node_line;
 
 	public bool ray_active{
-		get{return ray_active;}
+		get => ray_active;
 		set{
 			SetPhysicsProcess(value);
 			SetProcessUnhandledInput(value);

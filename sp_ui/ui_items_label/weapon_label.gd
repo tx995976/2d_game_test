@@ -26,7 +26,7 @@ func _ready():
 
 func _panel_open():
 	visible = true
-	node_Tween = get_tree().create_tween().set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+	node_Tween = get_tree().create_tween().set_trans(Tween.TRANS_BACK).set_ease(Tween.TRANS_BACK)
 	node_Tween.tween_property(self,"position",pos_open,time_tween).from(pos_close)
 	return
 

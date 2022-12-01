@@ -35,7 +35,11 @@ public partial class sp_map_lifter : Area2D{
 	}
 
 	async public void _lift_start(){
-		var tween = GetTree().CreateTween().SetProcessMode(Tween.TweenProcessMode.Physics).SetEase(Tween.EaseType.InOut).SetTrans(Tween.TransitionType.Quad);
+		var tween = GetTree().CreateTween()
+					.SetProcessMode(Tween.TweenProcessMode.Physics)
+					.SetEase(Tween.EaseType.InOut)
+					.SetTrans(Tween.TransitionType.Quad);
+					
 		Vector2 mov_relat = new Vector2(0,floor_len[next_floor] - floor_len[floor_now]);
 		tween.TweenProperty(this,nameof(Position).ToLower(),mov_relat,time_left).AsRelative();
 		pre_pos = Position;

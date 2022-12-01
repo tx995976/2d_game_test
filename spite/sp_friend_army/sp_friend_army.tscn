@@ -1,8 +1,8 @@
-[gd_scene load_steps=70 format=3 uid="uid://bxebobtfw7hy2"]
+[gd_scene load_steps=70 format=3 uid="uid://db5kn1ekukkud"]
 
 [ext_resource type="Script" path="res://spite/sp_friend_army/sp_friend1_root.cs" id="1_07h1g"]
 [ext_resource type="Script" path="res://spite/sprite_class/sp_controller.cs" id="1_y0nns"]
-[ext_resource type="Texture2D" uid="uid://cgn5qdlw86frn" path="res://spite/player/tex_1 (2).png" id="2_shyap"]
+[ext_resource type="Texture2D" uid="uid://cgn5qdlw86frn" path="res://texture/charater_tex/tex_1 (2).png" id="2_yfbv4"]
 [ext_resource type="Script" path="res://spite/sp_friend_army/ani_sync.cs" id="3_hepqh"]
 [ext_resource type="Script" path="res://spite/sprite_class/sp_state_machine.cs" id="4_yvkqw"]
 [ext_resource type="Script" path="res://spite/sp_friend_army/st_idle.cs" id="5_wfd2n"]
@@ -129,6 +129,7 @@ blend_point_3/pos = Vector2(1, 0)
 blend_mode = 1
 
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_o5t1n"]
+blend_mode = 1
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_3wtwj"]
 auto_advance = true
@@ -154,31 +155,31 @@ switch_mode = 2
 auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_wpwxw"]
-states/End/position = Vector2(1012, 112)
-states/Start/position = Vector2(156, 112)
+states/End/position = Vector2(975, 62)
+states/Start/position = Vector2(358, 88)
 states/change_none/node = SubResource("AnimationNodeBlendSpace2D_hcgka")
-states/change_none/position = Vector2(355, 187)
+states/change_none/position = Vector2(578, 159)
 states/change_weapon/node = SubResource("AnimationNodeBlendSpace2D_vsk62")
-states/change_weapon/position = Vector2(355, 290)
+states/change_weapon/position = Vector2(578, 262)
 states/idle/node = SubResource("AnimationNodeBlendSpace2D_f8di2")
-states/idle/position = Vector2(156, 246)
+states/idle/position = Vector2(358, 262)
 states/idle_weapon/node = SubResource("AnimationNodeBlendSpace2D_s2tod")
-states/idle_weapon/position = Vector2(585, 246)
+states/idle_weapon/position = Vector2(808, 262)
 states/walk/node = SubResource("AnimationNodeBlendSpace2D_1hwib")
-states/walk/position = Vector2(156, 333)
+states/walk/position = Vector2(358, 349)
 states/walk_weapon/node = SubResource("AnimationNodeBlendSpace2D_o5t1n")
-states/walk_weapon/position = Vector2(585, 333)
+states/walk_weapon/position = Vector2(808, 349)
 transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_3wtwj"), "idle", "walk", SubResource("AnimationNodeStateMachineTransition_n0e1d"), "walk", "idle", SubResource("AnimationNodeStateMachineTransition_mym4b"), "idle", "change_weapon", SubResource("AnimationNodeStateMachineTransition_6qq8r"), "change_weapon", "idle_weapon", SubResource("AnimationNodeStateMachineTransition_5fwo8"), "idle_weapon", "walk_weapon", SubResource("AnimationNodeStateMachineTransition_pac0w"), "walk_weapon", "idle_weapon", SubResource("AnimationNodeStateMachineTransition_3xig2"), "idle_weapon", "change_none", SubResource("AnimationNodeStateMachineTransition_p28qd"), "change_none", "idle", SubResource("AnimationNodeStateMachineTransition_q64uk")]
-graph_offset = Vector2(0, 88.1554)
+graph_offset = Vector2(0, -27.5681)
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_f2lsb"]
-graph_offset = Vector2(-28.7361, 37.9922)
+graph_offset = Vector2(-352.094, -47.8056)
 nodes/output/position = Vector2(381, 103)
 nodes/sp_status/node = SubResource("AnimationNodeStateMachine_wpwxw")
 nodes/sp_status/position = Vector2(-140, 100)
 node_connections = [&"output", 0, &"sp_status"]
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_m3bo3"]
+[sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_c2jw4"]
 
 [sub_resource type="Animation" id="Animation_r6cjf"]
 length = 0.001
@@ -566,6 +567,7 @@ _data = {
 }
 
 [node name="sp_friend_army" type="CharacterBody2D"]
+collision_mask = 22
 motion_mode = 1
 platform_on_leave = 2
 script = ExtResource("1_07h1g")
@@ -576,15 +578,14 @@ polygon = PackedVector2Array(-9, -14, 10, -14, 9, 21, -8, 21)
 
 [node name="texture_pack" type="Sprite2D" parent="."]
 scale = Vector2(1.00533, 1)
-texture = ExtResource("2_shyap")
+texture = ExtResource("2_yfbv4")
 region_enabled = true
 region_rect = Rect2(6, 16, 32, 48)
 
 [node name="ani_player_tree" type="AnimationTree" parent="texture_pack" node_paths=PackedStringArray("common_st_node", "item_st_node")]
 tree_root = SubResource("AnimationNodeBlendTree_f2lsb")
 anim_player = NodePath("../player_animation")
-active = true
-parameters/sp_status/playback = SubResource("AnimationNodeStateMachinePlayback_m3bo3")
+parameters/sp_status/playback = SubResource("AnimationNodeStateMachinePlayback_c2jw4")
 parameters/sp_status/change_none/blend_position = Vector2(0.386469, 0.0175438)
 parameters/sp_status/change_weapon/blend_position = Vector2(0.427247, 0.0175438)
 parameters/sp_status/idle/blend_position = Vector2(0.473587, 0.0131578)

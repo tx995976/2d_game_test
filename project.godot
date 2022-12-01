@@ -105,9 +105,13 @@ _global_script_class_icons={
 [application]
 
 config/name="2d Test"
-run/main_scene="res://sp_ui/ui_text_viewer_cs/richtxt_node.tscn"
+run/main_scene="res://sp_ui/ui_items_label/ui_select_panel.tscn"
 config/features=PackedStringArray("4.0", "C#")
 config/icon="res://icon.png"
+
+[autoload]
+
+center_item="*res://autoload/center_item.cs"
 
 [debug]
 
@@ -164,6 +168,11 @@ battle_weapon_ready={
 weapon_func_light={
 "deadzone": 0.5,
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":70,"physical_keycode":0,"unicode":0,"echo":false,"script":null)
+]
+}
+ui_select_item={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":50,"physical_keycode":0,"unicode":0,"echo":false,"script":null)
 ]
 }
 ui_select_weapon={
