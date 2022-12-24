@@ -1,16 +1,16 @@
 using Godot;
 using System.Collections.Generic;
 
-using res_collection;
-using autoload_sp;
+using Obj.res_collection;
+using Obj.autoload;
 
-namespace sp_player_collections;
+namespace Obj.sp_player_collections;
 
 /*
 #人物背包
 	@add_item => 添加物品至指定位置
-	@swap => 交换物品 --> 原有物品
-	@drop => 丢弃 --> 原有物品
+	@swap => 交换物品 --> 原有物品(unsafe)
+	@drop => 丢弃 --> 原有物品(unsafe)
 
 
 #逻辑判断
@@ -61,7 +61,7 @@ public partial class sp_item_bags : Node
 		item_node = GetNode<center_item>(center_item.path_node);
 
 		//test
-		var timer = GetTree().CreateTimer(3.0);
+		var timer = GetTree().CreateTimer(1.0);
 		timer.Timeout += test_method;
 	}
 
@@ -75,9 +75,10 @@ public partial class sp_item_bags : Node
         GD.Print("init_bag_item");
 	}
 
+
 	public void add_item(Resource item,int pos){
-		if(item is data_item)
-			arr_item[pos] = item as data_item;
+		if(item is data_item dataItem)
+			arr_item[pos] = dataItem;
 		else
 			arr_weapon[pos] = item as data_weapon;
 	}
@@ -93,6 +94,7 @@ public partial class sp_item_bags : Node
 		arr_item[pos] = null;
 		return gc_data;
 	}
+
 
 	public data_weapon swap_weapon(data_weapon weapon,int pos){
 		var swap_data = arr_weapon[pos];

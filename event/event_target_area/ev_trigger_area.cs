@@ -2,7 +2,7 @@ using Godot;
 using static Godot.GD;
 
 
-namespace ev_collection;
+namespace Obj.ev_collection;
 //触发器(区域)
 /*
 	@主动检测 area -> sp
@@ -27,7 +27,7 @@ public partial class ev_trigger_area : ev_trigger_root
 		if(flag_tar && target_type == tar_limit.Once)
 			return;
 		flag_tar = true;
-		GetTree().CallGroup(("group_triggeer_"+this.Name),"_action_be_trigger");
+		GetTree().CallGroup(("group_trigger_"+this.Name),"_action_be_trigger");
 		#if DEBUG
 		Print((object)(body.Name+" trigger!"));
 		#endif

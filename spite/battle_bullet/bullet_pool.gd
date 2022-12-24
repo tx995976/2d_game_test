@@ -11,7 +11,7 @@ var pool_bullet := []
 
 func _ready():
 	#res_reg
-	node_map_res.res_sp_bullet_pool = self
+	#node_map_res.res_sp_bullet_pool = self
 	
 	for i in range(num_bullet):
 		var node_bullet := res_gun_bullet.instantiate() as sp_bullet

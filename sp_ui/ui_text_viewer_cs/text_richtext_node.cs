@@ -2,7 +2,7 @@ using Godot;
 using System;
 using static Godot.GD;
 
-namespace ui_collections;
+namespace Obj.ui_collections;
 public partial class text_richtext_node : RichTextLabel{
 
 	public enum out_type{

@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://sp_ui/ui_action_tips/ui_tips.cs" id="1_wc0qg"]
 [ext_resource type="Texture2D" uid="uid://bcn74yc6jhc5x" path="res://sp_ui/ui_action_tips/tex_button_tips.png" id="2_hx7vs"]
 
-[node name="tex_button" type="TextureRect"]
+[node name="ui_tips" type="TextureRect"]
 offset_left = 541.0
 offset_top = 431.0
 offset_right = 601.0

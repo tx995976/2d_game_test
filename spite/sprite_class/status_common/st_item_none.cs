@@ -1,9 +1,9 @@
 using Godot;
 using System;
 
-using sp_player_collections;
+using Obj.sp_player_collections;
 
-namespace sp_player_collections.status;
+namespace Obj.sp_player_collections.status;
 
 
 public partial class st_item_none : sp_status

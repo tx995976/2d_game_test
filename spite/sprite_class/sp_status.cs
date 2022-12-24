@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-namespace sp_player_collections;
+namespace Obj.sp_player_collections;
 /*
 #人物状态
 	@process_action() ---> 状态特有动作

@@ -1,7 +1,7 @@
 using Godot;
 using System.Collections.Generic;
 
-namespace sp_player_collections;
+namespace Obj.sp_player_collections;
 
 /*
 # 下推状态自动机
@@ -66,7 +66,7 @@ public partial class sp_state_machine : Node
 		}
 
 		EmitSignal(nameof(this.state_change),name_st);
-		status_now.enter_st();
+		status_now?.enter_st();
 		return;
 	}
 

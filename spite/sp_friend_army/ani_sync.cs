@@ -1,10 +1,10 @@
 using Godot;
 using Godot.Collections;
-using sp_player_collections;
+using Obj.sp_player_collections;
 
 namespace sp_player_friend_1;
 
-public partial class ani_sync : sp_anim_sync
+sealed public partial class ani_sync : sp_anim_sync
 {
 
 	public override void _Ready(){
@@ -48,10 +48,7 @@ public partial class ani_sync : sp_anim_sync
 
 	public override void item_st_change(string new_st){
 		
+		
 	}
-
-
-
-
 
 }

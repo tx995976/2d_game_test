@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-namespace res_collection;
+namespace Obj.res_collection;
 
 public partial class data_weapon : Resource
 {

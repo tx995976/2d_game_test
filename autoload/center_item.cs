@@ -1,9 +1,11 @@
 using Godot;
 using Godot.Collections;
+using System.Linq;
 
-using res_collection;
+using Obj.res_collection;
+// ReSharper disable All
 
-namespace autoload_sp;
+namespace Obj.autoload;
 
 /*
 #item_center
@@ -29,6 +31,7 @@ public partial class center_item : Node
         dic_weapons = new Dictionary<StringName, res_weapon_static_data>();
         dic_items = new Dictionary<StringName, res_item_static_data>();
         var dir_datas = DirAccess.Open(path_data);
+
         foreach(var filename in dir_datas.GetFiles()){
             //GD.Print(filename);
             if(filename.EndsWith(".tres")){
@@ -50,8 +53,9 @@ public partial class center_item : Node
 
     public data_weapon init_weapon(StringName str_weapon,int ammo_in,int ammo_bag,int sup){
         var new_data = new data_weapon();
-        new_data.define = dic_weapons[str_weapon];
+        var define_res = dic_weapons[str_weapon];
         //
+        new_data.define = define_res;
         new_data.ammo_in = (ammo_in < new_data.define.max_ammo_in) ? ammo_in : new_data.define.max_ammo_in;
         new_data.ammo_bag = (ammo_bag < new_data.define.bag_ammo) ? ammo_bag : new_data.define.bag_ammo;
         new_data.sup = sup < (new_data.define.sup_max) ? sup : new_data.define.sup_max;

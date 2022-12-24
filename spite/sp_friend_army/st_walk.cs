@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-using sp_player_collections;
+using Obj.sp_player_collections;
 
 namespace sp_player_friend_1;
 

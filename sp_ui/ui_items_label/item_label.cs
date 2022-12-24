@@ -1,8 +1,7 @@
 using Godot;
+using Obj.res_collection;
 
-using res_collection;
-
-namespace ui_collections;
+namespace Obj.ui_collections;
 
 /*
 #物品标签
@@ -14,8 +13,6 @@ public partial class item_label : Panel
 	TextureRect item_type_tex;
 	Label name_item;
 	Label info_ammo;
-
-	public select_panel node_selecter; 
 
 	public Vector2 pos_open;
 	public int pos_num;

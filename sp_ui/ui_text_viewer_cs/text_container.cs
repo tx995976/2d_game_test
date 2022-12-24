@@ -2,7 +2,7 @@ using Godot;
 using System;
 using Godot.Collections;
 
-namespace ui_collections;
+namespace Obj.ui_collections;
 
 public partial class text_container : VBoxContainer
 {

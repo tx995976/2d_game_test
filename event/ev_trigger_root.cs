@@ -1,7 +1,7 @@
 using Godot;
 using static Godot.GD;
 
-namespace ev_collection;
+namespace Obj.ev_collection;
 
 public partial class ev_trigger_root : Area2D
 {

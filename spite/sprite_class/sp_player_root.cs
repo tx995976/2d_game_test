@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-namespace sp_player_collections;
+namespace Obj.sp_player_collections;
 /*
 @人物实体 基类
 

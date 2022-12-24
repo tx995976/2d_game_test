@@ -2,7 +2,7 @@ using Godot;
 using Godot.Collections;
 using System.Collections;
 
-namespace sp_player_collections;
+namespace Obj.sp_player_collections;
 
 /*
 #人物基础物理控制器 -> action_event

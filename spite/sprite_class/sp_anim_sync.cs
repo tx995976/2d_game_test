@@ -2,7 +2,7 @@ using Godot;
 using Godot.Collections;
 
 
-namespace sp_player_collections;
+namespace Obj.sp_player_collections;
 
 /*
 #动画同步节点

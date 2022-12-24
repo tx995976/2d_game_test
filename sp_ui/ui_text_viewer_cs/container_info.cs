@@ -2,7 +2,7 @@ using Godot;
 using Godot.Collections;
 using System;
 
-using ui_collections;
+using Obj.ui_collections;
 
 public partial class container_info : text_container
 {

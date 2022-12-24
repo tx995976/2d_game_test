@@ -1,9 +1,9 @@
 using Godot;
 using Godot.Collections;
 
-using sp_player_collections;
+using Obj.sp_player_collections;
 
-namespace ui_collections;
+namespace Obj.ui_collections;
 /*
 #ui_select_panel
 	@响应用户输入
@@ -11,7 +11,7 @@ namespace ui_collections;
 	@物品管理
 */
 
-public partial class select_panel : Control
+public partial class bag_panel : Control
 {
 	const int max_label = 4;
 
@@ -47,7 +47,6 @@ public partial class select_panel : Control
 			item.pos_num = i; 
 			item.selected += weapon_changed;
 		}
-
 	}
 
 	public override void _Input(InputEvent @event) {
@@ -136,6 +135,7 @@ public partial class select_panel : Control
 		//
 
 		comment_node.Visible = false;
+		
 
 		await ToSignal(tween_node,"finished");
 		//wait panel close
@@ -223,16 +223,16 @@ public void open_weapon() {
 	}
 
 //----------------------------------------------------------------
-public void open_panel(int tab) {
-		if (@panel_item.Visible)
+	public void open_panel(int tab) {
+		if (@panel_item.Visible || @panel_weapon.Visible)
 			return;
 
 		flush_panel();
 
 		for (int i = 0; i < max_label; i++)
 				@selecter_items[i].Visible = true;
-		comment_node.Visible = true;
 
+		comment_node.Visible = true;
 		//ani
 		var tween_node = GetTree().CreateTween()
 			.SetTrans(Tween.TransitionType.Back)
@@ -261,12 +261,12 @@ public void open_panel(int tab) {
 				@selecter_items[i].Visible = false;
 		
 		var sel_item = @selecter_items[@pos_item];
-		(sel_item.Material as ShaderMaterial).SetShaderParameter("change_flag",true);
+		(sel_item.Material as ShaderMaterial)?.SetShaderParameter("change_flag",true);
 		tween_node.TweenProperty(sel_item,"position", panel_pos, tween_time*2);
 		
 		//data ----> [bag] [label]
 		if (connect_bags != null) 
-			//connect_bags.item_num = @pos_item;
+			connect_bags.item_num = @pos_item;
 
 		//
 
@@ -274,7 +274,7 @@ public void open_panel(int tab) {
 
 		await ToSignal(tween_node,"finished");
 		//wait panel close
-		(sel_item.Material as ShaderMaterial).SetShaderParameter("change_flag",false);
+		(sel_item.Material as ShaderMaterial)?.SetShaderParameter("change_flag",false);
 		@panel_item.Visible = false;
 		sel_item.Position = panel_pos;
 	}

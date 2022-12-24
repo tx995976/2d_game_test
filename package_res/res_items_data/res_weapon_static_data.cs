@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-namespace res_collection;
+namespace Obj.res_collection;
 
 /*
 #武器基类

@@ -1,12 +1,13 @@
 using Godot;
 using System;
 
-namespace sp_player_collections;
+namespace Obj.sp_player_collections;
 
 /*
 #物理设备瞄准线
 	@player使用
 	@提供碰撞检测
+	@伤害处理
 */
 
 public partial class sp_aim_line : RayCast2D
@@ -14,18 +15,18 @@ public partial class sp_aim_line : RayCast2D
 	[Export]
 	public Vector2 ray_lenth;
 
-	public sp_player_root node_player;
+    sp_player_root node_player;
 	public Line2D node_line;
 
-	public bool ray_active{
-		get => ray_active;
-		set{
+	public bool Ray_active{
+        set{
 			SetPhysicsProcess(value);
 			SetProcessUnhandledInput(value);
-			LookAt(GetGlobalMousePosition());
-			ray_active = value;
-		}
+            if(value) 
+                LookAt(GetGlobalMousePosition());
+        }
 	}
+
 
     public override void _Ready(){
         SetPhysicsProcess(false);
@@ -50,6 +51,5 @@ public partial class sp_aim_line : RayCast2D
 		}
 		node_line.SetPointPosition(1,pos_coll);
     }
-
 
 }
