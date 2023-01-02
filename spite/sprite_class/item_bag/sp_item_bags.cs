@@ -1,10 +1,10 @@
 using Godot;
 using System.Collections.Generic;
 
-using Obj.res_collection;
+using Obj.resource;
 using Obj.autoload;
 
-namespace Obj.sp_player_collections;
+namespace Obj.sp_player;
 
 /*
 #人物背包
@@ -20,10 +20,11 @@ namespace Obj.sp_player_collections;
 
 public partial class sp_item_bags : Node
 {
-	public const int max_weapon = 4;
-	public const int max_item = 4;
+	public static int max_weapon = 4;
+	public static int max_item = 4;
 
-	public center_item item_node;
+
+	public center_item? item_node;
 	
 	public data_item selected_item{
 		get => arr_item[item_num];
@@ -33,24 +34,30 @@ public partial class sp_item_bags : Node
 	}
 
 	public data_weapon[] arr_weapon = new data_weapon[max_weapon];
-	public data_item[] arr_item = new data_item[max_item]; 
+	public data_item[] arr_item = new data_item[max_item];
 
+	[Export]
 	public int item_num{
-		get => item_num;
+		get => _item_num;
 		set{
-			item_num = value;
+			_item_num = value;
 			EmitSignal(nameof(select_changed));
 		}
 	}
+    private int _item_num;
 
+	[Export]
 	public int weapon_num {
-		get => weapon_num;
+		get => _weapon_num;
 		set{
-			weapon_num = value;
+			_weapon_num = value;
 			EmitSignal(nameof(select_changed));
 			
 		}
 	}
+
+    private int _weapon_num;
+
 	//
 	[Signal]
 	public delegate void select_changedEventHandler();  //选择更新时触发
@@ -80,7 +87,7 @@ public partial class sp_item_bags : Node
 		if(item is data_item dataItem)
 			arr_item[pos] = dataItem;
 		else
-			arr_weapon[pos] = item as data_weapon;
+			arr_weapon[pos] = (data_weapon)item;
 	}
 
 	public data_item swap_item(data_item item,int pos){

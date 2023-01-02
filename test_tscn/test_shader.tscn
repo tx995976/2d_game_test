@@ -1,6 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://dw1o2d2nm3dlq"]
+[gd_scene load_steps=6 format=3]
 
-[ext_resource type="Shader" path="res://shaders/mirror.gdshader" id="1_cvnsg"]
+[ext_resource type="Shader" path="res://texture/shaders/mirror.gdshader" id="1_cvnsg"]
 [ext_resource type="Texture2D" uid="uid://bk18nkqtlc3je" path="res://map/map_tiles/新学校A5.png" id="2_xu7bn"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_2uiub"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=74 format=3 uid="uid://db5kn1ekukkud"]
+[gd_scene load_steps=75 format=3 uid="uid://db5kn1ekukkud"]
 
 [ext_resource type="Script" path="res://spite/sp_friend_army/sp_friend1_root.cs" id="1_07h1g"]
 [ext_resource type="Script" path="res://spite/sprite_class/sp_controller.cs" id="1_y0nns"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://spite/sp_friend_army/st_idle.cs" id="5_wfd2n"]
 [ext_resource type="Script" path="res://spite/sp_friend_army/st_walk.cs" id="6_n0o35"]
 [ext_resource type="Script" path="res://spite/sp_friend_army/st_item_none.cs" id="8_tkdfh"]
+[ext_resource type="Script" path="res://spite/sprite_class/item_bag/sp_item_bags.cs" id="9_i73j5"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_wrom7"]
 animation = &"walk_weapon_r_down"
@@ -598,7 +599,7 @@ polygon = PackedVector2Array(-9, -14, 10, -14, 9, 21, -8, 21)
 scale = Vector2(1.00533, 1)
 texture = ExtResource("2_yfbv4")
 region_enabled = true
-region_rect = Rect2(60, 142, 22, 48)
+region_rect = Rect2(6, 16, 32, 48)
 
 [node name="ani_player_tree" type="AnimationTree" parent="texture_pack" node_paths=PackedStringArray("sp_node", "common_st_node", "item_st_node")]
 tree_root = SubResource("AnimationNodeBlendTree_f2lsb")
@@ -644,3 +645,6 @@ start_state = NodePath("none")
 
 [node name="none" type="Node" parent="st_machine_item"]
 script = ExtResource("8_tkdfh")
+
+[node name="bag" type="Node" parent="."]
+script = ExtResource("9_i73j5")

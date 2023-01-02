@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-namespace Obj.res_collection;
+namespace Obj.resource;
 
 public partial class res_item_static_data : res_item_root
 {

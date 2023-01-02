@@ -2,6 +2,7 @@
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
     <EnableDynamicLoading>true</EnableDynamicLoading>
-    <RootNamespace>dTest</RootNamespace>
+    <RootNamespace>Obj</RootNamespace>
+    <Nullable>enable</Nullable>
   </PropertyGroup>
 </Project>

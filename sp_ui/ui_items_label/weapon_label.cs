@@ -1,9 +1,9 @@
 using Godot;
 using System;
 
-using Obj.res_collection;
+using Obj.resource;
 
-namespace Obj.ui_collections;
+namespace Obj.ui;
 
 /*
 #武器标签

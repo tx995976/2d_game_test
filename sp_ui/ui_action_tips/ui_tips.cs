@@ -2,12 +2,14 @@ using Godot;
 using System;
 using Godot.Collections;
 
-namespace Obj.ui_collections;
+namespace Obj.ui;
 
 public partial class ui_tips : TextureRect
 {
 	[Export] 
-	public Dictionary<StringName,Texture2D> tips_list;
+	public Dictionary<StringName,Texture2D> tips_list { get; set; }
+
+    public static readonly string node_name = "ui_tips";
 
 	public override void _Ready(){
 		var arr_child = GetChildren();

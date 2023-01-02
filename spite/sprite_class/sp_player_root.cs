@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-namespace Obj.sp_player_collections;
+namespace Obj.sp_player;
 /*
 @人物实体 基类
 
@@ -19,14 +19,21 @@ public partial class sp_player_root : CharacterBody2D
 
 	//attribute for direct
 	[Export]
-	public Vector2 mov_dir = Vector2.Zero;
+	public Vector2 mov_dir {get; set;} = Vector2.Zero;
 
 	[Export]
-	public Vector2 view_dir = Vector2.Zero;
+	public Vector2 view_dir {
+		get => _view_dir;
+		set {
+			if (value != Vector2.Zero)
+				_view_dir = value;
+		}
+	}
+	Vector2 _view_dir = Vector2.Zero;
 
 	//attribute for move
 	[Export]
-	public int speed;
+	public int speed { get; set; }
 
 	/*
 	//attribute for battle
@@ -42,7 +49,7 @@ public partial class sp_player_root : CharacterBody2D
 
 	//基本状态机
 	[Export]
-	public sp_state_machine basic_state;
+	public sp_state_machine basic_state { get; set; }
 
 	public float view_mov_deg
 	{
@@ -77,6 +84,9 @@ public partial class sp_player_root : CharacterBody2D
 	[Signal]
 	public delegate void action_mouseEventHandler(); //if need
 
+	public Action _action_event_input;
+	public Action _action_mouse;
+	
 	//test
 	public sp_status action_input_node;
 }

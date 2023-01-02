@@ -106,7 +106,7 @@ _global_script_class_icons={
 
 config/name="2d Test"
 config/features=PackedStringArray("4.0", "C#")
-config/icon="res://icon.png"
+config/icon="res://texture/icon_tex/icon.png"
 
 [autoload]
 

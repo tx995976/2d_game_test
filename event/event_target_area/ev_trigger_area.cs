@@ -2,7 +2,7 @@ using Godot;
 using static Godot.GD;
 
 
-namespace Obj.ev_collection;
+namespace Obj.ev_trigger;
 //触发器(区域)
 /*
 	@主动检测 area -> sp

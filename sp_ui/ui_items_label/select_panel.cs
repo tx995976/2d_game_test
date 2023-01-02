@@ -1,9 +1,9 @@
 using Godot;
 using Godot.Collections;
 
-using Obj.sp_player_collections;
+using Obj.sp_player;
 
-namespace Obj.ui_collections;
+namespace Obj.ui;
 /*
 #ui_select_panel
 	@响应用户输入
@@ -11,7 +11,7 @@ namespace Obj.ui_collections;
 	@物品管理
 */
 
-public partial class bag_panel : Control
+public partial class select_panel : Control
 {
 	const int max_label = 4;
 
@@ -68,9 +68,9 @@ public partial class bag_panel : Control
 	public void flush_panel(){
 		for (int i = 0; i < max_label; i++){
 			@selecter_items[i].item_dym = connect_bags?.arr_item[i];
-			@selecter_items[i].flush_label();
+			//@selecter_items[i].flush_label();
 			@selecter_weapons[i].item_dym = connect_bags?.arr_weapon[i];
-			@selecter_weapons[i].flush_label();
+			//@selecter_weapons[i].flush_label();
 		}
 		GD.Print("panel_flush");
 	}

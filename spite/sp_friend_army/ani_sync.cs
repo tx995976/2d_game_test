@@ -1,6 +1,6 @@
 using Godot;
 using Godot.Collections;
-using Obj.sp_player_collections;
+using Obj.sp_player;
 
 namespace sp_player_friend_1;
 
@@ -24,7 +24,6 @@ sealed public partial class ani_sync : sp_anim_sync
 		str_cm = common_st_node?.start_state.Name;
 		
 
-		GD.Print($"ani_state : {str_cm} {str_item}");
 	}
 
 	public override void _PhysicsProcess(double delta){
@@ -40,15 +39,17 @@ sealed public partial class ani_sync : sp_anim_sync
 	public override void cm_st_change(string new_st){
 		if(str_item == null){
 			pb_now.Travel(new_st);
+			str_cm = new_st;
 		}
 		else{
 
 		}
+		GD.Print($"ani_state : {str_cm} {str_item}");
 	}
 
 	public override void item_st_change(string new_st){
 		
-		
+
 	}
 
 }

@@ -2,7 +2,7 @@ using Godot;
 using Godot.Collections;
 
 
-namespace Obj.sp_player_collections;
+namespace Obj.sp_player;
 
 /*
 #动画同步节点
@@ -31,8 +31,8 @@ public partial class sp_anim_sync : AnimationTree
     public Dictionary<StringName,AnimationNodeStateMachinePlayback> playbacks; //if need;
     //info_state
 
-    public string str_cm;
-    public string str_item;
+    public string str_cm { get; set; }
+    public string str_item { get; set; }
 
     //重写以添加params
     public override void _Ready(){

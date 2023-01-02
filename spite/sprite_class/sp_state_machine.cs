@@ -1,7 +1,7 @@
 using Godot;
 using System.Collections.Generic;
 
-namespace Obj.sp_player_collections;
+namespace Obj.sp_player;
 
 /*
 # 下推状态自动机

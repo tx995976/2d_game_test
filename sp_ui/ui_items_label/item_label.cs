@@ -1,7 +1,8 @@
+using System;
 using Godot;
-using Obj.res_collection;
+using Obj.resource;
 
-namespace Obj.ui_collections;
+namespace Obj.ui;
 
 /*
 #物品标签
@@ -13,48 +14,124 @@ public partial class item_label : Panel
 	TextureRect item_type_tex;
 	Label name_item;
 	Label info_ammo;
+	ProgressBar sup_progress;
 
-	public Vector2 pos_open;
-	public int pos_num;
+ 
+	public Vector2 pos_open { get; set; }
+	public int pos_num { get; set; }
 
 	[Export]
-	public data_item item_dym;
+	public Resource? item{ 
+		get => _item_dym; 
+		set{
+			clear_label();
+			_item_dym = value;
+			if(value == null)
+				return;
+			if(value is data_item item)
+				flush_label(item);
+			else
+				flush_label((data_weapon)value);
+
+		} 
+	}
+	Resource? _item_dym;
+
+	
 
 	[Signal]
 	public delegate void selectedEventHandler(int pos);
+
+	public Action<int>? select;
 
 	public override void _Ready() {
 		item_tex = GetNode<TextureRect>(nameof(item_tex));
 		item_type_tex = GetNode<TextureRect>(nameof(item_type_tex));
 		name_item = GetNode<Label>(nameof(name_item));
 		info_ammo = GetNode<Label>(nameof(info_ammo));
+		sup_progress = GetNode<ProgressBar>(nameof(sup_progress));
 
-		MouseEntered += _mouse_enter;
 		pos_open = Position;
 
 		//flush_label();
 	}
 
-	public void flush_label() {
-		if(item_dym == null) 
-			return;
 
-		var label_data = item_dym.define;
+	#region item_flush
+
+	public void flush_label(data_item item_dym) {
+		var label_data = item_dym.define!;
 
 		name_item.Text = label_data.item_name;
 		item_tex.Texture = label_data.item_texture;
 		item_type_tex.Texture = label_data.item_type_texture;
 
 		info_ammo.Text = $"{item_dym.num_now}";
+
+		item_dym.signal_data_change += sync_item;
 	}
 
-	public void sync_to_data() {
-		info_ammo.Text = $"{item_dym?.num_now}";
+	public void flush_label(data_weapon item_dym) {
+		var label_data = item_dym.define;
+
+		name_item.Text = label_data.item_name;
+		item_tex.Texture = label_data.item_texture;
+		item_type_tex.Texture = label_data.item_type_texture;
+
+		info_ammo.Text = $"{item_dym.ammo_in}/{item_dym.ammo_bag}";
+
+		if (label_data.has_sup) {
+			sup_progress.MaxValue = label_data.sup_max;
+			sup_progress.Value = item_dym.sup;
+			sup_progress.Visible = true;
+		}
+		else {
+			sup_progress.Visible = false;
+		}
+
+		item_dym.signal_data_change += sync_weapon;
 	}
+
+	public void clear_label(){
+		name_item.Text = null;
+		item_tex.Texture = null;
+		item_type_tex.Texture = null;
+
+		info_ammo.Text = "";
+		sup_progress.Visible = false;
+
+		if(item is data_item iitem){
+			iitem.signal_data_change -= sync_item;
+		}
+		else if(item is data_weapon witem){
+			witem.signal_data_change -= sync_weapon;
+		}	
+	}
+
+	#endregion
+
+	#region data_sync
+
+	public void sync_item(){
+		var item_dym = (data_item)item!;
+
+		info_ammo.Text = $"{item_dym.num_now}";
+	}
+
+	public void sync_weapon(){
+		var item_dym = (data_weapon)item!;
+
+		info_ammo.Text = $"{item_dym.ammo_in}/{item_dym.ammo_bag}";
+		sup_progress.Value = item_dym.sup;
+	}
+
+	#endregion
+
+	#region mouse_action
 
 	public void _mouse_enter() {
 		(Material as ShaderMaterial)?.SetShaderParameter("selec_flag", true);
-		EmitSignal(nameof(selected),pos_num);
+		select?.Invoke(pos_num);
 		GD.Print($"item {pos_num} be selected");
 	}
 
@@ -63,4 +140,7 @@ public partial class item_label : Panel
 		GD.Print($"item {pos_num} defuse selected");
 	}
 
+	#endregion
+
 }
+ 

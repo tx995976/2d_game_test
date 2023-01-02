@@ -2,19 +2,20 @@ using Godot;
 using System;
 using static Godot.GD;
 
-namespace map_mover_lift;
+namespace Obj.map.items;
 
 public partial class sp_map_lifter : Area2D{
 	[Export(PropertyHint.ArrayType)]
 	int[] floor_len;
 
 	[Export]
-	Double time_left;
-
+	Double time_left { get; set; }
+	
 	[Export]
-	int next_floor;
+	int next_floor { get; set; }
 
 	int floor_now = 0;
+	
 	Vector2 delta_trans = Vector2.Zero;
 	Vector2 pre_pos;
 

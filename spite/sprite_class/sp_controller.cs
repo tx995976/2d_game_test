@@ -2,7 +2,7 @@ using Godot;
 using Godot.Collections;
 using System.Collections;
 
-namespace Obj.sp_player_collections;
+namespace Obj.sp_player;
 
 /*
 #人物基础物理控制器 -> action_event
@@ -20,6 +20,7 @@ public partial class sp_controller : Node
     public override void _Ready(){
         SetProcessUnhandledInput(true);
         node_player = Owner as sp_player_root;
+        
 
         /*
         tmp_action.Action = "action_up";

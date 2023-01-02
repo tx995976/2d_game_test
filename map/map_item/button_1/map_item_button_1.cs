@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-using Obj.ev_collection;
+using Obj.ev_trigger;
 
 public partial class map_item_button_1 : ev_trigger_button
 {

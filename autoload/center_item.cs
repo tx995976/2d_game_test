@@ -2,7 +2,8 @@ using Godot;
 using Godot.Collections;
 using System.Linq;
 
-using Obj.res_collection;
+using Obj.resource;
+using System.Threading.Tasks;
 // ReSharper disable All
 
 namespace Obj.autoload;
@@ -26,7 +27,7 @@ public partial class center_item : Node
     public Dictionary<StringName,res_weapon_static_data> dic_weapons;
 
 
-    public override void _Ready(){
+    async public override void _Ready(){
         //default data load
         dic_weapons = new Dictionary<StringName, res_weapon_static_data>();
         dic_items = new Dictionary<StringName, res_item_static_data>();
@@ -36,7 +37,7 @@ public partial class center_item : Node
             //GD.Print(filename);
             if(filename.EndsWith(".tres")){
                 GD.Print($"load {path_data+filename}");
-                var res = GD.Load(path_data+filename);
+                var res = await Task.Run(() => GD.Load(path_data+filename));
                 reg_data(res);
             }
         }

@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-namespace Obj.sp_player_collections;
+namespace Obj.sp_player;
 
 /*
 #物理设备瞄准线

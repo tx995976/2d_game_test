@@ -1,7 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://bb4u07xrs1tqa"]
+[gd_scene load_steps=11 format=3 uid="uid://dxdpj1kxrvvid"]
 
 [ext_resource type="TileSet" uid="uid://ctpihslikhwc6" path="res://map/map_tiles/tileset_sc.tres" id="1_xb6ci"]
-[ext_resource type="PackedScene" uid="uid://wdwbvbdcqo0a" path="res://spite/map_mover_lift/map_mover_lift.tscn" id="3_mha57"]
+[ext_resource type="PackedScene" uid="uid://dcgskowvxaejq" path="res://map/map_item/map_mover_lift/map_mover_lift.tscn" id="3_mha57"]
 [ext_resource type="PackedScene" uid="uid://pg3633pm7ica" path="res://map/map_item/button_1/button_1.tscn" id="5_1dl8n"]
 [ext_resource type="PackedScene" uid="uid://db5kn1ekukkud" path="res://spite/sp_friend_army/sp_friend_army.tscn" id="7_4nwml"]
 [ext_resource type="PackedScene" uid="uid://c5e6qyqv7w182" path="res://map/map_item/door_1/map_item_door_1.tscn" id="7_aev1m"]
@@ -47,16 +47,14 @@ metadata/_edit_lock_ = true
 [node name="map_items" type="CanvasGroup" parent="world2d/tile_1"]
 position = Vector2(-270, -263)
 
-[node name="map_mover_lift" parent="world2d/tile_1/map_items" instance=ExtResource("3_mha57")]
-light_mask = 15
-z_index = 1
-position = Vector2(830, 256)
-floor_len = PackedInt32Array(0, 1300)
-time_left = 10.0
-
 [node name="map_item_door_1" parent="world2d/tile_1/map_items" instance=ExtResource("7_aev1m")]
 position = Vector2(68, 103)
 st_door = true
+
+[node name="map_mover_lift" parent="world2d/tile_1/map_items" instance=ExtResource("3_mha57")]
+z_index = 1
+position = Vector2(830, 166)
+time_left = 7.0
 
 [node name="trigger" type="CanvasGroup" parent="world2d/tile_1"]
 position = Vector2(-270, -263)
@@ -73,6 +71,7 @@ shape = SubResource("RectangleShape2D_6dy1c")
 position = Vector2(148, 135)
 
 [node name="navigation_region_2d" type="NavigationRegion2D" parent="world2d/tile_1"]
+visible = false
 navigation_polygon = SubResource("NavigationPolygon_ue7ed")
 
 [node name="enemy_sp" type="CanvasGroup" parent="world2d"]
@@ -83,7 +82,7 @@ navigation_polygon = SubResource("NavigationPolygon_ue7ed")
 z_index = 1
 position = Vector2(294, 209)
 
-[node name="camera_2d" type="Camera2D" parent="world2d/friend_sp/sp_friend_army"]
+[node name="player_camera" type="Camera2D" parent="world2d/friend_sp/sp_friend_army"]
 position = Vector2(-554, -297)
 anchor_mode = 0
 ignore_rotation = false

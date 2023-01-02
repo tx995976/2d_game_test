@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-namespace Obj.sp_player_collections.status;
+namespace Obj.sp_player.status;
 
 using mode_st = sp_state_machine.st_mode;
 
