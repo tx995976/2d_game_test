@@ -39,5 +39,5 @@ public sealed partial class data_weapon :Resource
     int _sup;
 
 
-    public Action? signal_data_change;
+    public event Action? signal_data_change;
 }

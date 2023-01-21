@@ -11,19 +11,19 @@ public partial class text_richtext_node : RichTextLabel{
 	}
 
 	[Export(PropertyHint.Enum)]
-	out_type txt_out_type;
+	public out_type txt_out_type { get; set; }
 
 	[Export(PropertyHint.MultilineText)]
-	String txt_static;
+	public String? txt_static { get; set; }
 
 	[Export]
-	double tween_time;
+	public double tween_time { get; set; }
 
 	[Export]
-	double time_left;
+	public double time_left { get; set; }
 
 	[Export]
-	double out_time = 0.5;
+	public double out_time { get; set; } = 0.5;
 
 	public override void _Ready(){
 		var tween = GetTree().CreateTween().SetEase(Tween.EaseType.InOut).SetTrans(Tween.TransitionType.Back);

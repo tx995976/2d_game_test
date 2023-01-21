@@ -11,7 +11,7 @@ public partial class sp_bullet_pool : Node
     int instance_bullet;
 
     [Export(PropertyHint.File)]
-    string path_bullet_tscn;
+    string? path_bullet_tscn;
     
 
     public override void _Ready(){

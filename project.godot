@@ -8,100 +8,6 @@
 
 config_version=5
 
-_global_script_classes=[{
-"base": "Node",
-"class": &"G_input",
-"language": &"GDScript",
-"path": "res://autoload/key_input.gd"
-}, {
-"base": "Node",
-"class": &"G_map_res",
-"language": &"GDScript",
-"path": "res://autoload/global_map_res.gd"
-}, {
-"base": "Node",
-"class": &"p_st",
-"language": &"GDScript",
-"path": "res://spite/sprite_class/sp_status.gd"
-}, {
-"base": "AnimationTree",
-"class": &"sp_anim_tree",
-"language": &"GDScript",
-"path": "res://spite/sprite_class/sp_anim_root.gd"
-}, {
-"base": "CharacterBody2D",
-"class": &"sp_bullet",
-"language": &"GDScript",
-"path": "res://spite/battle_bullet/gun_bullet.gd"
-}, {
-"base": "Node2D",
-"class": &"sp_bullet_pool",
-"language": &"GDScript",
-"path": "res://spite/battle_bullet/bullet_pool.gd"
-}, {
-"base": "NavigationAgent2D",
-"class": &"sp_navigation_agent",
-"language": &"GDScript",
-"path": "res://spite/sprite_class/sp_agent_navigation.gd"
-}, {
-"base": "CharacterBody2D",
-"class": &"sp_player_root",
-"language": &"GDScript",
-"path": "res://spite/sprite_class/sp_player_root.gd"
-}, {
-"base": "Node",
-"class": &"sp_st_machine",
-"language": &"GDScript",
-"path": "res://spite/sprite_class/sp_state_machine.gd"
-}, {
-"base": "VBoxContainer",
-"class": &"ui_text_container",
-"language": &"GDScript",
-"path": "res://sp_ui/ui_text_viewer/text_container.gd"
-}, {
-"base": "RefCounted",
-"class": &"ui_text_json_loader",
-"language": &"GDScript",
-"path": "res://sp_ui/ui_text_viewer/text_json_loader.gd"
-}, {
-"base": "RichTextLabel",
-"class": &"ui_text_richtext_node",
-"language": &"GDScript",
-"path": "res://sp_ui/ui_text_viewer/text_richtext_node.gd"
-}, {
-"base": "Control",
-"class": &"ui_text_viewer",
-"language": &"GDScript",
-"path": "res://sp_ui/ui_text_viewer/text_viewer.gd"
-}, {
-"base": "Panel",
-"class": &"ui_weapon_lable",
-"language": &"GDScript",
-"path": "res://sp_ui/ui_items_label/weapon_label.gd"
-}, {
-"base": "Control",
-"class": &"ui_weapon_selector",
-"language": &"GDScript",
-"path": "res://sp_ui/ui_items_label/weapon_select.gd"
-}]
-_global_script_class_icons={
-"G_input": "",
-"G_map_res": "",
-"p_st": "",
-"sp_anim_tree": "",
-"sp_bullet": "",
-"sp_bullet_pool": "",
-"sp_navigation_agent": "",
-"sp_player_root": "",
-"sp_st_machine": "",
-"ui_text_container": "",
-"ui_text_json_loader": "",
-"ui_text_richtext_node": "",
-"ui_text_viewer": "",
-"ui_weapon_lable": "",
-"ui_weapon_selector": ""
-}
-
 [application]
 
 config/name="2d Test"
@@ -123,6 +29,7 @@ project/assembly_name="2d Test"
 [editor]
 
 node_naming/name_casing=2
+export/convert_text_resources_to_binary=true
 
 [filesystem]
 

@@ -18,7 +18,6 @@ region_rect = Rect2(428, 192, 8, 10)
 light_mask = 0
 material = SubResource("ShaderMaterial_a5bv4")
 color = Color(1, 1, 1, 0)
-energy = 2.0
 blend_mode = 2
 range_item_cull_mask = 15
 shadow_item_cull_mask = 6

@@ -6,8 +6,10 @@ namespace Obj.ui;
 
 /*
 #物品标签
-
+	@链接动态物品数据
+	@可选中效果
 */
+
 public partial class item_label : Panel
 {
 	TextureRect item_tex;
@@ -17,8 +19,12 @@ public partial class item_label : Panel
 	ProgressBar sup_progress;
 
  
+	#region for_select
+
 	public Vector2 pos_open { get; set; }
 	public int pos_num { get; set; }
+	
+	#endregion
 
 	[Export]
 	public Resource? item{ 
@@ -38,18 +44,21 @@ public partial class item_label : Panel
 	Resource? _item_dym;
 
 	
-
 	[Signal]
 	public delegate void selectedEventHandler(int pos);
 
 	public Action<int>? select;
 
-	public override void _Ready() {
+	public override void _EnterTree(){
 		item_tex = GetNode<TextureRect>(nameof(item_tex));
 		item_type_tex = GetNode<TextureRect>(nameof(item_type_tex));
 		name_item = GetNode<Label>(nameof(name_item));
 		info_ammo = GetNode<Label>(nameof(info_ammo));
 		sup_progress = GetNode<ProgressBar>(nameof(sup_progress));
+
+	}
+
+	public override void _Ready() {
 
 		pos_open = Position;
 
@@ -125,6 +134,16 @@ public partial class item_label : Panel
 		sup_progress.Value = item_dym.sup;
 	}
 
+	public string? get_commit(){
+		if(item is data_item iitem){
+			return iitem.define!.comment;
+		}
+		else if(item is data_weapon witem){
+			return witem.define!.comment;
+		}	
+		return "";
+	}
+
 	#endregion
 
 	#region mouse_action
@@ -138,6 +157,10 @@ public partial class item_label : Panel
 	public void _mouse_exit() {
 		(Material as ShaderMaterial)?.SetShaderParameter("selec_flag", false);
 		GD.Print($"item {pos_num} defuse selected");
+	}
+
+	public void enable_mouse(){
+		MouseEntered += _mouse_enter;
 	}
 
 	#endregion

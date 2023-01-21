@@ -24,17 +24,17 @@ public partial class sp_item_bags : Node
 	public static int max_item = 4;
 
 
-	public center_item? item_node;
+	public center_item item_node;
 	
-	public data_item selected_item{
+	public data_item? selected_item{
 		get => arr_item[item_num];
 	}
-	public data_weapon selected_weapon{
+	public data_weapon? selected_weapon{
 		get => arr_weapon[weapon_num];
 	}
 
-	public data_weapon[] arr_weapon = new data_weapon[max_weapon];
-	public data_item[] arr_item = new data_item[max_item];
+	public data_weapon?[] arr_weapon = new data_weapon[max_weapon];
+	public data_item?[] arr_item = new data_item[max_item];
 
 	[Export]
 	public int item_num{
@@ -44,7 +44,7 @@ public partial class sp_item_bags : Node
 			EmitSignal(nameof(select_changed));
 		}
 	}
-    private int _item_num;
+	private int _item_num;
 
 	[Export]
 	public int weapon_num {
@@ -55,8 +55,7 @@ public partial class sp_item_bags : Node
 			
 		}
 	}
-
-    private int _weapon_num;
+	private int _weapon_num;
 
 	//
 	[Signal]
@@ -65,7 +64,7 @@ public partial class sp_item_bags : Node
 //--------------------------------------------------------------
 
 	public override void _Ready(){
-		item_node = GetNode<center_item>(center_item.path_node);
+		item_node = center_item.instance;
 
 		//test
 		var timer = GetTree().CreateTimer(1.0);
@@ -76,12 +75,13 @@ public partial class sp_item_bags : Node
 	public void test_method(){
 		add_item(item_node.init_item("phc-12",6),0);
 		add_item(item_node.init_item("phc-12",7),1);
-        
-        add_item(item_node.init_weapon("mk4-s",10,60,5),0);
-        add_item(item_node.init_weapon("mk4-s",1,60,1),2);
-        GD.Print("init_bag_item");
+		
+		add_item(item_node.init_weapon("mk4-s",10,60,5),0);
+		add_item(item_node.init_weapon("mk4-s",1,60,1),2);
+		GD.Print("init_bag_item");
 	}
 
+	#region bag_action
 
 	public void add_item(Resource item,int pos){
 		if(item is data_item dataItem)
@@ -89,6 +89,7 @@ public partial class sp_item_bags : Node
 		else
 			arr_weapon[pos] = (data_weapon)item;
 	}
+
 
 	public data_item swap_item(data_item item,int pos){
 		var swap_data = arr_item[pos];
@@ -114,4 +115,6 @@ public partial class sp_item_bags : Node
 		arr_weapon[pos] = null;
 		return gc_data;
 	}
+
+	#endregion
 }

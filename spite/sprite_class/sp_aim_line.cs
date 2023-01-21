@@ -19,13 +19,16 @@ public partial class sp_aim_line : RayCast2D
 	public Line2D node_line;
 
 	public bool Ray_active{
+		get => _ray_active;
         set{
 			SetPhysicsProcess(value);
 			SetProcessUnhandledInput(value);
             if(value) 
                 LookAt(GetGlobalMousePosition());
+			
         }
 	}
+	bool _ray_active;
 
 
     public override void _Ready(){
@@ -33,7 +36,7 @@ public partial class sp_aim_line : RayCast2D
 		SetProcessUnhandledInput(false);
 		Visible = false;
 
-		node_player = Owner as sp_player_root;
+		node_player = (sp_player_root)Owner;
 		node_line = GetNode<Line2D>("aim_line");
 
 		TargetPosition = ray_lenth;

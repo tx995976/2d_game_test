@@ -1,8 +1,8 @@
-[gd_scene load_steps=2 format=2]
-
-[ext_resource path="res://spite/player/spite_1.tscn" type="PackedScene" id=1]
+[gd_scene format=3 uid="uid://dtg85ioi8ph8n"]
 
 [node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 4.0
@@ -11,6 +11,7 @@ offset_right = 4.0
 offset_bottom = 3.0
 
 [node name="Panel" type="Panel" parent="."]
+layout_mode = 0
 offset_left = 263.0
 offset_top = 217.0
 offset_right = 652.0
@@ -18,6 +19,7 @@ offset_bottom = 472.0
 
 [node name="myb" type="Button" parent="Panel"]
 unique_name_in_owner = true
+layout_mode = 0
 anchor_right = 0.023
 anchor_bottom = 0.017
 offset_left = 66.0
@@ -25,6 +27,3 @@ offset_top = 92.0
 offset_right = 179.133
 offset_bottom = 107.325
 text = "click me"
-
-[node name="CharacterBody2D" parent="." instance=ExtResource( 1 )]
-position = Vector2( 56, 69 )

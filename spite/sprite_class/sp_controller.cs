@@ -15,11 +15,11 @@ public partial class sp_controller : Node
 {
 
     [Export]
-    public sp_player_root node_player;
+    public sp_player_root node_player { get; set; }
 
     public override void _Ready(){
         SetProcessUnhandledInput(true);
-        node_player = Owner as sp_player_root;
+        node_player = (sp_player_root)Owner;
         
 
         /*

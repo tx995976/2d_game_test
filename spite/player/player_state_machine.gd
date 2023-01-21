@@ -6,7 +6,7 @@ var state_stack : Array = []
 
 var _active : bool = false :
 	get:
-		return _active # TODOConverter40 Non existent get function 
+		return _active 
 	set(value):
 		_active = value
 		set_physics_process(_active)

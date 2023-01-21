@@ -11,7 +11,7 @@ public partial class map_item_door_1 : map_item_root
 
 	public override void _Ready(){
 		base._Ready();
-		ani_node = GetNode("ani") as AnimationPlayer;
+		ani_node = (AnimationPlayer)GetNode("ani");
 	}
 
 	public override void _action_be_trigger(){

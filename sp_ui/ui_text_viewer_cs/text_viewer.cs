@@ -26,12 +26,13 @@ public partial class text_viewer :Control
     }
 
     [Export]
-    int num_txt_node { get; set; }
+    public int num_txt_node { get; set; }
 
     [Export]
     Godot.Collections.Dictionary<string, text_container> container_list;
 
-    Queue<text_richtext_node> pool_txt_node = new Queue<text_richtext_node>();
+    //Queue<text_richtext_node> pool_txt_node = new Queue<text_richtext_node>();
+    util.Objectpools<text_richtext_node> pools;
     PackedScene tscn_text_richtext;
 
     public override void _EnterTree() {
@@ -42,6 +43,7 @@ public partial class text_viewer :Control
 
         //res_load
         tscn_text_richtext = await Task.Run(() => GD.Load<PackedScene>(path_richtext));
+
 
         //signal_connect
         pack_txt_exec += _exec_txt_res;
@@ -55,20 +57,27 @@ public partial class text_viewer :Control
         }
 
         //pool_txt 初始化
+        pools = new util.Objectpools<text_richtext_node>(num_txt_node, tscn_text_richtext,
+        (node) =>
+        {
+            node.txt_destroy += _node_free;
+        });
+        /*
         for (int i = 0;i < num_txt_node;i++) {
             var node_txt = tscn_text_richtext.Instantiate<text_richtext_node>();
-            node_txt.txt_destroy += _node_free;
             //GD.Print(node_txt.Name);
+            node_txt.txt_destroy += _node_free;
             pool_txt_node.Enqueue(node_txt);
         }
+        */
     }
 
     public void _node_free(text_richtext_node node) {
-        pool_txt_node.Enqueue(node);
+        pools.push(node);
     }
 
     public text_richtext_node _node_get() {
-        return new text_richtext_node();
+        return pools.pop();
     }
 
     public void _show_one_msg(Dictionary para) {
@@ -93,6 +102,6 @@ public partial class text_viewer :Control
     }
 
 
-    public Action<Array<Dictionary> >? pack_txt_exec;
+    public Action<Array<Dictionary>>? pack_txt_exec;
 
 }

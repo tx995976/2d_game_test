@@ -23,7 +23,6 @@ metadata/_edit_lock_ = true
 
 [node name="world2d" type="Node2D" parent="."]
 unique_name_in_owner = true
-modulate = Color(0.4, 0.4, 0.4, 1)
 light_mask = 0
 metadata/_edit_lock_ = true
 
@@ -79,8 +78,8 @@ navigation_polygon = SubResource("NavigationPolygon_ue7ed")
 [node name="friend_sp" type="CanvasGroup" parent="world2d"]
 
 [node name="sp_friend_army" parent="world2d/friend_sp" instance=ExtResource("7_4nwml")]
-z_index = 1
-position = Vector2(294, 209)
+z_as_relative = false
+position = Vector2(263, 213)
 
 [node name="player_camera" type="Camera2D" parent="world2d/friend_sp/sp_friend_army"]
 position = Vector2(-554, -297)
@@ -97,10 +96,14 @@ unique_name_in_owner = true
 stream = ExtResource("8_a7tfs")
 bus = &"background"
 
+[node name="canvas_modulate" type="CanvasModulate" parent="world2d"]
+color = Color(0.356863, 0.356863, 0.356863, 1)
+
 [node name="ui_canvas" type="CanvasLayer" parent="."]
 unique_name_in_owner = true
 
 [node name="ui_tips" parent="ui_canvas" instance=ExtResource("8_218ac")]
 unique_name_in_owner = true
+visible = false
 
 [editable path="world2d/tile_1/trigger/area_1"]

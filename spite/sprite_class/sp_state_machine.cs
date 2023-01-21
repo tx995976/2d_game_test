@@ -12,7 +12,7 @@ namespace Obj.sp_player;
 public partial class sp_state_machine : Node
 {
 	[Export]
-	Godot.Collections.Dictionary<string,sp_status> st_map;
+	Godot.Collections.Dictionary<string,sp_status> st_map = new();
 
 	Stack<sp_status> st_stack = new Stack<sp_status>();
 	
@@ -20,10 +20,10 @@ public partial class sp_state_machine : Node
 	public bool is_active;
 
 	[Export]
-	public sp_status start_state;
+	public sp_status start_state { get; set; }
 
 	[Export]
-	public sp_status status_now;
+	public sp_status status_now { get; set; }
 
 	public enum st_mode{
 		st_push,
@@ -32,7 +32,6 @@ public partial class sp_state_machine : Node
 	}
 
 	public override void _Ready(){
-		st_map = new Godot.Collections.Dictionary<string,sp_status>();
 		//init sp_status
 		foreach(sp_status child in GetChildren()){
 			st_map[child.Name] = child;
@@ -72,5 +71,7 @@ public partial class sp_state_machine : Node
 
 	[Signal]
 	public delegate void state_changeEventHandler(string name);
+
+	public event Action<StringName>? signal_state_change;
 
 }

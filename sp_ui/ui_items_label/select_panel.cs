@@ -67,7 +67,7 @@ public partial class select_panel : Control
 
 	public void flush_panel(){
 		for (int i = 0; i < max_label; i++){
-			@selecter_items[i].item_dym = connect_bags?.arr_item[i];
+			@selecter_items[i].item = connect_bags?.arr_item[i];
 			//@selecter_items[i].flush_label();
 			@selecter_weapons[i].item_dym = connect_bags?.arr_weapon[i];
 			//@selecter_weapons[i].flush_label();
@@ -145,7 +145,7 @@ public partial class select_panel : Control
 	}
 
 	public void item_changed(int pos){
-		comment_node.Text = @selecter_items[pos]?.item_dym?.define.comment;
+		comment_node.Text = @selecter_items[pos].get_commit();
 
 		if (pos == @pos_item)
 			return;

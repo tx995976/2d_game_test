@@ -84,9 +84,7 @@ public partial class sp_player_root : CharacterBody2D
 	[Signal]
 	public delegate void action_mouseEventHandler(); //if need
 
-	public Action _action_event_input;
-	public Action _action_mouse;
+	public event Action? _action_event_input;
+	public event Action? _action_mouse;
 	
-	//test
-	public sp_status action_input_node;
 }
