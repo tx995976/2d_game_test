@@ -116,8 +116,8 @@ public partial class select_panel : Control
 	async public void close_item() {
 		//GD.Print("get");
 		var tween_node = GetTree().CreateTween()
-			.SetTrans(Tween.TransitionType.Back)
-			.SetEase(Tween.EaseType.Out);
+				.SetTrans(Tween.TransitionType.Back)
+				.SetEase(Tween.EaseType.Out);
 
 		//ani
 		for (int i = 0; i < max_label; i++)

@@ -1,11 +1,10 @@
-using Godot;
-using System;
 using System.Collections.Generic;
 
 public partial class sp_bullet_pool : Node
 {
 
     Queue<sp_node_bullet> pool_bullet = new Queue<sp_node_bullet>();
+
 
     [Export]
     int instance_bullet;

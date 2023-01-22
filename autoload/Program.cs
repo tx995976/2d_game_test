@@ -6,7 +6,7 @@ namespace Obj.autoload;
 
 public class ServiceProvide
 {
-   
+	
 
 
 

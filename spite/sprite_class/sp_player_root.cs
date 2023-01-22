@@ -35,18 +35,6 @@ public partial class sp_player_root : CharacterBody2D
 	[Export]
 	public int speed { get; set; }
 
-	/*
-	//attribute for battle
-	[Export]
-	public float health;
-
-	[Export]
-	public float balance;
-
-	[Export]
-	public float armor;
-	*/
-
 	//基本状态机
 	[Export]
 	public sp_state_machine basic_state { get; set; }
