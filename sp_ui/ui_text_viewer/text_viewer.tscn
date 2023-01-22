@@ -1,9 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://cptrqewq8413g"]
+[gd_scene load_steps=5 format=3]
 
-[ext_resource type="Script" path="res://sp_ui/ui_text_viewer/text_viewer.gd" id="1_flimi"]
-[ext_resource type="Script" path="res://sp_ui/ui_text_viewer/container_info.gd" id="2_rebv8"]
-[ext_resource type="Script" path="res://sp_ui/ui_text_viewer/container_top.gd" id="3_tl253"]
-[ext_resource type="Script" path="res://sp_ui/ui_text_viewer/container_talk.gd" id="4_425a0"]
+[ext_resource type="Script" path="res://gds/text_viewer.gd" id="1_flimi"]
+[ext_resource type="Script" path="res://gds/container_info.gd" id="2_rebv8"]
+[ext_resource type="Script" path="res://gds/container_top.gd" id="3_tl253"]
+[ext_resource type="Script" path="res://gds/container_talk.gd" id="4_425a0"]
 
 [node name="ui_text_viewer" type="Control"]
 custom_minimum_size = Vector2(400, 300)

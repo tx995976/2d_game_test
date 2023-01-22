@@ -1,12 +1,12 @@
-[gd_scene load_steps=45 format=3 uid="uid://cyh0b8lqbvoin"]
+[gd_scene load_steps=45 format=3]
 
-[ext_resource type="Script" path="res://spite/sprite_class/sp_state_machine.gd" id="1_36lex"]
-[ext_resource type="Script" path="res://spite/enemy_normal_zombie/sprite_normal_zombie.gd" id="1_l3j1u"]
-[ext_resource type="Script" path="res://spite/enemy_normal_zombie/st_idle.gd" id="3_0d8mf"]
+[ext_resource type="Script" path="res://gds/sp_state_machine.gd" id="1_36lex"]
+[ext_resource type="Script" path="res://gds/sprite_normal_zombie.gd" id="1_l3j1u"]
+[ext_resource type="Script" path="res://gds/st_idle.gd" id="3_0d8mf"]
 [ext_resource type="Texture2D" uid="uid://b3j8nuvp0mmox" path="res://texture/monster_tex/normal_texture.png" id="3_itgw3"]
-[ext_resource type="Script" path="res://spite/enemy_normal_zombie/st_walk.gd" id="4_txder"]
-[ext_resource type="Script" path="res://spite/enemy_normal_zombie/zombie_agent.gd" id="6_4gdg6"]
-[ext_resource type="Script" path="res://spite/enemy_normal_zombie/zombie_anim_tree.gd" id="6_ia3c7"]
+[ext_resource type="Script" path="res://gds/st_walk.gd" id="4_txder"]
+[ext_resource type="Script" path="res://gds/zombie_agent.gd" id="6_4gdg6"]
+[ext_resource type="Script" path="res://gds/zombie_anim_tree.gd" id="6_ia3c7"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_10wj0"]
 animation = &"sp_animation_zombie/att_down"

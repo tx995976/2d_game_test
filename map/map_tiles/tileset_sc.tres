@@ -1,13 +1,13 @@
-[gd_resource type="TileSet" load_steps=31 format=3 uid="uid://ctpihslikhwc6"]
+[gd_resource type="TileSet" load_steps=31 format=3 uid="uid://cuim2rcd17i5r"]
 
-[ext_resource type="Texture2D" uid="uid://dglkexjnc7ren" path="res://map/map_tiles/新学校2A5.png" id="1"]
-[ext_resource type="Texture2D" uid="uid://c2in6e5b6xyv2" path="res://map/map_tiles/新学校B.png" id="2"]
-[ext_resource type="PackedScene" uid="uid://cts3fneqquxs4" path="res://map/map_item/light_1/item_light_1.tscn" id="3_1nhgw"]
+[ext_resource type="Texture2D" uid="uid://c2in6e5b6xyv2" path="res://texture/tiles_tex/新学校B.png" id="1_hftxb"]
+[ext_resource type="Texture2D" uid="uid://dglkexjnc7ren" path="res://texture/tiles_tex/新学校2A5.png" id="2_w3bhi"]
+[ext_resource type="PackedScene" path="res://map/map_item/light_1/item_light_1.tscn" id="3_1nhgw"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_kna86"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ngmjs"]
-texture = ExtResource("2")
+texture = ExtResource("1_hftxb")
 margins = Vector2i(256, 128)
 10:4/0 = 0
 10:4/0/physics_layer_0/linear_velocity = Vector2(0, 0)
@@ -300,7 +300,7 @@ polygon = PackedVector2Array(-8, -8, 8, -8, 8, -7, -8, -7)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ki2ts"]
 resource_name = "ground"
-texture = ExtResource("1")
+texture = ExtResource("2_w3bhi")
 6:16/next_alternative_id = 3
 6:16/0 = 0
 6:16/0/physics_layer_0/linear_velocity = Vector2(0, 0)
