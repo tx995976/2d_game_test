@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://c2in6e5b6xyv2" path="res://texture/tiles_tex/新学校B.png" id="1_hftxb"]
 [ext_resource type="Texture2D" uid="uid://dglkexjnc7ren" path="res://texture/tiles_tex/新学校2A5.png" id="2_w3bhi"]
-[ext_resource type="PackedScene" path="res://map/map_item/light_1/item_light_1.tscn" id="3_1nhgw"]
+[ext_resource type="PackedScene" uid="uid://bglbosapj1lfy" path="res://map/map_item/light_1/item_light_1.tscn" id="3_1nhgw"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_kna86"]
 
