@@ -3,7 +3,7 @@ using static Godot.GD;
 
 using Obj.ui;
 
-namespace Obj.ev_trigger;
+namespace Obj.Event;
 /*
 	//触发器(按钮)
 	@主动检测 sp -> area

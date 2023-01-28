@@ -3,7 +3,7 @@ using System;
 
 using Obj.sp_player;
 
-namespace sp_player_friend_1;
+namespace Obj.sp_player.entity.sp_player_friend_1;
 
 using mode_st = sp_state_machine.st_mode;
 

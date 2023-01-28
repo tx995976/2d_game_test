@@ -15,3 +15,7 @@ addons/
 *.err
 *.tscn
 *.tres
+
+bin/
+obj/
+

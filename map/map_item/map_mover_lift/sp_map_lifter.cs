@@ -2,7 +2,7 @@ using Godot;
 using System;
 using static Godot.GD;
 
-namespace Obj.map.items;
+namespace Obj.map.entity;
 
 public partial class sp_map_lifter : Area2D{
 	[Export(PropertyHint.ArrayType)]

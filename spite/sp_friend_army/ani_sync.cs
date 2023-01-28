@@ -2,7 +2,7 @@ using Godot;
 using Godot.Collections;
 using Obj.sp_player;
 
-namespace sp_player_friend_1;
+namespace Obj.sp_player.entity.sp_player_friend_1;
 
 sealed public partial class ani_sync : sp_anim_sync
 {

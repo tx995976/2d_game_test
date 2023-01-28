@@ -1,7 +1,9 @@
 using Godot;
 using System;
 
-using Obj.ev_trigger;
+using Obj.Event;
+
+namespace Obj.map.entity;
 
 public partial class map_item_button_1 : ev_trigger_button
 {

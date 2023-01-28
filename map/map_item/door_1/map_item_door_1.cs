@@ -1,6 +1,8 @@
 using Godot;
 using System;
 
+namespace Obj.map.entity;
+
 public partial class map_item_door_1 : map_item_root
 {
 	

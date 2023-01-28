@@ -1,6 +1,7 @@
 using Godot;
 using System;
 
+namespace Obj.map.entity;
 
 //地图内交互物品基类
 

@@ -4,12 +4,13 @@ namespace Obj.autoload;
 public interface Iitem_center
 {
     //TODO: 负责物品管理
+    
 }
 
 
 public interface Isound_center
 {
-    //TODO: 负责场景无关音乐
+    //TODO: 负责音乐
 
 }
 
@@ -21,7 +22,7 @@ public interface Iui_center
 
 public interface Ihud_center
 {
-	//TODO: 负责游戏内hud
+    //TODO: 负责游戏内hud
 
 }
 
@@ -32,9 +33,14 @@ public interface Imap_center
 
 public interface Ievent_center
 {
-    //TODO: 负责
+    //TODO: 负责事件搜集,事件队列处理
 
 
+}
+
+public interface Ieffect_center
+{
+    //TODO: 负责效果应用(e.g. 加速,减速)
 }
 
 

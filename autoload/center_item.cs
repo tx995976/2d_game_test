@@ -1,10 +1,7 @@
 using Godot;
 using Godot.Collections;
-using System.Linq;
 
 using Obj.resource;
-using System.Threading.Tasks;
-// ReSharper disable All
 
 namespace Obj.autoload;
 

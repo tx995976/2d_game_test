@@ -19,11 +19,11 @@ public partial class select_panel : Control
 	public Array<weapon_label> @selecter_weapons = new Array<weapon_label>();
 
 	
-	Control @panel_item;
-	Control @panel_weapon;
+	Control @panel_item { get; set; }
+	Control @panel_weapon { get; set; }
 
 	[Export]
-	Label comment_node;
+	Label comment_node { get; set; }
 
 //------------------------------------------------------------------------------------
 	public override void _Ready() {
@@ -34,7 +34,7 @@ public partial class select_panel : Control
 		//
 		var arr_child = @panel_item.GetChildren();
 		for (int i = 0; i < max_label;i++){
-			var item = arr_child[i] as item_label;
+			var item = (item_label)arr_child[i];
 			@selecter_items.Add(item);
 			item.pos_num = i; 
 			item.selected += item_changed;

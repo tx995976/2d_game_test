@@ -1,6 +1,8 @@
 using Godot;
 using System;
 
+namespace Obj.map.entity;
+
 /*
 地图互动物品基类
 
@@ -9,7 +11,6 @@ _action_be_trigger()
 
 _action_be_hit()
 @触发->物理碰撞->call
-
 
 */
 public partial class map_item_root : Node2D

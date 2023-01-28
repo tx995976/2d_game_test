@@ -1,7 +1,3 @@
-using Godot;
-using Godot.Collections;
-using System.Collections;
-
 namespace Obj.sp_player;
 
 /*
