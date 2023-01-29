@@ -2,7 +2,7 @@ namespace Obj.util;
 
 #region signal
 
-public class signalact : IAwaitable
+public class SignalAct : IAwaitable
 {
     private signalawaiter _awaiter = new();
     public event Action? act;
@@ -20,19 +20,19 @@ public class signalact : IAwaitable
             act = null;
     }
 
-    public static signalact operator + (signalact left, Action right){
+    public static SignalAct operator + (SignalAct left, Action right){
         left.act += right;
         return left;
     }
 
-    public static signalact operator - (signalact left, Action right){
+    public static SignalAct operator - (SignalAct left, Action right){
         left.act -= right;
         return left;
     }
 
 }
 
-public class signalact<T> : IAwaitable
+public class SignalAct<T> : IAwaitable
 {
     private signalawaiter _awaiter = new();
     public event Action<T>? act;
@@ -50,18 +50,18 @@ public class signalact<T> : IAwaitable
             act = null;
     }
 
-    public static signalact<T> operator + (signalact<T> left, Action<T> right){
+    public static SignalAct<T> operator + (SignalAct<T> left, Action<T> right){
         left.act += right;
         return left;
     }
 
-    public static signalact<T> operator - (signalact<T> left, Action<T> right){
+    public static SignalAct<T> operator - (SignalAct<T> left, Action<T> right){
         left.act -= right;
         return left;
     }
 }
 
-public class signalact<T,T1> : IAwaitable
+public class SignalAct<T,T1> : IAwaitable
 {
     private signalawaiter _awaiter = new();
     public event Action<T,T1>? act;
@@ -79,18 +79,18 @@ public class signalact<T,T1> : IAwaitable
             act = null;
     }
 
-    public static signalact<T,T1> operator + (signalact<T,T1> left, Action<T,T1> right){
+    public static SignalAct<T,T1> operator + (SignalAct<T,T1> left, Action<T,T1> right){
         left.act += right;
         return left;
     }
 
-    public static signalact<T,T1> operator - (signalact<T,T1> left, Action<T,T1> right){
+    public static SignalAct<T,T1> operator - (SignalAct<T,T1> left, Action<T,T1> right){
         left.act -= right;
         return left;
     }
 }
 
-public class signalact<T,T1,T2> : IAwaitable
+public class SignalAct<T,T1,T2> : IAwaitable
 {
     private signalawaiter _awaiter = new();
     public event Action<T,T1,T2>? act;
@@ -108,19 +108,19 @@ public class signalact<T,T1,T2> : IAwaitable
             act = null;
     }
 
-    public static signalact<T,T1,T2> operator + (signalact<T,T1,T2> left, Action<T,T1,T2> right){
+    public static SignalAct<T,T1,T2> operator + (SignalAct<T,T1,T2> left, Action<T,T1,T2> right){
         left.act += right;
         return left;
     }
 
-    public static signalact<T,T1,T2> operator - (signalact<T,T1,T2> left, Action<T,T1,T2> right){
+    public static SignalAct<T,T1,T2> operator - (SignalAct<T,T1,T2> left, Action<T,T1,T2> right){
         left.act -= right;
         return left;
     }
 
 }
 
-public class signalact<T,T1,T2,T3> : IAwaitable
+public class SignalAct<T,T1,T2,T3> : IAwaitable
 {
     private signalawaiter _awaiter = new();
     public event Action<T,T1,T2,T3>? act;
@@ -138,12 +138,12 @@ public class signalact<T,T1,T2,T3> : IAwaitable
             act = null;
     }
 
-    public static signalact<T,T1,T2,T3> operator + (signalact<T,T1,T2,T3> left, Action<T,T1,T2,T3> right){
+    public static SignalAct<T,T1,T2,T3> operator + (SignalAct<T,T1,T2,T3> left, Action<T,T1,T2,T3> right){
         left.act += right;
         return left;
     }
 
-    public static signalact<T,T1,T2,T3> operator - (signalact<T,T1,T2,T3> left, Action<T,T1,T2,T3> right){
+    public static SignalAct<T,T1,T2,T3> operator - (SignalAct<T,T1,T2,T3> left, Action<T,T1,T2,T3> right){
         left.act -= right;
         return left;
     }

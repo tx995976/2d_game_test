@@ -4,11 +4,3 @@ global using Obj.util;
 global using System.Threading.Tasks;
 
 namespace Obj.autoload;
-
-public class ServiceProvide
-{
-	
-
-
-
-}
