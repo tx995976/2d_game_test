@@ -15,8 +15,8 @@ public partial class sp_aim_line : RayCast2D
 	[Export]
 	public Vector2 ray_lenth;
 
-    sp_player_root node_player;
-	public Line2D node_line;
+    sp_player_root? node_player;
+	Line2D? node_line;
 
 	public bool Ray_active{
 		get => _ray_active;
@@ -52,7 +52,7 @@ public partial class sp_aim_line : RayCast2D
 		if(IsColliding()){
 			pos_coll.x = (GetCollisionPoint() - GlobalPosition).Length();
 		}
-		node_line.SetPointPosition(1,pos_coll);
+		node_line!.SetPointPosition(1,pos_coll);
     }
 
 }

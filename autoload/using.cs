@@ -1,6 +1,12 @@
-global using Godot;
 global using System;
-global using Obj.util;
 global using System.Threading.Tasks;
+global using System.Collections.Generic;
+global using System.Linq;
 
-namespace Obj.autoload;
+global using Godot;
+global using gdc = Godot.Collections;
+
+global using Obj.util;
+global using Obj.resource.model;
+global using Obj.resource;
+

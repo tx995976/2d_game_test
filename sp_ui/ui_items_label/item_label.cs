@@ -12,11 +12,11 @@ namespace Obj.ui;
 
 public partial class item_label : Panel
 {
-	TextureRect item_tex;
-	TextureRect item_type_tex;
-	Label name_item;
-	Label info_ammo;
-	ProgressBar sup_progress;
+	TextureRect? item_tex;
+	TextureRect? item_type_tex;
+	Label? name_item;
+	Label? info_ammo;
+	ProgressBar? sup_progress;
 
  
 	#region for_select
@@ -71,11 +71,11 @@ public partial class item_label : Panel
 	public void flush_label(data_item item_dym) {
 		var label_data = item_dym.define!;
 
-		name_item.Text = label_data.item_name;
-		item_tex.Texture = label_data.item_texture;
-		item_type_tex.Texture = label_data.item_type_texture;
+		name_item!.Text = label_data.item_name;
+		item_tex!.Texture = label_data.item_texture;
+		item_type_tex!.Texture = label_data.item_type_texture;
 
-		info_ammo.Text = $"{item_dym.num_now}";
+		info_ammo!.Text = $"{item_dym.num_now}";
 
 		item_dym.signal_data_change += sync_item;
 	}
@@ -83,19 +83,19 @@ public partial class item_label : Panel
 	public void flush_label(data_weapon item_dym) {
 		var label_data = item_dym.define;
 
-		name_item.Text = label_data.item_name;
-		item_tex.Texture = label_data.item_texture;
-		item_type_tex.Texture = label_data.item_type_texture;
+		name_item!.Text = label_data.item_name;
+		item_tex!.Texture = label_data.item_texture;
+		item_type_tex!.Texture = label_data.item_type_texture;
 
-		info_ammo.Text = $"{item_dym.ammo_in}/{item_dym.ammo_bag}";
+		info_ammo!.Text = $"{item_dym.ammo_in}/{item_dym.ammo_bag}";
 
 		if (label_data.has_sup) {
-			sup_progress.MaxValue = label_data.sup_max;
+			sup_progress!.MaxValue = label_data.sup_max;
 			sup_progress.Value = item_dym.sup;
 			sup_progress.Visible = true;
 		}
 		else {
-			sup_progress.Visible = false;
+			sup_progress!.Visible = false;
 		}
 
 		item_dym.signal_data_change += sync_weapon;

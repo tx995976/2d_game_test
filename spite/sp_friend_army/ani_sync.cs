@@ -1,7 +1,3 @@
-using Godot;
-using Godot.Collections;
-using Obj.sp_player;
-
 namespace Obj.sp_player.entity.sp_player_friend_1;
 
 sealed public partial class ani_sync : sp_anim_sync
@@ -10,7 +6,7 @@ sealed public partial class ani_sync : sp_anim_sync
 	public override void _Ready(){
 		base._Ready();
 		//blend
-		blend_params = new Dictionary<StringName, string>{
+		blend_params = new gdc.Dictionary<StringName, string>{
 			{"change_none","parameters/sp_status/change_none/blend_position"},
 			{"change_weapon","parameters/sp_status/change_weapon/blend_position"},
 			{"idle","parameters/sp_status/idle/blend_position"},
@@ -28,7 +24,7 @@ sealed public partial class ani_sync : sp_anim_sync
 
 	public override void _PhysicsProcess(double delta){
 		//params_sync
-		Set(blend_params["change_none"],sp_node.view_dir);
+		Set(blend_params["change_none"],sp_node!.view_dir);
 		Set(blend_params["change_weapon"],sp_node.view_dir);
 		Set(blend_params["idle"],sp_node.view_dir);
 		Set(blend_params["idle_weapon"],sp_node.view_dir);
@@ -38,7 +34,7 @@ sealed public partial class ani_sync : sp_anim_sync
 
 	public override void cm_st_change(string new_st){
 		if(str_item == null){
-			pb_now.Travel(new_st);
+			pb_now!.Travel(new_st);
 			str_cm = new_st;
 		}
 		else{

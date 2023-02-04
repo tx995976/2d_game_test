@@ -12,22 +12,22 @@ namespace Obj.sp_player;
 public partial class sp_anim_sync : AnimationTree
 {
     [Export]
-    public sp_player_root sp_node { get; set;}
+    public sp_player_root? sp_node { get; set;}
 
     [Export]
-    public sp_state_machine common_st_node { get; set;}
+    public sp_state_machine? common_st_node { get; set;}
 
     [Export]
-    public sp_state_machine item_st_node { get; set;} // if need;
+    public sp_state_machine? item_st_node { get; set;} // if need;
 
     [Export]
-    public AnimationNodeStateMachinePlayback pb_now { get; set;}
+    public AnimationNodeStateMachinePlayback? pb_now { get; set;}
     
     [Export]
-    public Dictionary<StringName,string> blend_params { get; set;}
+    public gdc.Dictionary<StringName,string> blend_params { get; set;} = new();
 
     [Export]
-    public Dictionary<StringName,AnimationNodeStateMachinePlayback> playbacks { get; set;} //if need;
+    public gdc.Dictionary<StringName,AnimationNodeStateMachinePlayback> playbacks { get; set;} = new();//if need;
     //info_state
 
     public string? str_cm { get; set; }
@@ -38,8 +38,8 @@ public partial class sp_anim_sync : AnimationTree
         //init
         sp_node = (sp_player_root)Owner;
         
-        common_st_node.state_change += cm_st_change;
-        item_st_node.state_change += item_st_change;
+        common_st_node!.state_change += cm_st_change;
+        item_st_node!.state_change += item_st_change;
 
     }
 

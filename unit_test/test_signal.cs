@@ -2,7 +2,7 @@
 namespace Obj.test;
 
 [Tool]
-public class test_signal : EditorScript
+public partial class test_signal : EditorScript
 {
 
 	async public override void _Run() {

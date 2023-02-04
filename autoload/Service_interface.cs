@@ -5,6 +5,8 @@ public interface Iitem_center
 {
     //TODO: 负责物品管理
     
+    
+
 }
 
 

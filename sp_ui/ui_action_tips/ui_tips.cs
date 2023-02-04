@@ -7,7 +7,7 @@ namespace Obj.ui;
 public partial class ui_tips : TextureRect
 {
 	[Export] 
-	public Dictionary<StringName,Texture2D> tips_list { get; set; } = new();
+	public gdc.Dictionary<StringName,Texture2D> tips_list { get; set; } = new();
 
     public static readonly string node_name = "ui_tips";
 

@@ -2,7 +2,7 @@ using System.Collections.Generic;
 namespace Obj.util;
 
 /// 简易状态机实现
-public class stateMachineSilm :Node, IstateMachine
+public partial class stateMachineSilm :Node, IstateMachine
 {
 	public bool is_active { get; set; }
 	public IstateNode? state_now { get; set; }
@@ -12,7 +12,7 @@ public class stateMachineSilm :Node, IstateMachine
 
 	public event Action<string>? state_changed;
 
-	public void change_state(string state, int mode = 1) {
+	public void change_state(string state, stc_mode mode = stc_mode.st_swap) {
 		if (!is_active)
 			return;
 
@@ -26,8 +26,8 @@ public class stateMachineSilm :Node, IstateMachine
 	public override void _Ready(){
 		var states = GetChildren();
 		foreach (IstateNode state in states){
-			state_list[state.name] = state;
-			state.state_change += change_state;
+			state_list[state.name!] = state;
+			state.change_state += change_state;
 		}
 
 		state_now = state_default;

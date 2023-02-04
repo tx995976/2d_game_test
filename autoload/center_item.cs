@@ -16,13 +16,13 @@ public partial class center_item : Node
 {
 	public static center_item? instance;
 	public static string path_node = "/root/center_item";
-	public static string path_data = "res://package_res/data_items/"; //default_data
+	public static string path_data = "res://package_res/tres_item/"; //default_data
 
 	[Export]
-	public Dictionary<StringName,res_item_static_data> dic_items { get; set; } = new();
+	public gdc.Dictionary<StringName,res_item_static_data> dic_items { get; set; } = new();
 
 	[Export]
-	public Dictionary<StringName,res_weapon_static_data> dic_weapons { get; set; } = new();
+	public gdc.Dictionary<StringName,res_weapon_static_data> dic_weapons { get; set; } = new();
 
 	public override void _EnterTree(){
 		instance = this;

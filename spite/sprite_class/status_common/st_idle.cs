@@ -1,21 +1,32 @@
-using Godot;
-using System;
-
 namespace Obj.sp_player.status;
 
-using mode_st = sp_state_machine.st_mode;
+using System;
 
-public partial class st_idle : sp_status
+public partial class st_idle :sp_status
 {
 
+}
 
-	public override void process_action(InputEvent @event){
-		
+public partial class state_idle : Node, IstateNode
+{
+	Iwalkable? source;
+
+	public string? name => Name;
+
+	public event Action<string, stc_mode>? change_state;
+
+	public override void _PhysicsProcess(double delta) {
+		if (source!.velocity_dir != Vector2.Zero)
+			change_state?.Invoke("walk", stc_mode.st_swap);
 	}
 
-	public override void _PhysicsProcess(double delta){
-		if(node_player.mov_dir != Vector2.Zero)
-			EmitSignal(nameof(status_change),(int)mode_st.st_swap,"walk");
+	public void enter_state()
+	{
+		throw new NotImplementedException();
+	}
 
+	public void exit_state()
+	{
+		throw new NotImplementedException();
 	}
 }

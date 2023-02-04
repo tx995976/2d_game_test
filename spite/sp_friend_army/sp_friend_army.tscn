@@ -1,14 +1,21 @@
-[gd_scene load_steps=75 format=3 uid="uid://db5kn1ekukkud"]
+[gd_scene load_steps=78 format=3 uid="uid://db5kn1ekukkud"]
 
 [ext_resource type="Script" path="res://spite/sp_friend_army/sp_friend1_root.cs" id="1_07h1g"]
 [ext_resource type="Script" path="res://spite/sprite_class/sp_controller.cs" id="1_y0nns"]
 [ext_resource type="Texture2D" uid="uid://cgn5qdlw86frn" path="res://texture/charater_tex/tex_1 (2).png" id="2_yfbv4"]
+[ext_resource type="Texture2D" uid="uid://vlhrr7rnh1s5" path="res://texture/charater_tex/tex_1 (2)_n.png" id="3_b60pe"]
 [ext_resource type="Script" path="res://spite/sp_friend_army/ani_sync.cs" id="3_hepqh"]
+[ext_resource type="Texture2D" uid="uid://d3fp314kam50m" path="res://texture/charater_tex/tex_1 (2)_s.png" id="4_mmg6a"]
 [ext_resource type="Script" path="res://spite/sprite_class/sp_state_machine.cs" id="4_yvkqw"]
 [ext_resource type="Script" path="res://spite/sp_friend_army/st_idle.cs" id="5_wfd2n"]
 [ext_resource type="Script" path="res://spite/sp_friend_army/st_walk.cs" id="6_n0o35"]
 [ext_resource type="Script" path="res://spite/sp_friend_army/st_item_none.cs" id="8_tkdfh"]
 [ext_resource type="Script" path="res://spite/sprite_class/item_bag/sp_item_bags.cs" id="9_i73j5"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_2r2po"]
+diffuse_texture = ExtResource("2_yfbv4")
+normal_texture = ExtResource("3_b60pe")
+specular_texture = ExtResource("4_mmg6a")
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_wrom7"]
 animation = &"walk_weapon_r_down"
@@ -188,16 +195,16 @@ states/walk/position = Vector2(156, 333)
 states/walk_weapon/node = SubResource("AnimationNodeBlendSpace2D_o5t1n")
 states/walk_weapon/position = Vector2(585, 333)
 transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_3wtwj"), "idle", "walk", SubResource("AnimationNodeStateMachineTransition_n0e1d"), "walk", "idle", SubResource("AnimationNodeStateMachineTransition_mym4b"), "idle", "change_weapon", SubResource("AnimationNodeStateMachineTransition_6qq8r"), "change_weapon", "idle_weapon", SubResource("AnimationNodeStateMachineTransition_5fwo8"), "idle_weapon", "walk_weapon", SubResource("AnimationNodeStateMachineTransition_pac0w"), "walk_weapon", "idle_weapon", SubResource("AnimationNodeStateMachineTransition_3xig2"), "idle_weapon", "change_none", SubResource("AnimationNodeStateMachineTransition_p28qd"), "change_none", "idle", SubResource("AnimationNodeStateMachineTransition_q64uk")]
-graph_offset = Vector2(-194.703, 69.2225)
+graph_offset = Vector2(0, 121.883)
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_f2lsb"]
-graph_offset = Vector2(-289.763, -9.71578)
+graph_offset = Vector2(-346.638, -25)
 nodes/output/position = Vector2(381, 103)
 nodes/sp_status/node = SubResource("AnimationNodeStateMachine_wpwxw")
 nodes/sp_status/position = Vector2(-140, 100)
 node_connections = [&"output", 0, &"sp_status"]
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_f1kid"]
+[sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_5qsj6"]
 
 [sub_resource type="Animation" id="Animation_r6cjf"]
 length = 0.001
@@ -597,7 +604,7 @@ polygon = PackedVector2Array(-9, -14, 10, -14, 9, 21, -8, 21)
 
 [node name="texture_pack" type="Sprite2D" parent="."]
 scale = Vector2(1.00533, 1)
-texture = ExtResource("2_yfbv4")
+texture = SubResource("CanvasTexture_2r2po")
 region_enabled = true
 region_rect = Rect2(6, 16, 32, 48)
 
@@ -606,7 +613,7 @@ tree_root = SubResource("AnimationNodeBlendTree_f2lsb")
 anim_player = NodePath("../player_animation")
 advance_expression_base_node = NodePath("")
 active = true
-parameters/sp_status/playback = SubResource("AnimationNodeStateMachinePlayback_f1kid")
+parameters/sp_status/playback = SubResource("AnimationNodeStateMachinePlayback_5qsj6")
 parameters/sp_status/change_none/blend_position = Vector2(0.386469, 0.0175438)
 parameters/sp_status/change_weapon/blend_position = Vector2(0.427247, 0.0175438)
 parameters/sp_status/idle/blend_position = Vector2(0.473587, 0.0131578)
@@ -614,7 +621,7 @@ parameters/sp_status/idle_weapon/blend_position = Vector2(0.503244, 0.0219297)
 parameters/sp_status/walk/blend_position = Vector2(0.0046339, -0.0277778)
 parameters/sp_status/walk_weapon/blend_position = Vector2(0.00278032, 1)
 script = ExtResource("3_hepqh")
-sp_node = NodePath("../..")
+sp_node = NodePath("")
 common_st_node = NodePath("../../st_machine_sp")
 item_st_node = NodePath("../../st_machine_item")
 
