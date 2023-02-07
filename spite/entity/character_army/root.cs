@@ -10,8 +10,9 @@ public partial class player_root : CharacterBody2D,Idefault_character
     public IstateMachine? motionState { get; set; }
     public IstateMachine? equipState { get; set; }
 
-    public IanimateTreeSync? nodeAnimateSync { get; set; }
-    public IspriteTexture? nodeTexture { get; set; }
+    public Sprite2D? texture { get; set; }
+    public IanimateTreeSync? animation { get; set; }
+
 
     public int health { get; set; }
     public int armor { get; set; }

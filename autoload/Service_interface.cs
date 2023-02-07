@@ -1,46 +1,51 @@
 
 namespace Obj.autoload;
 
-public interface Iitem_center
+public interface IserviceCenter
+{
+    public void start_service();
+    public void stop_service();
+
+}
+
+public interface IitemCenter : IserviceCenter
 {
     //TODO: 负责物品管理
-    
-    
 
 }
 
 
-public interface Isound_center
+public interface IsoundCenter : IserviceCenter
 {
     //TODO: 负责音乐
 
 }
 
-public interface Iui_center
+public interface IuiCenter : IserviceCenter
 {
     //TODO: 负责暂停ui
 
 }
 
-public interface Ihud_center
+public interface IhudCenter : IserviceCenter
 {
     //TODO: 负责游戏内hud
 
 }
 
-public interface Imap_center
+public interface ImapCenter : IserviceCenter
 {
     //TODO: 负责场景加载,切换,管理
 }
 
-public interface Ievent_center
+public interface IeventCenter : IserviceCenter
 {
     //TODO: 负责事件搜集,事件队列处理
 
 
 }
 
-public interface Ieffect_center
+public interface IeffectCenter : IserviceCenter
 {
     //TODO: 负责效果应用(e.g. 加速,减速)
 }

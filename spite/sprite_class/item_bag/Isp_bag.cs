@@ -6,7 +6,7 @@ public interface IBag
     public static int _max_weapon = 4;
 	public static int _max_item = 4;
 
-    Iitem_center? item_center { get; set; }
+    IitemCenter? item_center { get; set; }
 
     public event Action selected_changed;
 

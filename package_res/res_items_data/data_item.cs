@@ -1,6 +1,7 @@
 using Godot;
 using System;
 
+
 namespace Obj.resource;
 
 public sealed partial class data_item :Resource
@@ -11,7 +12,8 @@ public sealed partial class data_item :Resource
     [Export]
     public int num_now {
         get => _num_now;
-        set{
+        set
+        {
             _num_now = value;
             signal_data_change?.Invoke();
         }

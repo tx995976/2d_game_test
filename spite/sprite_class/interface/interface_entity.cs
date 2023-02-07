@@ -1,95 +1,104 @@
 
 namespace Obj.sp_player;
 
-#region singal_attribute
+#region normal_attribute
 
-public interface Ihitable
+public interface Icollider
 {
-	
-	public void action_hited(hitData context);
-
+    public void action_hited(hitData context) { }
+    public void action_collide(KinematicCollision2D info) { }
 }
 
-public interface Ihealth
-{
-	public int health { get; set; }
-
-	public int armor { get; set; }
-
-	public int banlance { get; set; }
-
-	public event Action? health_break;
-	public event Action? armor_break;
-	public event Action? banlance_break;
-
-	public void be_health_break(); //force implementation
-
-	public void be_armor_break() { }
-	public void be_banlance_break() { }
-
-}
 
 public interface Iwalkable
 {
 
-	public Vector2 view_dir { get; set; }
+    public Vector2 view_dir { get; set; }
+    public Vector2 velocity_dir { get; set; }
+    double speed { get; set; }
 
-	public Vector2 velocity_dir { get; set; }
-
-	double speed { get; set; }
-
-	//TODO: add data
-	public void walk();
+    //TODO: add data
+    public void walk() { }
 
 }
 
 public interface Istatemut
 {
 
-	IstateMachine? motionState { get; set; }
-	IstateMachine? equipState { get; set; }
+    IstateMachine? motionState { get; set; }
+    IstateMachine? equipState { get; set; }
 
 }
 
 public interface Ianimate
 {
-	IanimateTreeSync? nodeAnimateSync { get; set; }
-	IspriteTexture? nodeTexture { get; set; }
+    Sprite2D? texture { get; set; }
+    IanimateTreeSync? animation { get; set; }
 
 }
 
-public interface Ivocal
+public interface Imedia
 {
-
-
+    Sprite2D? texture { get; set; }
+    IanimateTreeSync? animation { get; set; }
+    IaudioPlayer? audioNode { get; set; }
 }
 
 
-#endregion
-
-
-#region other_atributes
-public interface Iequiphave
+public interface ImediaSilm
 {
-	
+    Sprite2D? texture { get; set; }
+    IanimatePlayerSync? animation { get; set; }
+    IaudioPlayer? audioNode { get; set; }
+}
+
+public interface Icontrollable
+{
+    IroleController? controllerNode { get; set; }
 }
 
 public interface Iusage
 {
-	Area2D? use_range { get; set; }
 
-	public void trigger_usage();
+    Area2D? use_range { get; set; }
+    public void trigger_usage();
 }
 
 #endregion
 
 
-#region constructor_atributes
+#region other_attributes
 
-public interface Idefault_character :Ihitable, Iwalkable, Ihealth, Istatemut, Ianimate, Ivocal
+public interface Ihealth
+{
+    public int health { get; set; }
+    public int armor { get; set; }
+    public int banlance { get; set; }
+
+    public event Action? health_break;
+    public event Action? armor_break;
+    public event Action? banlance_break;
+
+    public void be_health_break() { }
+    public void be_armor_break() { }
+    public void be_banlance_break() { }
+
+}
+
+public interface Iequiphave
 {
 
 }
+
+
+#endregion
+
+
+#region constructor_interface
+
+public interface Idefault_character :Icollider, Iwalkable, Ihealth, Istatemut, Ianimate { }
+
+public interface Idefault_enemy :Icollider, Iwalkable, Ihealth, Istatemut, Imedia { }
 
 
 #endregion

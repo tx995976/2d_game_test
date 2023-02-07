@@ -20,16 +20,3 @@ public partial class res_item_root : Resource
 
 
 }
-
-public interface IresItem
-{
-	public StringName item_name { get; set; }
-	public Texture2D? item_texture { get; set; }
-	public string? comment { get; set; }
-
-	//issue: 渲染方法位置?
-	public void render_label();
-	public void sync_label();
-
- 
-}

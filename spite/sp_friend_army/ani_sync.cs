@@ -1,9 +1,9 @@
 namespace Obj.sp_player.entity.sp_player_friend_1;
 
-sealed public partial class ani_sync : sp_anim_sync
+sealed public partial class ani_sync :sp_anim_sync
 {
 
-	public override void _Ready(){
+	public override void _Ready() {
 		base._Ready();
 		//blend
 		blend_params = new gdc.Dictionary<StringName, string>{
@@ -18,33 +18,35 @@ sealed public partial class ani_sync : sp_anim_sync
 		pb_now = (AnimationNodeStateMachinePlayback)Get("parameters/sp_status/playback");
 		//
 		str_cm = common_st_node?.start_state.Name;
-		
+
 
 	}
 
-	public override void _PhysicsProcess(double delta){
+	public override void _PhysicsProcess(double delta) {
 		//params_sync
-		Set(blend_params["change_none"],sp_node!.view_dir);
-		Set(blend_params["change_weapon"],sp_node.view_dir);
-		Set(blend_params["idle"],sp_node.view_dir);
-		Set(blend_params["idle_weapon"],sp_node.view_dir);
-		Set(blend_params["walk"],sp_node.view_dir);
-		Set(blend_params["walk_weapon"],sp_node.view_dir);
+		Set(blend_params["change_none"], sp_node!.view_dir);
+		Set(blend_params["change_weapon"], sp_node.view_dir);
+		Set(blend_params["idle"], sp_node.view_dir);
+		Set(blend_params["idle_weapon"], sp_node.view_dir);
+		Set(blend_params["walk"], sp_node.view_dir);
+		Set(blend_params["walk_weapon"], sp_node.view_dir);
 	}
 
-	public override void cm_st_change(string new_st){
-		if(str_item == null){
+	
+
+	public override void cm_st_change(string new_st) {
+		if (str_item == null) {
 			pb_now!.Travel(new_st);
 			str_cm = new_st;
 		}
-		else{
+		else {
 
 		}
 		GD.Print($"ani_state : {str_cm} {str_item}");
 	}
 
-	public override void item_st_change(string new_st){
-		
+	public override void item_st_change(string new_st) {
+
 
 	}
 

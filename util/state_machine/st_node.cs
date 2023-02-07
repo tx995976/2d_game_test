@@ -29,6 +29,8 @@ public interface IstateNode
     public void enter_state();
     public void exit_state();
 
+    public void action_input(InputEvent @event){}
+
     public event Action<string,stc_mode>? change_state;
 
 }
