@@ -8,13 +8,13 @@ public partial class keyboardController :Node, IroleController
 
 
     public override void _Ready() {
-        SetProcessUnhandledInput(true);
-        SetProcessInput(true);
-
         Source = Owner as Iwalkable;
 
         if(Source is null)
             GD.Print(this + "get source failed");
+
+        SetProcessInput(true);
+        SetProcessUnhandledInput(true);
     }
 
     public override void _PhysicsProcess(double delta){

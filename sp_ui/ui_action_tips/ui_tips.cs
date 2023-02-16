@@ -9,7 +9,7 @@ public partial class ui_tips : TextureRect
 	[Export] 
 	public gdc.Dictionary<StringName,Texture2D> tips_list { get; set; } = new();
 
-    public static readonly string node_name = "ui_tips";
+	public static readonly string node_name = "ui_tips";
 
 	public override void _Ready(){
 		var arr_child = GetChildren();

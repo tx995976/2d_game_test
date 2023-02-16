@@ -61,6 +61,8 @@ public partial class sp_item_bags : Node
 	[Signal]
 	public delegate void select_changedEventHandler();  //选择更新时触发
 
+
+
 //--------------------------------------------------------------
 
 	public override void _Ready(){

@@ -16,3 +16,5 @@ wait:{
 clear:{
 	pos : (str)
 }
+
+pos,voice,text_code | time_sleep | time_apply,time_exit;

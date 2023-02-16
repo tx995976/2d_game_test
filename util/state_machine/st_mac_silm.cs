@@ -6,13 +6,15 @@ public partial class stateMachineSilm :Node, IstateMachine
 {
 	public bool is_active { get; set; }
 	public IstateNode? state_now { get; set; }
-	public IstateNode? state_default { get; set; }
 
-	public Dictionary<string, IstateNode> state_list = new();
+	[Export]
+	public Node? state_default { get; set; }
+
+	public Dictionary<StringName, IstateNode> state_list = new();
 
 	public event Action<string>? state_changed;
 
-	public void change_state(string state, stc_mode mode = stc_mode.st_swap) {
+	public void change_state(StringName state, stc_mode mode = stc_mode.st_swap) {
 		if (!is_active)
 			return;
 
@@ -30,7 +32,7 @@ public partial class stateMachineSilm :Node, IstateMachine
 			state.change_state += change_state;
 		}
 
-		state_now = state_default;
+		state_now = (IstateNode)state_default!;
 		state_now?.enter_state();
 	}
 }

@@ -10,7 +10,7 @@ namespace Obj.sp_player;
 #提供事件输入
 	@通过物理控制器
 	@通过代码控制器
-
+	
 #管理额外属性(attribute)
 #特殊状态转移(e.g dead)
 */

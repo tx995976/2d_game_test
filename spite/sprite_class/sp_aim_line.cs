@@ -15,24 +15,24 @@ public partial class sp_aim_line : RayCast2D
 	[Export]
 	public Vector2 ray_lenth;
 
-    sp_player_root? node_player;
+	sp_player_root? node_player;
 	Line2D? node_line;
 
 	public bool Ray_active{
 		get => _ray_active;
-        set{
+		set{
 			SetPhysicsProcess(value);
 			SetProcessUnhandledInput(value);
-            if(value) 
-                LookAt(GetGlobalMousePosition());
+			if(value) 
+				LookAt(GetGlobalMousePosition());
 			
-        }
+		}
 	}
 	bool _ray_active;
 
 
-    public override void _Ready(){
-        SetPhysicsProcess(false);
+	public override void _Ready(){
+		SetPhysicsProcess(false);
 		SetProcessUnhandledInput(false);
 		Visible = false;
 
@@ -40,19 +40,19 @@ public partial class sp_aim_line : RayCast2D
 		node_line = GetNode<Line2D>("aim_line");
 
 		TargetPosition = ray_lenth;
-    }
+	}
 
 	//鼠标滑行时触发
 	public void action_mouse(){
 		LookAt(GetGlobalMousePosition());
 	}
 
-    public override void _PhysicsProcess(double delta){
+	public override void _PhysicsProcess(double delta){
 		var pos_coll = ray_lenth;
 		if(IsColliding()){
-			pos_coll.x = (GetCollisionPoint() - GlobalPosition).Length();
+			pos_coll.X = (GetCollisionPoint() - GlobalPosition).Length();
 		}
 		node_line!.SetPointPosition(1,pos_coll);
-    }
+	}
 
 }

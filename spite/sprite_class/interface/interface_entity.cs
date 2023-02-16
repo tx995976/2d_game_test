@@ -1,12 +1,12 @@
-
 namespace Obj.sp_player;
 
 #region normal_attribute
 
 public interface Icollider
 {
-    public void action_hited(hitData context) { }
+    public void action_hited(hit_data context) { }
     public void action_collide(KinematicCollision2D info) { }
+
 }
 
 

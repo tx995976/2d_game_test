@@ -20,7 +20,7 @@ public partial class res_weapon_static_data : res_item_root
 	[Export]
 	public int knife_range { get; set; }//近战距离
 
-    //sup_setting
+	//sup_setting
 	[Export]
 	public bool has_sup { get; set; }//消声器
 

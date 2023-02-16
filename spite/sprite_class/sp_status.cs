@@ -10,7 +10,7 @@ namespace Obj.sp_player;
 
 public partial class sp_status : Node
 {
-	public sp_player_root node_player { get; set; }
+	public sp_player_root? node_player { get; set; }
 
 	public override void _Ready(){
 		SetPhysicsProcess(false);
@@ -20,14 +20,14 @@ public partial class sp_status : Node
 
 	public virtual void enter_st(){
 		SetPhysicsProcess(true);
-		node_player.action_event += process_action;
+		node_player!.action_event += process_action;
 		//SetProcessUnhandledInput(true);
 		
 	}
 
 	public virtual void exit_st(){
 		SetPhysicsProcess(false);
-		node_player.action_event -= process_action;
+		node_player!.action_event -= process_action;
 		//SetProcessUnhandledInput(false);		
 
 	}

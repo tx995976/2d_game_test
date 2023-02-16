@@ -194,7 +194,7 @@ public void open_weapon() {
 				@selecter_weapons[i].Visible = false;
 		
 		var sel_item = @selecter_weapons[@pos_weapon];
-		(sel_item.Material as ShaderMaterial).SetShaderParameter("change_flag",true);
+		(sel_item.Material as ShaderMaterial)?.SetShaderParameter("change_flag",true);
 		tween_node.TweenProperty(sel_item,"position", panel_pos, tween_time*2);
 		
 		//data ----> [bag] [label]
@@ -207,7 +207,7 @@ public void open_weapon() {
 
 		await ToSignal(tween_node,"finished");
 		//wait panel close
-		(sel_item.Material as ShaderMaterial).SetShaderParameter("change_flag",false);
+		(sel_item.Material as ShaderMaterial)?.SetShaderParameter("change_flag",false);
 		@panel_weapon.Visible = false;
 		sel_item.Position = panel_pos;
 	}

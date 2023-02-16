@@ -6,7 +6,7 @@ public partial class state_idle :Node, IstateNode
 
     public string? name => Name;
 
-    public event Action<string, stc_mode>? change_state;
+    public event Action<StringName, stc_mode>? change_state;
 
     public override void _PhysicsProcess(double delta) {
         if (source!.velocity_dir != Vector2.Zero)

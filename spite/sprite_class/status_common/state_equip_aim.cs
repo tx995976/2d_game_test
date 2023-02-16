@@ -7,7 +7,7 @@ public partial class state_equip_aim :Node, IstateNode
 
 	public string? name => Name;
 
-	public event Action<string, stc_mode>? change_state;
+	public event Action<StringName, stc_mode>? change_state;
 
 	public override void _Ready() {
 		Source = (Iwalkable)Owner;

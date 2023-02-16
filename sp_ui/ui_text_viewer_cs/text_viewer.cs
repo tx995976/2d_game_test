@@ -29,7 +29,7 @@ public partial class text_viewer :Control
 	Godot.Collections.Dictionary<string, text_container> container_list = new();
 
 	//Queue<text_richtext_node> pool_txt_node = new Queue<text_richtext_node>();
-	Objectpools<text_richtext_node> pools;
+	Nodepools<text_richtext_node> pools;
 	PackedScene tscn_text_richtext;
 
 	public override void _EnterTree() {
@@ -54,7 +54,7 @@ public partial class text_viewer :Control
 		}
 
 		//pool_txt 初始化
-		pools = new (num_txt_node, tscn_text_richtext,
+		pools = new (tscn_text_richtext,
 				(node) =>
 				{
 					node.txt_destroy += _node_free;
@@ -74,7 +74,7 @@ public partial class text_viewer :Control
 	}
 
 	public text_richtext_node _node_get() {
-		return pools.pop();
+		return pools.get();
 	}
 
 	public void _show_one_msg(Dictionary para) {
