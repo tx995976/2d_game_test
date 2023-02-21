@@ -14,8 +14,8 @@ public partial class stateMachineSilm :Node, IstateMachine
 
 	public event Action<string>? state_changed;
 
-	public void change_state(StringName state, stc_mode mode = stc_mode.st_swap) {
-		if (!is_active)
+	public void change_state(StringName? state, stc_mode mode = stc_mode.st_swap) {
+		if (!is_active || state is null)
 			return;
 
 		state_now = state_list[state];

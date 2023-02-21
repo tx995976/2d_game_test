@@ -1,6 +1,5 @@
 namespace Obj.resource;
 
-
 public interface IresItem
 {
 	public StringName? item_name { get; set; }
@@ -17,5 +16,13 @@ public interface IdataItem
 
 	public event Action? dataChanged;
 
-	
 }
+
+#region type definitions
+
+public enum itemType : int{
+    equip,
+    supply
+}
+
+#endregion

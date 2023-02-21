@@ -12,6 +12,7 @@ public interface IserviceCenter
 public interface IitemCenter : IserviceCenter
 {
 	//TODO: 负责物品管理
+	
 
 }
 

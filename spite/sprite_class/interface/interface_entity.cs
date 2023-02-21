@@ -2,6 +2,13 @@ namespace Obj.sp_player;
 
 #region normal_attribute
 
+///收集可用信息给出entity的完整动作,状态
+public interface Iactor
+{
+
+
+}
+
 public interface Icollider
 {
     public void action_hited(hit_data context) { }
@@ -9,10 +16,8 @@ public interface Icollider
 
 }
 
-
 public interface Iwalkable
 {
-
     public Vector2 view_dir { get; set; }
     public Vector2 velocity_dir { get; set; }
     double speed { get; set; }
@@ -30,13 +35,6 @@ public interface Istatemut
 
 }
 
-public interface Ianimate
-{
-    Sprite2D? texture { get; set; }
-    IanimateTreeSync? animation { get; set; }
-
-}
-
 public interface Imedia
 {
     Sprite2D? texture { get; set; }
@@ -44,24 +42,16 @@ public interface Imedia
     IaudioPlayer? audioNode { get; set; }
 }
 
-
-public interface ImediaSilm
+public interface Iusage
 {
-    Sprite2D? texture { get; set; }
-    IanimatePlayerSync? animation { get; set; }
-    IaudioPlayer? audioNode { get; set; }
+    //TODO: Iuseage_node need
+    Area2D? useRange { get; set; }
+    public void trigger_usage();
 }
 
 public interface Icontrollable
 {
     IroleController? controllerNode { get; set; }
-}
-
-public interface Iusage
-{
-
-    Area2D? use_range { get; set; }
-    public void trigger_usage();
 }
 
 #endregion
@@ -87,6 +77,8 @@ public interface Ihealth
 
 public interface Iequiphave
 {
+    IBag? bagNode { get; set; }
+    
 
 }
 
@@ -96,7 +88,9 @@ public interface Iequiphave
 
 #region constructor_interface
 
-public interface Idefault_character :Icollider, Iwalkable, Ihealth, Istatemut, Ianimate { }
+public interface IequiphaveSystem : Istatemut,Iequiphave {}
+
+public interface Idefault_character :Icollider, Iwalkable, Ihealth, Istatemut, Imedia { }
 
 public interface Idefault_enemy :Icollider, Iwalkable, Ihealth, Istatemut, Imedia { }
 

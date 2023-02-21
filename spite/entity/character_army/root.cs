@@ -12,6 +12,7 @@ public partial class player_root :CharacterBody2D, Idefault_character
 
     public Sprite2D? texture { get; set; }
     public IanimateTreeSync? animation { get; set; }
+    public IaudioPlayer? audioNode { get; set; }
 
     public int health { get; set; }
     public int armor { get; set; }

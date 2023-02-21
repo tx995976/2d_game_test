@@ -4,13 +4,12 @@ public partial class state_idle :Node, IstateNode
 {
     Iwalkable? source;
 
-    public string? name => Name;
+    public string? name => "idle";
 
     public event Action<StringName, stc_mode>? change_state;
 
     public override void _PhysicsProcess(double delta) {
         if (source!.velocity_dir != Vector2.Zero)
-            //issue: 名字分配?
             change_state?.Invoke("walk", stc_mode.st_swap);
     }
 

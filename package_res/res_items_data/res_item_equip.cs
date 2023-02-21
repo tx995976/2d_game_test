@@ -1,6 +1,6 @@
 namespace Obj.resource;
 
-public partial class res_item_gun :Resource, IresItem
+public partial class res_item_equip :Resource, IresItem
 {
 
     [Export]

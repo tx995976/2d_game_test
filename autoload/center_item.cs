@@ -15,8 +15,8 @@ namespace Obj.autoload;
 public partial class center_item : Node
 {
 	public static center_item? instance;
-	public static string path_node = "/root/center_item";
-	public static string path_data = "res://package_res/tres_item/"; //default_data
+	//public static string path_node = "/root/center_item";
+	public static string path_data = "res://resource/tres_item/"; //default_data
 
 	[Export]
 	public gdc.Dictionary<StringName,res_item_static_data> dic_items { get; set; } = new();

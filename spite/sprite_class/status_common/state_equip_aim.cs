@@ -1,11 +1,13 @@
 namespace Obj.sp_player.status;
 
+
+///weapon aim state
 public partial class state_equip_aim :Node, IstateNode
 {
 	Iwalkable? Source;
 	Node2D? Source2d;
 
-	public string? name => Name;
+	public string? name => "aim";
 
 	public event Action<StringName, stc_mode>? change_state;
 

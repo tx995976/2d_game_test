@@ -1,1 +1,5 @@
-//TODO: 设计Ieffect类
+public interface Ieffect
+{
+
+
+}

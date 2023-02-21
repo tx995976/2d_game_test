@@ -10,15 +10,12 @@ public enum stc_mode :int
 public interface IstateMachine
 {
     public bool is_active { get; set; }
+    public IstateNode? state_now { get; set; }
+    public Node? state_default { get; set; } // need export
 
-    IstateNode? state_now { get; set; }
-
-    Node? state_default { get; set; } // need export
-
-    
     public event Action<string>? state_changed;
 
-    public void change_state(StringName state,stc_mode mode = stc_mode.st_swap);
+    public void change_state(StringName? state,stc_mode mode = stc_mode.st_swap);
 }
 
 
