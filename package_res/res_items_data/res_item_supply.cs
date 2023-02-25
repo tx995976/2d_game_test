@@ -15,30 +15,15 @@ public partial class res_item_supply : Resource,IresItem
 	[Export(PropertyHint.MultilineText)]
 	public string? comment { get; set; }
 
-    [Export]
-    public int max_num { get; set; }
-
-    //use_effect
-    [Export]
-    public Node? effect { get; set;}
+	[Export]
+	public StringName? itemStyle { get; set; }
 
 
-}
+	[Export]
+	public int max_num { get; set; }
 
-public record class data_supply : IdataItem
-{
-    public IresItem? @define { get; set; }
+	//use_effect
+	[Export]
+	public Node? effect { get; set;}
 
-    public int num_now {
-        get => _num_now;
-        set
-        {
-            _num_now = value;
-            dataChanged?.Invoke();
-        }
-    }
-    int _num_now;
-
-
-    public event Action? dataChanged;
 }

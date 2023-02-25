@@ -1,6 +1,4 @@
-using Obj.sp_player;
-
-namespace Obj.util;
+namespace Obj.sp_player;
 
 ///标准状态与动画树同步
 public interface IanimateTreeSync
@@ -13,11 +11,22 @@ public interface IanimateTreeSync
 
     //issue: 重新设计,使用actionInfo来同步动画
     
-    ///一个造成动画变化,结束后能回到基本状态的转换为Action(eg. 开火)
     public void actionOccurred(string action);
 
     public void Travel(string state){}
 }
+
+public interface IanimateActionSync
+{
+    Iactor? stateSource { get; set; }
+    res_animation_blend? animationBlend { get; set; }
+
+    void actionStateChanged();
+
+    public void Travel(string state);
+}
+
+
 
 ///简易动画与数值同步
 public interface IanimatePlayerSync

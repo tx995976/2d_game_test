@@ -4,11 +4,11 @@ namespace Obj.util;
 /// 普通下推状态机
 public partial class stateMachine :Node, IstateMachine
 {
-	public bool is_active { get; set; }
+	public bool is_active { get; set; } = true;
 
 	public IstateNode? state_now { get; set; }
 
-	[Export]
+	[Export(PropertyHint.NodeType)]
 	public Node? state_default { get; set; }
 	
 	public event Action<string>? state_changed;

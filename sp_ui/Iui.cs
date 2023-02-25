@@ -6,11 +6,3 @@ public interface IuiPanel
     public void uiHide();
 
 }
-
-
-public interface IhudPanel : IuiPanel
-{
-    
-
-
-}

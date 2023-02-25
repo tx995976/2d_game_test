@@ -29,6 +29,7 @@ export/include_scripts_content=true
 
 [editor]
 
+naming/node_name_casing=2
 node_naming/name_casing=2
 
 [filesystem]

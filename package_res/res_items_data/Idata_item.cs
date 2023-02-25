@@ -6,6 +6,8 @@ public interface IresItem
 	public Texture2D? item_texture { get; set; }
 	public Texture2D? item_type_texture { get; set; }
 
+	StringName? itemStyle { get; set; }
+
 	public string? comment { get; set; }
 	
 }

@@ -21,7 +21,7 @@ public partial class animateTreeSync :AnimationTree, IanimateTreeSync
         stateSource.motionState!.state_changed += motionStateChanged;
         stateSource.equipState!.state_changed += equipStateChanged;
 
-        //issue: sp_status 命名
+
         pb_back = (AnimationNodeStateMachinePlayback)Get(playbackPath);
 
         if(animationBlend is not null)

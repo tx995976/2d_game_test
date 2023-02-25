@@ -44,6 +44,8 @@ public partial class center_item : Node
 				reg_data(res);
 			}
 		}
+
+
 	}
 
 	#region method_bag

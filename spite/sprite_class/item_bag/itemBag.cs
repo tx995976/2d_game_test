@@ -36,8 +36,7 @@ public partial class itemBag :Node, IBag
     #region bag operations
 
     public void select(itemType type, int index) {
-        switch (type)
-        {
+        switch (type) {
             case itemType.equip:
                 index_equip = index;
                 break;
@@ -69,7 +68,7 @@ public partial class itemBag :Node, IBag
         var swap_item = arr[index];
         arr[index] = pick_item;
 
-        //TODO: item process
+        //TODO: swap process
     }
 
     #endregion
