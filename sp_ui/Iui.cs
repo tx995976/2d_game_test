@@ -2,7 +2,7 @@ namespace Obj.ui;
 
 public interface IuiPanel
 {
-    public void uiShow();
-    public void uiHide();
+    public void ui_show();
+    public void ui_hide();
 
 }

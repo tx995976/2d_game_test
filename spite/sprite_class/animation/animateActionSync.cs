@@ -15,9 +15,7 @@ public partial class animateActionSync
 	Iwalkable? _viewSource;
 	actionInfo? _actionSource;
 	AnimationNodeStateMachinePlayback? _pb_back;
-	gdc.Array<string>? _animateParam;
-
-	string _actionState = string.Empty;
+	StringName[]? _animateParam;
 
 	public override void _Ready() {
 		//GD.Print("Owner is ",Owner);
@@ -49,15 +47,7 @@ public partial class animateActionSync
 	}
 
 	public void actionStateChanged() {
-		
-		_actionState = _actionSource!.motionName;
-		if(_actionSource.equipStateName is not null)
-			_actionState += '_'+_actionSource.equipStateName;
-		if(_actionSource.equipStyleName is not null)
-			_actionState += '_'+_actionSource.equipStyleName;
-		if(_actionSource.actionName is not null)
-			_actionState += '_'+_actionSource.actionName;
-
+		var _actionState = _actionSource!._shortcut();
 		_pb_back!.Travel(_actionState);
 	}
 

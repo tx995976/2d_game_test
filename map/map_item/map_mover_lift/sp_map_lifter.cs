@@ -36,7 +36,7 @@ public partial class sp_map_lifter : Area2D{
 	}
 
 	async public void _lift_start(){
-		var tween = GetTree().CreateTween()
+		var tween = CreateTween()
 					.SetProcessMode(Tween.TweenProcessMode.Physics)
 					.SetEase(Tween.EaseType.InOut)
 					.SetTrans(Tween.TransitionType.Quad);

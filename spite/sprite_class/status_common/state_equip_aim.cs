@@ -1,41 +1,43 @@
 namespace Obj.sp_player.status;
 
-
-///weapon aim state
 public partial class state_equip_aim :Node, IstateNode
 {
-	Iwalkable? Source;
-	Node2D? Source2d;
-
 	public string? name => "aim";
 
 	public event Action<StringName, stc_mode>? change_state;
 
-	public override void _Ready() {
-		Source = (Iwalkable)Owner;
-		Source2d = (Node2D)Owner;
+	Iwalkable? _walkSource;
+	Node2D? _2dSource;
+	Icontrollable? _controllSource;
+	Iequiphave? _bagSource;
+
+	public override void _EnterTree() {
+		SetPhysicsProcess(false);
+		_walkSource = (Iwalkable)Owner;
+		_2dSource = (Node2D)Owner;
+		_controllSource = (Icontrollable)Owner;
+		_bagSource = (Iequiphave)Owner;
 	}
 
 	public override void _PhysicsProcess(double delta) {
-		Source!.view_dir = Source2d!.GetLocalMousePosition();
+		_walkSource!.view_dir = _2dSource!.GetLocalMousePosition();
 
 	}
 
 	public void action_input(InputEvent @event) {
-		//if(@event.IsActionReleased(""))
-			change_state?.Invoke("",stc_mode.st_ret);
+		if(@event.IsActionReleased("battle_weapon_ready"))
+			change_state?.Invoke("none",stc_mode.st_swap);
+
+		
 	}
 
-
 	public void enter_state() {
-		if(Source is IroleController controller)
-			controller.inputSource += action_input;
+		_controllSource!.inputSource += action_input;
 		SetPhysicsProcess(true);
 	}
 
 	public void exit_state() {
-		if(Source is IroleController controller)
-			controller.inputSource -= action_input;
+		_controllSource!.inputSource -= action_input;
 		SetPhysicsProcess(false);
 	}
 }

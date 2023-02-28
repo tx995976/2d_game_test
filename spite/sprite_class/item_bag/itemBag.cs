@@ -26,11 +26,12 @@ public partial class itemBag :Node, IBag
     };
 
     public override void _Ready() {
-        _init_bag();
+        if(init_list is not null)
+            _init_bag();
     }
 
     public void _init_bag() {
-        //TODO: 
+        
     }
 
     #region bag operations

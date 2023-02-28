@@ -25,7 +25,10 @@ public partial class player_root : CharacterBody2D, Idefault_character
 	public int banlance { get; set; }
 
 	public actionInfo? infoAction { get; set; }
-	
+
+	public Action<InputEvent>? inputSource { get; set; }
+
+	public IBag? bagNode { get; set; }
 
 	public event Action? health_break;
 	public event Action? armor_break;
@@ -33,9 +36,7 @@ public partial class player_root : CharacterBody2D, Idefault_character
 
 	public override void _EnterTree() {
 		infoAction = new(this);
-	}
-
-	public override void _Ready() {
+		
 		motionState = GetNode<IstateMachine>("motionState");
 		equipState = GetNode<IstateMachine>("equipState");
 
@@ -43,16 +44,23 @@ public partial class player_root : CharacterBody2D, Idefault_character
 		animation = GetNode<IanimateActionSync>("texture_pack/animation_tree");
 		//audioNode = GetNode<>
 
+		bagNode = GetNode<IBag>("item_bag");
+	}
+
+	public override void _Ready() {
+
 		infoAction!._Ready();
 
 	}
 
-	public void be_health_break() {
-		throw new NotImplementedException();
-	}
 
 	public void walk(double delta) {
 		MoveAndCollide((float)(delta * speed) * velocity_dir);
+	}
+
+
+	public void be_health_break() {
+		throw new NotImplementedException();
 	}
 
 	public void action_hited(hit_data context) {

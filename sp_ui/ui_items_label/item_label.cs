@@ -1,7 +1,3 @@
-using System;
-using Godot;
-using Obj.resource;
-
 namespace Obj.ui;
 
 /*

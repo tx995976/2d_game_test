@@ -31,7 +31,7 @@ public partial class center_item : Node
 
 	public override void _Ready(){
 		//default data load
-		Task.Run(() => load_res());
+		//Task.Run(() => load_res());
 	}
 
 	void load_res(){

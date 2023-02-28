@@ -9,7 +9,7 @@ void fragment(){
 		COLOR.a = 2.0;
 	}
 	if(change_flag){
-		COLOR.a = 1.0+sin(TIME/15.0);
+		COLOR.a = 1.0+ sin(TIME * 25.0) * 0.5;
 	}
 	
 }

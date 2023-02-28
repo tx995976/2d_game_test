@@ -1,6 +1,6 @@
 namespace Obj.resource;
 
-public record class data_supply : IdataItem
+public partial class data_supply : IdataItem
 {
     public IresItem? @define { get; set; }
 

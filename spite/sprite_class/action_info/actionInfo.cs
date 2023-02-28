@@ -31,12 +31,36 @@ public class actionInfo
 
 		if (equipSource is not null)
 			equipSource.bagNode!.selected_changed += equip_changed;
+
+#if DEBUG
+		GD.Print(this, " InfoSource:");
+		GD.Print($"""
+			motion_state: {Source.motionState}
+			equip_state: {Source.equipState}
+			equipSource: {equipSource}
+			""");
+#endif
 	}
 
 	public void invoke_action(StringName name, Action action) {
 		actionName = name;
 		action.Invoke();
 	}
+
+	public StringName _shortcut(){
+		var _actionState = "";
+		_actionState = motionName;
+		if(equipStateName is not null)
+			_actionState += '_'+equipStateName;
+		if(equipStyleName is not null)
+			_actionState += '_'+equipStyleName;
+		if(actionName is not null)
+			_actionState += '_'+actionName;
+
+		return _actionState;
+	}
+
+	#region Properties changed
 
 	void motion_changed(string name) {
 		motionName = name;
@@ -45,7 +69,7 @@ public class actionInfo
 
 	void equip_state_changed(string name) {
 		//issue 此处转换"none" 到 null
-		if(name != _none_str)
+		if (name != _none_str)
 			equipStateName = name;
 		else
 			equipStateName = null;
@@ -57,5 +81,7 @@ public class actionInfo
 		equipStyleName = equipSource!.bagNode!.selected_equip?.define?.itemStyle;
 		stateChanged?.Invoke();
 	}
+
+	#endregion
 
 }

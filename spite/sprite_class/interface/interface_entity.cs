@@ -21,7 +21,6 @@ public interface Iwalkable
 	public Vector2 velocity_dir { get; set; }
 	double speed { get; set; }
 
-	//TODO: add data
 	public void walk(double delta) { }
 
 }
@@ -45,12 +44,12 @@ public interface Iusage
 {
 	//TODO: Iusage_node need
 	Area2D? useRange { get; set; }
-	public void trigger_usage();
+	public void trigger_usage() { }
 }
 
 public interface Icontrollable
 {
-	IroleController? controllerNode { get; set; }
+	Action<InputEvent>? inputSource { get; set; }
 }
 
 #endregion
@@ -77,9 +76,7 @@ public interface Ihealth
 public interface Iequiphave
 {
 	IBag? bagNode { get; set; }
-
 }
-
 
 #endregion
 
@@ -88,7 +85,7 @@ public interface Iequiphave
 
 public interface IequipStateSystem : Istatemut, Iequiphave { }
 
-public interface Idefault_character : Icollider, Iwalkable, Ihealth, Istatemut, Imedia, Iactor { }
+public interface Idefault_character : Icollider, Iwalkable, Ihealth, Istatemut, Imedia, Iactor, Icontrollable, Iequiphave { }
 
 public interface Idefault_enemy : Icollider, Iwalkable, Ihealth, Istatemut, Imedia { }
 
