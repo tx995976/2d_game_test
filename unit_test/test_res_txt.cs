@@ -15,12 +15,12 @@ public partial class test_res_txt : EditorScript
 
 	}
 
-	public static void test(){
-		var res = GD.Load("res://texture/package_sprite/data_animationBlend_test1.tres");
-		GD.Print("get");
-		if (res is res_item_static_data resblend)
-		{
-			GD.Print(resblend);
-		}
-	}
+	// public static void test(){
+	// 	var res = GD.Load("res://texture/package_sprite/data_animationBlend_test1.tres");
+	// 	GD.Print("get");
+	// 	if (res is res_item_static_data resblend)
+	// 	{
+	// 		GD.Print(resblend);
+	// 	}
+	// }
 }

@@ -1,7 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://dnuske58wbngx"]
-
-[ext_resource type="Script" path="res://sp_ui/ui_text_viewer_cs/text_richtext_node.cs" id="1_vyawm"]
-
-[node name="richtxt_node" type="RichTextLabel"]
-scroll_active = false
-script = ExtResource("1_vyawm")
