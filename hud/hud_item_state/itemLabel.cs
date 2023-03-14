@@ -2,6 +2,7 @@ namespace Obj.hud;
 
 public partial class itemLabel : Panel
 {
+
 	public TextureRect? _item_tex;
 	public TextureRect? _item_type_tex;
 
@@ -13,16 +14,17 @@ public partial class itemLabel : Panel
 
 	public IdataItem? itemdata {
 		get => _itemdata;
-		set{
-			if(_itemdata == value)
+		set {
+			if (_itemdata == value)
 				return;
 
-			if(_itemdata is not null)
+			if (_itemdata is not null)
 				_itemdata.dataChanged -= OndataChanged;
 			reset();
 
 			_itemdata = value;
-			if(_itemdata is not null){
+			if (_itemdata is not null)
+			{
 				_itemdata.dataChanged += OndataChanged;
 				_itemdata.draw_data(this);
 			}
@@ -40,7 +42,7 @@ public partial class itemLabel : Panel
 
 	}
 
-	public void reset(){
+	public void reset() {
 		_item_tex!.Texture = null;
 		_item_type_tex!.Texture = null;
 		_name_item!.Text = string.Empty;

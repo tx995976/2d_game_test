@@ -2,7 +2,7 @@ using System.Collections.Generic;
 namespace Obj.util;
 
 /// 简易状态机实现
-public partial class stateMachineSilm :Node, IstateMachine
+public partial class stateNodeMachineSilm :Node, IstateMachine
 {
 	public bool is_active { get; set; }
 	public IstateNode? state_now { get; set; }

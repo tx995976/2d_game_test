@@ -1,5 +1,6 @@
 namespace Obj.sp_player;
 
+//
 public partial class keyboardController : Node, IroleController
 {
 	Iwalkable? Source;
@@ -19,14 +20,16 @@ public partial class keyboardController : Node, IroleController
 	bool _active = true;
 
 	public override void _EnterTree() {
-		Source = Owner as Iwalkable;
+
+		Source = this.SearchOwner<Iwalkable>();
+
 		if (Source is null)
 			GD.Print(this + "get source failed");
 
 		if (Source is Icontrollable controllNode)
 		{
 			_controllNode = controllNode;
-			GD.Print("controlling", controllNode);
+			//GD.Print("controlling", controllNode);
 		}
 
 	}

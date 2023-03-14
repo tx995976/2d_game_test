@@ -7,7 +7,7 @@ public class mapLoader : ImapCenter
 
     public void start_service()
     {
-        throw new NotImplementedException();
+    
     }
 
     public void stop_service()

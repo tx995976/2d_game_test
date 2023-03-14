@@ -1,6 +1,6 @@
 namespace Obj.sp_player.status;
 
-public partial class state_equip_aim :Node, IstateNode
+public partial class state_equip_aim : Node, IstateNode
 {
 	public string? name => "aim";
 
@@ -12,11 +12,14 @@ public partial class state_equip_aim :Node, IstateNode
 	Iequiphave? _bagSource;
 
 	public override void _EnterTree() {
-		SetPhysicsProcess(false);
 		_walkSource = (Iwalkable)Owner;
 		_2dSource = (Node2D)Owner;
 		_controllSource = (Icontrollable)Owner;
 		_bagSource = (Iequiphave)Owner;
+	}
+
+	public override void _Ready() {
+		SetPhysicsProcess(false);
 	}
 
 	public override void _PhysicsProcess(double delta) {
@@ -25,10 +28,10 @@ public partial class state_equip_aim :Node, IstateNode
 	}
 
 	public void action_input(InputEvent @event) {
-		if(@event.IsActionReleased("battle_weapon_ready"))
-			change_state?.Invoke("none",stc_mode.st_swap);
+		if (@event.IsActionReleased("battle_weapon_ready"))
+			change_state?.Invoke("none", stc_mode.st_swap);
 
-		
+
 	}
 
 	public void enter_state() {

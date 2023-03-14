@@ -47,7 +47,7 @@ public partial class text_richtext_node : RichTextLabel{
 	}
 
 	 async public void _exit_node(){
-		if(Owner != null)
+		if(Owner == null)
 			return;
 		var tween = GetTree().CreateTween().SetEase(Tween.EaseType.InOut).SetTrans(Tween.TransitionType.Back);
 		tween.TweenProperty(this,"modulate",new Color(1,1,1,0),out_time);

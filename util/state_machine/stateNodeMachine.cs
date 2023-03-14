@@ -2,7 +2,7 @@ using System.Collections.Generic;
 namespace Obj.util;
 
 /// 普通下推状态机
-public partial class stateMachine :Node, IstateMachine
+public partial class stateNodeMachine :Node, IstateMachine
 {
 	public bool is_active { get; set; } = true;
 

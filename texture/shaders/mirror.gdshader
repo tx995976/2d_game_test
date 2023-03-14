@@ -6,5 +6,5 @@ uniform float strength : hint_range(0.05,0.5) = 0.1;
 
 void fragment(){
 	float noise_value = texture(noise,UV+ (sin(TIME*speed)) ).r;
-	COLOR = texture(TEXTURE,UV - (strength/2.0) + vec2(noise_value) * strength);
+	COLOR = texture(TEXTURE,UV - (strength / 2.0) + vec2(noise_value) * strength);
 }

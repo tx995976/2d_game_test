@@ -33,12 +33,13 @@ public class actionInfo
 			equipSource.bagNode!.selected_changed += equip_changed;
 
 #if DEBUG
-		GD.Print(this, " InfoSource:");
-		GD.Print($"""
-			motion_state: {Source.motionState}
-			equip_state: {Source.equipState}
-			equipSource: {equipSource}
-			""");
+
+		// GD.Print(this, " InfoSource:");
+		// GD.Print($"""
+		// 	motion_state: {Source.motionState}
+		// 	equip_state: {Source.equipState}
+		// 	equipSource: {equipSource}
+		// 	""");
 #endif
 	}
 

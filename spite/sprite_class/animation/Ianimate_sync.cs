@@ -8,8 +8,6 @@ public interface IanimateTreeSync
 
     public void motionStateChanged(string state);
     public void equipStateChanged(string state);
-
-    //issue: 重新设计,使用actionInfo来同步动画
     
     public void actionOccurred(string action);
 

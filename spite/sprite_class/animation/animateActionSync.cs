@@ -18,17 +18,21 @@ public partial class animateActionSync
 	StringName[]? _animateParam;
 
 	public override void _Ready() {
-		//GD.Print("Owner is ",Owner);
+		
+		stateSource = this.SearchOwner<Iactor>();
+		if(stateSource is null){
+			GD.Print(this," Owner not find");
+			return;
+		}
 
-		stateSource = (Iactor)Owner;
-		_viewSource = (Iwalkable)Owner;
+		_viewSource = (Iwalkable)stateSource;
 
 		stateSource.infoAction!.stateChanged += actionStateChanged;
 		_actionSource = stateSource.infoAction;
 
 		_pb_back = (AnimationNodeStateMachinePlayback)Get(playbackPath);
 
-		_animateParam = animationBlend?.blend_path;
+		_animateParam = animationBlend?.blend_path?.ToArray();
 		if (animationBlend is null)
 		{
 			SetProcessInput(false);

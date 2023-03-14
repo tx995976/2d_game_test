@@ -12,15 +12,16 @@ public partial class state_equip_none : Node, IstateNode
 	public override void _EnterTree() {
 		_controllSource = (Icontrollable)Owner;
 		_bagSource = (Iequiphave)Owner;
-		
+
 	}
 
 	public void action_input(InputEvent @event) {
-		if (@event.IsActionPressed("battle_weapon_ready") 
-			&& _bagSource!.bagNode!.selected_supply is not null)
+		if (@event.IsActionPressed("battle_weapon_ready") && _bagSource!.bagNode!.selected_supply is not null)
 		{
 			change_state?.Invoke("aim", stc_mode.st_swap);
 		}
+
+		
 	}
 
 	public void enter_state() {

@@ -8,6 +8,9 @@ public interface IBag
 
     public event Action? selected_changed;
     public event Action? item_changed;
+    
+    public event Action<IdataItem>? Dropitem;
+    public event Action<IdataItem>? Swapitem;
 
     IdataItem? selected_equip { get; }
     IdataItem? selected_supply { get; }

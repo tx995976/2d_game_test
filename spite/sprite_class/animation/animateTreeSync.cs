@@ -32,7 +32,7 @@ public partial class animateTreeSync :AnimationTree, IanimateTreeSync
     }
 
     public override void _Input(InputEvent @event) {
-        foreach(var i in blend_param!.blend_path){
+        foreach(var i in blend_param!.blend_path!){
             Set(i!,walkSource!.view_dir);
         }
     }

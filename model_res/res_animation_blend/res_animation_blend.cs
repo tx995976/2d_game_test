@@ -1,9 +1,9 @@
-namespace Obj.sp_player;
+namespace Obj.resource;
 
 public partial class res_animation_blend : Resource
 {
 	[Export]
-	public StringName[]? blend_path;
+	public gdc.Array<StringName>? blend_path;
 
 
 

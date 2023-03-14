@@ -9,11 +9,14 @@ public partial class itemBag :Node, IBag
     public IdataItem?[] arr_equip { get; set; } = new IdataItem[IBag._max_equip];
     public IdataItem?[] arr_supply { get; set; } = new IdataItem[IBag._max_supply];
 
-    public int index_equip;
-    public int index_supply;
+    public int index_equip { get; set; }
+    public int index_supply { get; set; }
 
     public event Action? selected_changed;
     public event Action? item_changed;
+    public event Action<IdataItem>? Dropitem;
+    public event Action<IdataItem>? Swapitem;
+
 
     [Export]
     public Resource? init_list { get; set; }
@@ -53,9 +56,11 @@ public partial class itemBag :Node, IBag
         IdataItem? discardItem;
         var arr = _get_arr(type);
         discardItem = arr[index];
-        arr[index] = null;
-        //TODO: drop process
 
+        if(discardItem is null)
+            return;
+        arr[index] = null;
+        Dropitem?.Invoke(discardItem);
     }
 
     public void pick(itemType type, int index, IdataItem pick_item) {
