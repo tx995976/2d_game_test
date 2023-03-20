@@ -8,7 +8,7 @@ public partial class text_container : VBoxContainer
 	int limit_txt;
 
 	[Export(PropertyHint.MultilineText)]
-	String re_init_str;
+	string re_init_str;
 
 	public text_viewer node_viewer;
 

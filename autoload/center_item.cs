@@ -1,51 +1,47 @@
-using Godot;
-using Godot.Collections;
-
-using Obj.resource;
-
 namespace Obj.autoload;
 
 /*
 #item_center
-	@物品静态数据存储
-	@生成动态数据
 	@新数据注册(地图包数据)
 */
 
-public partial class center_item : Node
+public class centerItem : IserviceCenter
 {
-	public static center_item? instance;
-	//public static string path_node = "/root/center_item";
-	public static string path_data = "res://resource/tres_item/"; //default_data
+	static string path_data = "res://resource/tres_item/"; //default_data
 
-	// [Export]
-	// public gdc.Dictionary<StringName,res_item_static_data> dic_items { get; set; } = new();
+	public Node main_node { get; set; }
 
-	// [Export]
-	// public gdc.Dictionary<StringName,res_weapon_static_data> dic_weapons { get; set; } = new();
+	public Dictionary<StringName, IresItem> item_supply { get; set; } = new();
+	public Dictionary<StringName, IresItem> item_equip { get; set; } = new();
 
-	public override void _EnterTree(){
-		instance = this;
+	
+
+	public centerItem(Node main_node) {
+		this.main_node = main_node;
+		start_service();
 	}
 
-
-	public override void _Ready(){
-		//default data load
-		//Task.Run(() => load_res());
+	public void start_service() {
+		load_res(path_data);
 	}
 
-	void load_res(){
-		var dir_datas = DirAccess.Open(path_data);
-		foreach(var filename in dir_datas.GetFiles()){
-			//GD.Print(filename);
-			if(filename.EndsWith(".tres")){
-				GD.Print($"load {path_data+filename}");
-				var res = GD.Load(path_data+filename);
-				
-			}
+	public void stop_service() {
+
+	}
+
+	void load_res(string path) {
+		var files = GDfile.GetResFilePaths(path,resNames.resSuffix);
+
+		GD.Print($"item Loading: ");
+		foreach (var filename in files)
+		{
+			GD.Print($"Load {filename}");
+			var res = GD.Load<IresItem>(filename);
+			if(res is res_item_equip)
+				item_equip.Add(res.item_name!,res);
+			else
+				item_supply.Add(res.item_name!,res);
 		}
-
-
 	}
 
 	#region method_bag

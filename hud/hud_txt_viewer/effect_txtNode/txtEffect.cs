@@ -1,9 +1,11 @@
+using Obj.effect.txtSolver;
 using Obj.hud;
 
 namespace Obj.effect;
 
 public class txtEffect
 {
+	/// ADDON Assembly load
 	public static readonly Dictionary<string, ItxtEffectSolver> effect_list = new()
 	{
 		{txtEffect_timer.rule_type,new txtEffect_timer()},

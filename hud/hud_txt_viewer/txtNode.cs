@@ -3,6 +3,7 @@ namespace Obj.hud;
 public partial class txtNode : RichTextLabel
 {
 	public static double tween_time = 1.0;
+	public static double exit_item = 0.5;
 
 	public event Action<txtNode>? destroy;
 
@@ -26,18 +27,20 @@ public partial class txtNode : RichTextLabel
 			await Task.Delay(TimeSpan.FromSeconds(txt.time_sleep));
 
 		Text = txt.text_bbcode;
-		extra_effect?.Invoke(this);
+		if (extra_effect != null)
+			_ = Task.Run(() => extra_effect.Invoke(this));
 		effect_out(txt.effect_out);
 
 		//TODO: voice
 		voice_action?.Invoke();
-		
+
 		if (txt.time_apply != 0)
 			await Task.Delay(TimeSpan.FromSeconds(txt.time_apply));
 	}
 
-	public void dispose() {
+	async public Task dispose() {
 		effect_out(-1);
+		await Task.Delay(TimeSpan.FromSeconds(tween_time / 2));
 		if (txt is null)
 			return;
 
@@ -57,16 +60,16 @@ public partial class txtNode : RichTextLabel
 	public void init_effect() {
 		_ratio_tween = this.CreateStopTween();
 		_alpha_tween = this.CreateStopTween();
-		_exit_tween = this.CreateStopTween();
+		_exit_tween = this.CreateStopTween(() => this.Modulate = new(1,1,1,1));
 
 		_ratio_tween.TweenProperty(this, "visible_ratio", 1.0, tween_time)
 			.From(0.0);
-	
+
 		_alpha_tween.TweenProperty(this, "modulate:a", 1.0, tween_time)
 			.From(0.0);
-		
-		_exit_tween.TweenProperty(this, "modulate:a", 1.0, tween_time / 2)
-			.From(0.0);
+
+		_exit_tween.TweenProperty(this, "modulate:a", 0.0, tween_time / 2)
+			.From(1.0);
 	}
 
 	public void effect_out(int type) {
@@ -77,7 +80,6 @@ public partial class txtNode : RichTextLabel
 			1 => _alpha_tween,
 			_ => null
 		};
-
 		tween?.Play();
 	}
 

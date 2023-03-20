@@ -7,13 +7,13 @@ public partial class txtContainer : VBoxContainer
 
 	public void add_txt(txtNode node) {
 		if (GetChildCount() > limit)
-			GetChild<txtNode>(0).dispose();
+			_ = GetChild<txtNode>(0).dispose();
 		this.JoinNode(node);
 	}
 
 	public void clear_child() {
 		foreach (txtNode node in GetChildren())
-			node.dispose();
+			_ = node.dispose();
 	}
 
 }

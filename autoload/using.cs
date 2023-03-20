@@ -11,6 +11,7 @@ global using gdc = Godot.Collections;
 global using Obj.util;
 global using Obj.resource.model;
 global using Obj.resource;
+global using Obj.autoload;
 
 global using CommunityToolkit.Diagnostics;
 global using CommunityToolkit.HighPerformance;

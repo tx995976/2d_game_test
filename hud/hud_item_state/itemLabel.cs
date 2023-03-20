@@ -35,10 +35,12 @@ public partial class itemLabel : Panel
 	public override void _EnterTree() {
 		_item_tex = GetNode<TextureRect>("item_tex");
 		_item_type_tex = GetNode<TextureRect>("item_type_tex");
-		_name_item = GetNode<Label>("name_item");
+		_name_item = GetNode<Label>("name_item"); 
 		_info_ammo = GetNode<Label>("info_ammo");
 		_progress = GetNode<ProgressBar>("progress");
 		_info_progress = GetNode<Label>("progress/info_progress");
+
+		//GD.Print(this,$"{this.Position}");
 
 	}
 

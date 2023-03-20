@@ -16,6 +16,9 @@ addons/
 *.tscn
 *.tres
 
+*.txt
+*.effect
+
 bin/
 obj/
 

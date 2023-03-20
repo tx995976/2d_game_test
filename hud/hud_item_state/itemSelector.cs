@@ -21,8 +21,6 @@ public partial class itemSelector : Control
 
 	public event Action<int>? Dropitem;
 
-	SemaphoreSlim _animation_lock = new(1);
-
 
 	public override void _Ready() {
 		var child = GetChildren().ToArray();
@@ -32,15 +30,25 @@ public partial class itemSelector : Control
 			if (node is itemLabel label)
 			{
 				itemLabels.Add(label);
-				GD.Print(label.Position);
+				//GD.Print(label.Position);
 				_default_panel_pos.Add(label.Position);
 				int id = index++;
-				label.MouseEntered += () => mouseSelected(id);
+				label.MouseEntered += () =>
+				{
+					mouseSelected(id);
+					//GD.Print(id + " select");
+				};
 			}
 		}
 
 		_pos_panel = GetNode<Marker2D>("pos_panel");
+
 		effect_panel_init();
+		
+		// GD.Print("pos_panel");
+		// _default_panel_pos.ForEach(x => GD.Print($"pos {x}"));
+		// GD.Print($"pos marked: {_pos_panel.Position}");
+
 	}
 
 	public void mouseSelected(int index) {
@@ -76,12 +84,11 @@ public partial class itemSelector : Control
 	}
 
 	async public Task effect_panel(bool flag) {
-		await _animation_lock.WaitAsync();
-
 		if (flag)
 		{
 			foreach (var item in itemLabels)
 				item.Visible = true;
+			_tweenClose!.Stop();
 			_tweenOpen!.Play();
 		}
 		else
@@ -92,6 +99,7 @@ public partial class itemSelector : Control
 					itemLabels[i].Visible = false;
 			}
 			shader_effect_select(select_index, true);
+			_tweenOpen!.Stop();
 			_tweenClose!.Play();
 
 			await ToSignal(_tweenClose, Tween.SignalName.Finished);
@@ -99,15 +107,14 @@ public partial class itemSelector : Control
 			shader_effect_select(select_index, false);
 			itemLabels[select_index].Visible = false;
 		}
-		
-		_animation_lock.Release();
+
 	}
 
 	public void effect_panel_init() {
 		_tweenOpen = this.CreateStopTween()
-			.SetTrans(Tween.TransitionType.Back)
-			.SetEase(Tween.EaseType.Out)
-			.SetParallel(true);
+				   .SetTrans(Tween.TransitionType.Back)
+				   .SetEase(Tween.EaseType.Out)
+				   .SetParallel(true);
 
 		var pos = _default_panel_pos.GetEnumerator();
 		pos.MoveNext();
@@ -120,9 +127,9 @@ public partial class itemSelector : Control
 		}
 
 		_tweenClose = this.CreateStopTween()
-			.SetTrans(Tween.TransitionType.Back)
-			.SetEase(Tween.EaseType.Out)
-			.SetParallel(true);
+					.SetTrans(Tween.TransitionType.Back)
+					.SetEase(Tween.EaseType.Out)
+					.SetParallel(true);
 
 		foreach (var item in itemLabels)
 		{

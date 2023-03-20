@@ -60,8 +60,8 @@ public partial class hudItem : Control, Ihud
 		}
 
 		_inselected = visible;
-		_label_supply!.Visible = !visible;
-		_label_equip!.Visible = !visible;
+		// _label_supply!.Visible = !visible;
+		// _label_equip!.Visible = !visible;
 	}
 
 	public override void _Input(InputEvent @event) {

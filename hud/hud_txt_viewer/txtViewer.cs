@@ -56,25 +56,28 @@ public partial class txtViewer : Control, Ihud
 
 		if (index != -1)
 		{
-			await exec_singal_txt(pack[index]);
+			await exec_singal_txt(pack[index],pack);
 			_ = call_clear();
 		}
 		else
 		{
 			foreach (var line in pack.pack_txt)
 			{
-				await exec_singal_txt(line);
+				await exec_singal_txt(line,pack);
 			}
 			_ = call_clear();
 		}
 	}
 
 
-	async Task exec_singal_txt(res_txtLine txtline, res_text_pack? pack = null) {
+	async Task exec_singal_txt(res_txtLine txtline, res_text_pack pack) {
+		if(!Visible)
+			return;
+
 		var node = pooltxt!.get();
 		node.txt = txtline;
 
-		if (pack is not null)
+		if (txtline.effect > -1)
 		{
 			var effect_data = pack.pack_effects[txtline.effect];
 			node.extra_effect = _effector.solve(effect_data);

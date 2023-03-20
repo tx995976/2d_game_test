@@ -1,8 +1,7 @@
+
 using Obj.hud;
 
-namespace Obj.effect;
-
-
+namespace Obj.effect.txtSolver;
 
 public class txtEffect_timer : ItxtEffectSolver
 {
@@ -14,22 +13,27 @@ public class txtEffect_timer : ItxtEffectSolver
 	public Action<txtNode> compile_expression(string rule) {
 		var args = rule.Split('|');
 
-		var time = TimeSpan.Parse(args[0]);
- 
+
 		var format_str = args[1];
-		var dir = int.Parse(args[2]);
+		var time = TimeSpan.ParseExact(args[0], format_str, null);
 		var tick_time = TimeSpan.FromSeconds(double.Parse(args[3]));
-		
-		return async (node) => {
-			PeriodicTimer tick = new(tick_time);
-			while(true){
-				await tick.WaitForNextTickAsync();
-				node.Text = string.Format(node.Text,time.ToString(format_str));
-				time -= tick_time;
-				if(!node.isActive || time == TimeSpan.Zero)
+
+		var dir = int.Parse(args[2]);
+
+		return async (node) =>
+		{
+			//PeriodicTimer tick = new(tick_time);
+			while (true)
+			{
+				await Task.Delay(tick_time);
+				node.Text = string.Format(node.txt!.text_bbcode!, time.ToString(format_str));
+				time += tick_time * dir;
+				if (!node.isActive || time == TimeSpan.Zero)
+				{
 					break;
+				}
 			}
-			tick.Dispose();
+			//tick.Dispose();
 		};
 	}
 }

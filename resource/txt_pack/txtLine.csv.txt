@@ -1,3 +1,0 @@
-info, ,text_code,1.0,1.0,0.5
-top, ,text_code,1.0,1.0,0.5
-talk, ,text_code,1.0,1.0,0.5
