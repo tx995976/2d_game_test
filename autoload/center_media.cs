@@ -6,10 +6,17 @@ public class centerMedia : IserviceCenter
 	static readonly string path_pre_txt = "res://resource/txt_pack/";
 	static readonly string path_pre_voice = "res://resource/voice/";
 
+	static readonly string name_world_audio = "%world_audio";
+
 	public Node main_node { get; set; }
 
 	public Dictionary<StringName, res_text_pack> res_txt { get; set; } = new();
-	//TODO voice
+	
+
+
+	public AudioStreamPlayer? world_player;
+	
+
 
 	public centerMedia(Node main_node) {
 		this.main_node = main_node;
@@ -18,7 +25,7 @@ public class centerMedia : IserviceCenter
 
 	public void start_service() {
 		txt_load(path_pre_txt);
-
+		world_player = main_node!.GetNode<AudioStreamPlayer>(name_world_audio);
 	}
 
 	public void stop_service() {

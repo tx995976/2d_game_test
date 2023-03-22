@@ -40,9 +40,7 @@ public partial class txtNode : RichTextLabel
 
 	async public Task dispose() {
 		effect_out(-1);
-		await Task.Delay(TimeSpan.FromSeconds(tween_time / 2));
-		if (txt is null)
-			return;
+		await ToSignal(_exit_tween,Tween.SignalName.Finished);
 
 		isActive = false;
 

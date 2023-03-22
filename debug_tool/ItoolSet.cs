@@ -6,3 +6,9 @@ public interface ItoolSet
 
 	string exec_command(string[] args);
 }
+
+[AttributeUsage(AttributeTargets.Class)]
+public sealed class toolSetAttribute : Attribute
+{
+
+}

@@ -1,9 +1,9 @@
 namespace Obj.tool.toolSet;
 
+[toolSet]
 public class toolSet_txt : ItoolSet
 {
 	public string ToolName => "txt";
-
 
 	public string exec_command(string[] args) {
 		var pack_name = args[0];

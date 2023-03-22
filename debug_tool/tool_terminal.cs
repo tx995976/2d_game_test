@@ -5,8 +5,6 @@ public partial class tool_terminal : Control
 	LineEdit? _input;
 	Window? _window;
 
-	List<string> temp_cmd = new();
-
 	public RichTextLabel? _result;
 
 	public override void _EnterTree() {
@@ -27,12 +25,8 @@ public partial class tool_terminal : Control
 		if (@event.IsActionPressed("ui_terminal"))
 		{
 			_window!.Visible = !_window.Visible;
+			Visible = !Visible;
 		}
-		else if (@event.IsActionPressed("ui_up"))
-		{
-			
-		}
-
 
 	}
 

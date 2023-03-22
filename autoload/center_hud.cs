@@ -14,7 +14,7 @@ public class centerHud : IserviceCenter
 
 	public CanvasLayer? _cantainer_layer;
 
-	public event Action<Icontrollable>? player_changed;
+	//public event Action<Icontrollable>? player_changed;
 
 
 	#region hud_node

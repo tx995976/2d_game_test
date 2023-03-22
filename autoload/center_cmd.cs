@@ -5,7 +5,7 @@ namespace Obj.autoload;
 
 public class centerCmd : IserviceCenter
 {
-	static readonly string namespace_tool = "Obj.tool.toolSet";
+	//static readonly string namespace_tool = "Obj.tool.toolSet";
 	static readonly string tool_path = "%ui_terminal";
 
 	Dictionary<string, ItoolSet> toolProvider = new();
@@ -24,7 +24,7 @@ public class centerCmd : IserviceCenter
 		GD.Print("load tools: ");
 		var types = Assembly.GetExecutingAssembly()
 							.GetTypes()
-							.Where(x => x.Namespace == namespace_tool)
+							.Where(x => x.IsDefined(typeof(toolSetAttribute)))
 							.ToList();
 
 		var ass = Assembly.GetExecutingAssembly();

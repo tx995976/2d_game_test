@@ -22,4 +22,4 @@ blend_mode = 2
 range_item_cull_mask = 15
 shadow_item_cull_mask = 6
 texture = ExtResource("2_8gd65")
-height = 100.0
+height = 60.0
