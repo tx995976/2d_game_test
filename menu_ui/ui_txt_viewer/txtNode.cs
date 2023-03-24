@@ -1,4 +1,4 @@
-namespace Obj.hud;
+namespace Obj.ui;
 
 public partial class txtNode : RichTextLabel
 {
@@ -34,15 +34,17 @@ public partial class txtNode : RichTextLabel
 		//TODO: voice
 		voice_action?.Invoke();
 
-		if (txt.time_apply != 0)
+		if (txt.time_apply != 0){
 			await Task.Delay(TimeSpan.FromSeconds(txt.time_apply));
+			_ = dispose();
+		}
 	}
 
 	async public Task dispose() {
+		isActive = false;
+		
 		effect_out(-1);
 		await ToSignal(_exit_tween,Tween.SignalName.Finished);
-
-		isActive = false;
 
 		this.RemoveSelf();
 		destroy?.Invoke(this);

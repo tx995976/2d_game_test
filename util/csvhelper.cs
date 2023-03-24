@@ -17,5 +17,12 @@ public static class csvReader
         return reader.GetRecords<T>().ToList();
 	}
 
+	public static List<T> ReadWithHeadrecords<T>(string text) where T : class {
+        using var stream = new StringReader(text);
+		using var reader = new CsvReader(stream,new CsvConfiguration(CultureInfo.InvariantCulture));
+		
+        return reader.GetRecords<T>().ToList();
+	}
+
 
 }

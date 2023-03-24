@@ -1,4 +1,4 @@
-namespace Obj.hud;
+namespace Obj.ui;
 
 public partial class txtContainer : VBoxContainer
 {

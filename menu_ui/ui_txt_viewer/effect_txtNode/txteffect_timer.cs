@@ -1,5 +1,5 @@
 
-using Obj.hud;
+using Obj.ui;
 
 namespace Obj.effect.txtSolver;
 

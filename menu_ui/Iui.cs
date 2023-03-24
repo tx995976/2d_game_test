@@ -1,6 +1,6 @@
 namespace Obj.ui;
 
-public interface IuiPanel
+public interface Iui
 {
     public void ui_show();
     public void ui_hide();

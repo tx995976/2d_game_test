@@ -29,13 +29,13 @@ public class res_text_pack
 		var res = new res_text_pack
 		{
 			packName = name,
-			pack_txt = csvReader.ReadNonHeadrecords<res_txtLine>(txtfile.GetAsText()),
+			pack_txt = csvReader.ReadWithHeadrecords<res_txtLine>(txtfile.GetAsText()),
 		};
 		if(effectfile is not null){
-			res.pack_effects = csvReader.ReadNonHeadrecords<res_txtEffect>(effectfile.GetAsText());
+			res.pack_effects = csvReader.ReadWithHeadrecords<res_txtEffect>(effectfile.GetAsText());
 			GD.Print("effect load");
 		}
-			
+
 		return res;
 	}
 

@@ -5,7 +5,7 @@ public static class resNames
 
 	#region res_suffix
 
-	public readonly static string txtSuffix = ".csv.txt";
+	public readonly static string txtSuffix = ".csv.txtline";
 	public readonly static string effectSuffix = ".csv.effect";
 
 #if DEBUG

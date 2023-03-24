@@ -1,8 +1,8 @@
 using Obj.effect;
 
-namespace Obj.hud;
+namespace Obj.ui;
 
-public partial class txtViewer : Control, Ihud
+public partial class txtViewer : Control, Iui
 {
 
 	[Export]
@@ -14,7 +14,6 @@ public partial class txtViewer : Control, Ihud
 	Dictionary<string, txtContainer> _container_list = new();
 	Nodepools<txtNode>? pooltxt;
 
-	PeriodicTimer? _clear_timer;
 	txtEffect _effector = new();
 
 	public event Action<StringName>? voice_require;
@@ -34,17 +33,14 @@ public partial class txtViewer : Control, Ihud
 
 		pooltxt.pushAction = (x) =>
 		{
-			x.txt = null;
 			x.extra_effect = null;
 		};
 
 		pooltxt.getAction = (x) =>
 		{
+			x.txt = null;
 			x.Text = string.Empty;
 		};
-
-		_clear_timer = new(TimeSpan.FromSeconds(time_clear));
-
 	}
 
 	public void ui_show() => Visible = true;
@@ -57,7 +53,7 @@ public partial class txtViewer : Control, Ihud
 		if (index != -1)
 		{
 			await exec_singal_txt(pack[index],pack);
-			_ = call_clear();
+			//_ = call_allclear();
 		}
 		else
 		{
@@ -65,10 +61,9 @@ public partial class txtViewer : Control, Ihud
 			{
 				await exec_singal_txt(line,pack);
 			}
-			_ = call_clear();
+			_ = call_allclear();
 		}
 	}
-
 
 	async Task exec_singal_txt(res_txtLine txtline, res_text_pack pack) {
 		if(!Visible)
@@ -89,8 +84,8 @@ public partial class txtViewer : Control, Ihud
 		await node.show();
 	}
 
-	async Task call_clear() {
-		await _clear_timer!.WaitForNextTickAsync();
+	async Task call_allclear() {
+		await Task.Delay(TimeSpan.FromSeconds(time_clear));
 		foreach (var container in _container_list.Values)
 		{
 			container.clear_child();

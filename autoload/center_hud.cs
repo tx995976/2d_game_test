@@ -1,18 +1,21 @@
 using Obj.hud;
-using Obj.sp_player;
+using Obj.ui;
 
 namespace Obj.autoload;
 
 public class centerHud : IserviceCenter
 {
 	public static readonly string path_hudNode = "%hud_layer";
+	public static readonly string path_uiNode = "%ui_layer";
 
 	public static readonly string name_huditem = "hud_item";
-	public static readonly string name_hudtxt = "hud_txt";
+
+	public static readonly string name_uitxt = "ui_txt";
 
 	public Node main_node { get; set; }
 
-	public CanvasLayer? _cantainer_layer;
+	public CanvasLayer? _cantainer_hud;
+	public CanvasLayer? _cantainer_ui;
 
 	//public event Action<Icontrollable>? player_changed;
 
@@ -20,7 +23,12 @@ public class centerHud : IserviceCenter
 	#region hud_node
 
 	public hudItem? hud_item { get; set; }
-	public txtViewer? hud_txt { get; set; }
+
+	#endregion
+
+	#region ui_node
+
+	public txtViewer? ui_txt { get; set; }
 
 	#endregion
 
@@ -32,7 +40,9 @@ public class centerHud : IserviceCenter
 
 	public void start_service() {
 		GD.Print($"hud Loading: ");
-		_cantainer_layer = main_node.GetNode<CanvasLayer>(path_hudNode);
+		_cantainer_hud = main_node.GetNode<CanvasLayer>(path_hudNode);
+		_cantainer_ui = main_node.GetNode<CanvasLayer>(path_uiNode);
+
 		init_hud();
 
 	}
@@ -42,8 +52,10 @@ public class centerHud : IserviceCenter
 	}
 
 	void init_hud() {
-		hud_item = _cantainer_layer!.GetNode<hudItem>(name_huditem);
-		hud_txt = _cantainer_layer!.GetNode<txtViewer>(name_hudtxt);
+		hud_item = _cantainer_hud!.GetNode<hudItem>(name_huditem);
+
+
+		ui_txt = _cantainer_ui!.GetNode<txtViewer>(name_uitxt);
 	}
 
 

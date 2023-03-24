@@ -18,6 +18,7 @@ addons/
 
 *.txt
 *.effect
+*.txtline
 
 bin/
 obj/

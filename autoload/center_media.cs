@@ -60,7 +60,7 @@ public class centerMedia : IserviceCenter
 			return;
 		}
 
-		_ = ObjMain.hudServe!.hud_txt!.exec_txt(res_txt[pack_name], index);
+		_ = ObjMain.hudServe!.ui_txt!.exec_txt(res_txt[pack_name], index);
 	}
 
 	#endregion

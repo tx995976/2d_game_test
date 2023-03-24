@@ -14,6 +14,9 @@ public partial class hudItem : Control, Ihud
 			}
 		}
 	}
+
+	public Iactor? character_node { get; set; }
+
 	IBag? _current_bag;
 
 	itemLabel? _label_equip;
