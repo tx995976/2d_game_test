@@ -14,7 +14,6 @@ public partial class ObjMain : Node
 
 	public override void _EnterTree() {
 		root = this;
-	//TODO: init service
 		hudServe = new(this);
 		mediaServe = new(this);
 		itemServe = new(this);
