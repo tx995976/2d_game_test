@@ -1,3 +1,4 @@
+using Godot.NativeInterop;
 namespace Obj.ui;
 
 public partial class txtNode : RichTextLabel
@@ -28,6 +29,7 @@ public partial class txtNode : RichTextLabel
 
 		Text = txt.text_bbcode;
 		if (extra_effect != null)
+			//issue: task.run need?
 			_ = Task.Run(() => extra_effect.Invoke(this));
 		effect_out(txt.effect_out);
 
