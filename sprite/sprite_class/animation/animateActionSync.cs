@@ -10,7 +10,7 @@ public partial class animateActionSync
 	public res_animation_blend? animationBlend { get; set; }
 
 	[Export]
-	public string? playbackPath { get; set; }
+	public string playbackPath { get; set; } = string.Empty;
 
 	Iwalkable? _viewSource;
 	actionInfo? _actionSource;

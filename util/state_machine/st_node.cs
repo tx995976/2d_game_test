@@ -15,14 +15,14 @@ public interface IstateMachine
 
     public event Action<string>? state_changed;
 
-    public void change_state(StringName? state,stc_mode mode = stc_mode.st_swap);
+    public void change_state(StringName state,stc_mode mode = stc_mode.st_swap);
 }
 
 
 public interface IstateNode
 {
     // get => Node.Name;
-    public string? name { get;}
+    public string name { get;}
 
     public void enter_state();
     public void exit_state();

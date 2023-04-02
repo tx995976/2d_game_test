@@ -3,14 +3,16 @@ namespace Obj.sp_player;
 
 public class actionInfo
 {
-	public static string _none_str = "none";
+	public static StringName _none_str = "none";
 
-	public StringName? motionName { get; set; }
-	public StringName? equipStateName { get; set; }
+	public StringName motionName { get; set; } = string.Empty;
 
-	public StringName? equipStyleName { get; set; }
+	public StringName equipStateName { get; set; } = string.Empty;
 
-	public StringName? actionName { get; set; }
+	public StringName equipStyleName { get; set; } = string.Empty;
+
+	public StringName actionName { get; set; } = string.Empty;
+
 
 	//required
 	Istatemut Source { get; set; }
@@ -26,6 +28,7 @@ public class actionInfo
 	public void _Ready() {
 		if (Source.motionState is not null)
 			Source.motionState.state_changed += motion_changed;
+
 		if (Source.equipState is not null)
 			Source.equipState.state_changed += equip_state_changed;
 
@@ -40,23 +43,29 @@ public class actionInfo
 		// 	equip_state: {Source.equipState}
 		// 	equipSource: {equipSource}
 		// 	""");
+
 #endif
 	}
 
 	public void invoke_action(StringName name, Action action) {
 		actionName = name;
 		action.Invoke();
+
+		stateChanged?.Invoke();
 	}
 
-	public StringName _shortcut(){
+	public StringName _shortcut() {
 		var _actionState = "";
 		_actionState = motionName;
-		if(equipStateName is not null)
-			_actionState += '_'+equipStateName;
-		if(equipStyleName is not null)
-			_actionState += '_'+equipStyleName;
-		if(actionName is not null)
-			_actionState += '_'+actionName;
+
+		if (equipStateName != string.Empty)
+			_actionState += '_' + equipStateName;
+
+		if (equipStyleName != string.Empty)
+			_actionState += '_' + equipStyleName;
+
+		if (actionName != string.Empty)
+			_actionState += '_' + actionName;
 
 		return _actionState;
 	}
@@ -73,13 +82,13 @@ public class actionInfo
 		if (name != _none_str)
 			equipStateName = name;
 		else
-			equipStateName = null;
+			equipStateName = "";
 
 		stateChanged?.Invoke();
 	}
 
 	void equip_changed() {
-		equipStyleName = equipSource!.bagNode!.selected_equip?.define?.itemStyle;
+		equipStyleName = equipSource!.bagNode!.selected_equip?.define?.itemStyle ?? "";
 		stateChanged?.Invoke();
 	}
 

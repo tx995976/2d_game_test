@@ -4,7 +4,7 @@ namespace Obj.resource;
 public class res_text_pack
 {
 
-	public StringName? packName { get; set; }
+	public StringName packName { get; set; } = string.Empty;
 
 	public List<res_txtLine> pack_txt { get; set; } = new();
 

@@ -8,7 +8,7 @@ public partial class animateTreeSync :AnimationTree, IanimateTreeSync
     public Resource? animationBlend { get; set; }
 
     [Export]
-    public string? playbackPath { get; set; }
+    public string playbackPath { get; set; } = string.Empty;
 
     res_animation_blend? blend_param;
     Iwalkable? walkSource;

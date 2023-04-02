@@ -5,9 +5,9 @@ public class toolSet_item : ItoolSet
 {
 	public string ToolName => "item";
 
-	public string exec_command(string[] args) {
+	public terminal_result exec_command(string[]? args) {
 
 
-		return "ok";
+		return new(status_cmd.ok , "ok");
 	}
 }

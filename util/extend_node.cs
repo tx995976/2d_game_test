@@ -44,10 +44,10 @@ public static class GDext
 		return tween;
 	}
 
-	public static Tween CreateStopTween(this Node node,Action action) {
+	public static Tween CreateStopTween(this Node node,Action actionInstop) {
 		var tween = node.CreateTween();
 		tween.Finished += (() => tween.Stop());
-		tween.Finished += action;
+		tween.Finished += actionInstop;
 		tween.Stop();
 		return tween;
 	}

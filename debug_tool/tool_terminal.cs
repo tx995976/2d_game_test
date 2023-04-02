@@ -38,18 +38,26 @@ public partial class tool_terminal : Control
 		add_line("] " + command);
 
 		var token = command.Split(' ');
-		if (token.Length <= 1)
-			return;
+		if (token.Length >= 1){
+			var tool = token[0];
+			var arg = token.Length > 1 ? token[1..] : null;
 
-		var tool = token[0];
-		var arg = token[1..];
-
-		var res = ObjMain.cmdServe!.exec_command(tool, arg);
-		add_line(res);
+			var res = ObjMain.cmdServe!.exec_command(tool, arg);
+			add_line(res);
+		}
 	}
 
 
-	public void add_line(string line) =>
+	void add_line(terminal_result res){
+		var line = res.code switch{
+			status_cmd.ok => $"[color=green]{res.message}[/color]",
+			status_cmd.error => $"[color=red]{res.message}[/color]",
+			_ => ""
+		};
+		_result!.Text += line + '\n';
+	}
+
+	void add_line(string line) =>
 		_result!.Text += line + '\n';
 
 

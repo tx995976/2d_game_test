@@ -5,8 +5,8 @@ public sealed class toolSet_map : ItoolSet
 {
 	public string ToolName => "map";
 
-	public string exec_command(string[] args) {
+	public terminal_result exec_command(string[]? args) {
 		
-		return "load ";
+		return new(status_cmd.ok,"load ");
 	}
 }

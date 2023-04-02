@@ -16,7 +16,7 @@ public partial class stateNodeMachine :Node, IstateMachine
 	public Dictionary<string, IstateNode> state_list = new();
 	public Stack<IstateNode> state_stack = new();
 
-	public void change_state(StringName? state,stc_mode mode = stc_mode.st_swap) {
+	public void change_state(StringName state,stc_mode mode = stc_mode.st_swap) {
 		if (!is_active)
 			return;
 		

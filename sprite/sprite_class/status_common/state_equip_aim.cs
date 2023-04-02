@@ -2,7 +2,7 @@ namespace Obj.sp_player.status;
 
 public partial class state_equip_aim : Node, IstateNode
 {
-	public string? name => "aim";
+	public string name => "aim";
 
 	public event Action<StringName, stc_mode>? change_state;
 

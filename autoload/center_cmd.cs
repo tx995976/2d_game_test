@@ -40,10 +40,10 @@ public class centerCmd : IserviceCenter
 
 	public void stop_service() {}
 
-	public string exec_command(string tool,string[] args){
+	public terminal_result exec_command(string tool,string[]? args){
 		if(!toolProvider.ContainsKey(tool))
-			return "[color=red]no tool[/color]";
-
+			return new(status_cmd.error,"no tool");
+			
 		return toolProvider[tool].exec_command(args);
 	}
 

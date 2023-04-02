@@ -3,13 +3,14 @@ namespace Obj.ui;
 
 public partial class txtNode : RichTextLabel
 {
-	public static double tween_time = 1.0;
-	public static double exit_item = 0.5;
+	public static readonly double tween_time = 1.0;
+	// public static readonly double exit_time = 0.5;
 
 	public event Action<txtNode>? destroy;
 
 	public Action<txtNode>? extra_effect;
-	public Action? voice_action;
+	public SignalAct voice_signal = new();
+	// public Action? voice_action;
 
 	public bool isActive = false;
 
@@ -28,13 +29,14 @@ public partial class txtNode : RichTextLabel
 			await Task.Delay(TimeSpan.FromSeconds(txt.time_sleep));
 
 		Text = txt.text_bbcode;
-		if (extra_effect != null)
-			//issue: task.run need?
-			_ = Task.Run(() => extra_effect.Invoke(this));
+		
+		_ = Task.Run(() => extra_effect?.Invoke(this));
+		// extra_effect?.Invoke(this);
+
 		effect_out(txt.effect_out);
 
 		//TODO: voice
-		voice_action?.Invoke();
+		voice_signal.Invoke();
 
 		if (txt.time_apply != 0){
 			await Task.Delay(TimeSpan.FromSeconds(txt.time_apply));

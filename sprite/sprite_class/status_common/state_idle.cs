@@ -4,7 +4,7 @@ public partial class state_idle :Node, IstateNode
 {
 	Iwalkable? Source;
 
-	public string? name => "idle";
+	public string name => "idle";
 
 	public event Action<StringName, stc_mode>? change_state;
 

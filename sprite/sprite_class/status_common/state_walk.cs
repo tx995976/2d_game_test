@@ -4,7 +4,7 @@ public partial class state_walk :Node, IstateNode
 {
 	Iwalkable? Source;
 
-	public string? name => "walk";
+	public string name => "walk";
 
 	public event Action<StringName, stc_mode>? change_state;
 

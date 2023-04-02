@@ -5,13 +5,13 @@ namespace Obj.resource;
 public record class res_txtLine
 {
 	[Index(0)]
-	public string? show_pos { get; set; }
+	public string show_pos { get; set; } = string.Empty;
 
 	[Index(1)]
-	public string? name_voice { get; set; }
+	public string name_voice { get; set; } = string.Empty;
 
 	[Index(2)]
-	public string? text_bbcode { get; set; }
+	public string text_bbcode { get; set; } = string.Empty;
 
 	//if no voices 
 	[Index(3)]

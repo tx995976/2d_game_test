@@ -5,7 +5,11 @@ public class toolSet_txt : ItoolSet
 {
 	public string ToolName => "txt";
 
-	public string exec_command(string[] args) {
+	public terminal_result exec_command(string[]? args) {
+		if(args == null){
+			return new(status_cmd.error,"no parameters");
+		}
+
 		var pack_name = args[0];
         int index = -1;
 		if (args.Length > 1)
@@ -14,6 +18,7 @@ public class toolSet_txt : ItoolSet
 		}
 
         ObjMain.mediaServe!.call_txt_view(pack_name,index);
-		return "ok";
+
+		return new(status_cmd.ok,$"call txtpack {pack_name} with index {index}");
 	}
 }
