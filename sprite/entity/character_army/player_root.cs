@@ -35,7 +35,8 @@ public partial class player_root : CharacterBody2D, Idefault_character
 	public event Action? banlance_break;
 
 	public override void _EnterTree() {
-		infoAction = new(this);
+		if(infoAction is null)
+			infoAction = new(this);
 		
 		motionState = GetNode<IstateMachine>("motionState");
 		equipState = GetNode<IstateMachine>("equipState");
@@ -50,12 +51,15 @@ public partial class player_root : CharacterBody2D, Idefault_character
 	public override void _Ready() {
 
 		infoAction!._Ready();
-
+		
 	}
 
 
 	public void walk(double delta) {
-		MoveAndCollide((float)(delta * speed) * velocity_dir);
+		//issue move way?
+		// MoveAndCollide((float)(delta * speed) * velocity_dir);
+		Velocity = (float)speed * velocity_dir;
+		MoveAndSlide();
 	}
 
 

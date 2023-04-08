@@ -44,7 +44,6 @@ public class centerHud : IserviceCenter
 		_cantainer_ui = main_node.GetNode<CanvasLayer>(path_uiNode);
 
 		init_hud();
-
 	}
 
 	public void stop_service() {

@@ -20,7 +20,9 @@ public static class GDext
 			return;
 
 		node.AddChild(child);
-		child.Owner = node;
+
+		if(child.Owner is null)
+			child.Owner = node;
 	}
 
 	public static void JoinToNode(this Node node, Node parent) {
@@ -34,6 +36,11 @@ public static class GDext
 
 		node.GetParent().RemoveChild(node);
 		node.Owner = null;
+	}
+
+	public static void MoveSelf(this Node node, Node target){
+		node.GetParent().RemoveChild(node);
+		target.AddChild(node);
 	}
 
 	/// 自动停止 

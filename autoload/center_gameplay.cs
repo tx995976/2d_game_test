@@ -13,17 +13,21 @@ public sealed class center_gameplay : IserviceCenter
 
     public event Action<Icontrollable>? player_changed;
 
-	Node2D? _player_controller;
-    mapLoader? _map_loader;
+    public mapLoader _map_loader;
+	
+	public playerCtrlPack? _player_controller;
 
 
-	public center_gameplay(Node main_node) {
-		this.main_node = main_node;
+	public center_gameplay(Node _main_node)
+	{
+		main_node = _main_node;
+		_map_loader = new(_main_node);
+
 		start_service();
 	}
 
 	public void start_service() {
-
+		_player_controller = main_node.GetNode<playerCtrlPack>("player_controller");
 	}
 
 	public void stop_service() {

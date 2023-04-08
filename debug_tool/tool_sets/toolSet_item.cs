@@ -8,6 +8,6 @@ public class toolSet_item : ItoolSet
 	public terminal_result exec_command(string[]? args) {
 
 
-		return new(status_cmd.ok , "ok");
+		return terminal_result.ok("ok");
 	}
 }

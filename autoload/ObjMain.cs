@@ -1,25 +1,19 @@
 namespace Obj.autoload;
 
-public partial class ObjMain : Node
+#pragma warning disable
+public static class ObjMain
 {
-	public static centerHud? hudServe;
+	public static centerHud hudServe;
 
-	public static centerMedia? mediaServe;
+	public static centerMedia mediaServe;
 
-	public static centerItem? itemServe;
+	public static centerItem itemServe;
 
-	public static centerCmd? cmdServe;
+	public static centerCmd cmdServe;
 
-	public static ObjMain? root;
+	public static center_gameplay gameplayServe;
 
-	public override void _EnterTree() {
-		root = this;
-		hudServe = new(this);
-		mediaServe = new(this);
-		itemServe = new(this);
-		cmdServe = new(this);
+	public static Node root;
 
-
-		System.Runtime.GCSettings.LatencyMode = System.Runtime.GCLatencyMode.LowLatency;
-	}
 }
+

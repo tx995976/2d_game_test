@@ -49,11 +49,7 @@ public partial class tool_terminal : Control
 
 
 	void add_line(terminal_result res){
-		var line = res.code switch{
-			status_cmd.ok => $"[color=green]{res.message}[/color]",
-			status_cmd.error => $"[color=red]{res.message}[/color]",
-			_ => ""
-		};
+		var line = res._message();
 		_result!.Text += line + '\n';
 	}
 

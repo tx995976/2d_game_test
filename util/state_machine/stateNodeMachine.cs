@@ -51,6 +51,7 @@ public partial class stateNodeMachine :Node, IstateMachine
 
 		state_now = (IstateNode)state_default!;
 		state_now?.enter_state();
+		GD.Print($"enter state {state_now?.name}");
 	}
 	
 }

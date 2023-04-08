@@ -42,7 +42,7 @@ public class centerCmd : IserviceCenter
 
 	public terminal_result exec_command(string tool,string[]? args){
 		if(!toolProvider.ContainsKey(tool))
-			return new(status_cmd.error,"no tool");
+			return terminal_result.error("no tool");
 			
 		return toolProvider[tool].exec_command(args);
 	}
