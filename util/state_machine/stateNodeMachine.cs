@@ -2,7 +2,7 @@ using System.Collections.Generic;
 namespace Obj.util;
 
 /// 普通下推状态机
-public partial class stateNodeMachine :Node, IstateMachine
+public partial class stateNodeMachine :Node, IstateNodeMachine
 {
 	public bool is_active { get; set; } = true;
 
@@ -38,7 +38,7 @@ public partial class stateNodeMachine :Node, IstateMachine
 		state_now?.enter_state();
 
 #if DEBUG
-		GD.Print($"change state to {state_now?.name}");
+		logLine.debug("util",$"change state to {state_now?.name}");
 #endif
 	}
 
@@ -51,7 +51,7 @@ public partial class stateNodeMachine :Node, IstateMachine
 
 		state_now = (IstateNode)state_default!;
 		state_now?.enter_state();
-		GD.Print($"enter state {state_now?.name}");
+		logLine.debug("util",$"enter state {state_now?.name}");
 	}
 	
 }

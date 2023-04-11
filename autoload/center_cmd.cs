@@ -21,7 +21,7 @@ public class centerCmd : IserviceCenter
 
 
 	public void start_service() {
-		GD.Print("load tools: ");
+		logLine.info("system","load tools: ");
 		var types = Assembly.GetExecutingAssembly()
 							.GetTypes()
 							.Where(x => x.IsDefined(typeof(toolSetAttribute)))
@@ -32,7 +32,7 @@ public class centerCmd : IserviceCenter
 		{
 			var tool = (ItoolSet)ass.CreateInstance(type.FullName!)!;
 			toolProvider.Add(tool.ToolName,tool);
-			GD.Print($"find tool {tool.ToolName}");
+			logLine.info("system",$"find tool {tool.ToolName}");
 		}
 
 		_terminal = main_node.GetNode<tool_terminal>(tool_path);

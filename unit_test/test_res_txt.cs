@@ -6,7 +6,7 @@ namespace Obj.test;
 public partial class test_res_txt : EditorScript
 {
 	public override void _Run() {
-		var res = GD.Load("res://texture/package_sprite/data_animationBlend_test1.tres");
+		var res = GD.Load("res://texture/package_sprite/data_animationBlend_player1.tres");
 		if (res is not res_animation_blend)
 		{
 			GD.Print("yes");

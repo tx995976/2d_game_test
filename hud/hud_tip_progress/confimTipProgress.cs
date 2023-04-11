@@ -18,7 +18,6 @@ public partial class confimTipProgress : TextureProgressBar
 	Tween? _tween;
 
 
-
 	public override void _Ready() {
 		_tween = CreateTween();
 		_tween.Stop();
@@ -29,6 +28,7 @@ public partial class confimTipProgress : TextureProgressBar
 
 		_tween.Finished += (
 			() => confimAction?.Invoke());
+
 	}
 
 	public override void _UnhandledInput(InputEvent @event) {

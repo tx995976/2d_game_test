@@ -32,10 +32,10 @@ public class centerItem : IserviceCenter
 	void load_res(string path) {
 		var files = GDfile.GetResFilePaths(path,resNames.resSuffix);
 
-		GD.Print($"item Loading: ");
+		logLine.info("system",$"item Loading: ");
 		foreach (var filename in files)
 		{
-			GD.Print($"Load {filename}");
+			logLine.info("resource",$"Load {filename}");
 			var res = GD.Load<IresItem>(filename);
 			if(res is res_item_equip)
 				item_equip.Add(res.item_name!,res);

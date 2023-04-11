@@ -37,10 +37,10 @@ public class centerMedia : IserviceCenter
 	void txt_load(string path) {
 		var files = GDfile.GetResFilePaths(path, resNames.txtSuffix);
 
-		GD.Print($"media Loading: ");
+		logLine.info("system",$"media Loading: ");
 		foreach (var file in files)
 		{
-			GD.Print($"Load {file}");
+			logLine.info("resource",$"Load {file}");
 			var txt_pack = res_text_pack.Load(file);
 			res_txt.Add(txt_pack.packName!, txt_pack);
 		}
@@ -56,7 +56,7 @@ public class centerMedia : IserviceCenter
 
 	public void call_txt_view(StringName pack_name, int index = -1) {
 		if (!res_txt.ContainsKey(pack_name)){
-			GD.Print("txt: no pack");
+			logLine.warning("resource","txt: no pack");
 			return;
 		}
 

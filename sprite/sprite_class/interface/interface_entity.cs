@@ -28,8 +28,8 @@ public interface Iwalkable
 public interface Istatemut
 {
 
-	IstateMachine? motionState { get; set; }
-	IstateMachine? equipState { get; set; }
+	IstateNodeMachine? motionState { get; set; }
+	IstateNodeMachine? equipState { get; set; }
 
 }
 

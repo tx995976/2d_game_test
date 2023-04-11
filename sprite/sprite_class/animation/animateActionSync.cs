@@ -21,7 +21,7 @@ public partial class animateActionSync
 		
 		stateSource = this.SearchOwner<Iactor>();
 		if(stateSource is null){
-			GD.Print(this," Owner not find");
+			logLine.warning("sprite",$"{this} Owner not find");
 			return;
 		}
 

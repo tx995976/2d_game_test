@@ -12,7 +12,7 @@ public partial class txtViewer : Control, Iui
 	double time_clear { get; set; } = 1.5;
 
 	Dictionary<string, txtContainer> _container_list = new();
-	Nodepools<txtNode>? pooltxt;
+	tscnPool<txtNode>? pooltxt;
 
 	txtEffect _effector = new();
 

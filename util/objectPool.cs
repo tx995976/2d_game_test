@@ -1,37 +1,39 @@
 namespace Obj.util;
 
-[Obsolete]
-public class Nodepools<T> where T : Node, new()
+public class objectPool<T> where T : class, new()
 {
+
 	const int default_size = 20;
 
 	Queue<T> pools;
-	Action<T>? initAction;
+
+	public Action<T>? initAction;
 	public Action<T>? pushAction;
 	public Action<T>? getAction;
 
-	PackedScene tres;
 	int size;
 
 	#region init
 
-	public Nodepools(PackedScene tscn, int size = default_size) {
+	public objectPool(int size = default_size) {
 		pools = new Queue<T>(size);
-		tres = tscn;
 		init();
 	}
 
-	public Nodepools(PackedScene tscn, Action<T> action, int size = default_size) {
+	public objectPool(Action<T> action, int size = default_size) {
 		pools = new Queue<T>(size);
-		tres = tscn;
 		initAction = action;
 		init();
 	}
 
-	public T init_instance() {
-		var instance = tres.Instantiate<T>();
+	virtual public T init_instance() {
+		var instance = new T();
 		initAction?.Invoke(instance);
 		return instance;
+	}
+
+	virtual public T shortageAction() {
+		return init_instance();
 	}
 
 	public void init() {
@@ -49,11 +51,11 @@ public class Nodepools<T> where T : Node, new()
 	}
 
 	public T get() {
-		var obj = pools.Count == 0 ? init_instance() : pools.Dequeue();
+		var obj = pools.Count == 0 ? shortageAction() : pools.Dequeue();
 		getAction?.Invoke(obj);
 		return obj;
 	}
-
 	#endregion
+
 
 }

@@ -33,7 +33,7 @@ public class res_text_pack
 		};
 		if(effectfile is not null){
 			res.pack_effects = csvReader.ReadWithHeadrecords<res_txtEffect>(effectfile.GetAsText());
-			GD.Print("effect load");
+			logLine.info("resource","effect load");
 		}
 
 		return res;

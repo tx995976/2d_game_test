@@ -10,8 +10,8 @@ public partial class player_root : CharacterBody2D, Idefault_character
 	[Export]
 	public double speed { get; set; }
 
-	public IstateMachine? motionState { get; set; }
-	public IstateMachine? equipState { get; set; }
+	public IstateNodeMachine? motionState { get; set; }
+	public IstateNodeMachine? equipState { get; set; }
 
 	public Sprite2D? texture { get; set; }
 	public IanimateActionSync? animation { get; set; }
@@ -19,8 +19,10 @@ public partial class player_root : CharacterBody2D, Idefault_character
 
 	[Export]
 	public int health { get; set; }
+
 	[Export]
 	public int armor { get; set; }
+
 	[Export]
 	public int banlance { get; set; }
 
@@ -38,8 +40,8 @@ public partial class player_root : CharacterBody2D, Idefault_character
 		if(infoAction is null)
 			infoAction = new(this);
 		
-		motionState = GetNode<IstateMachine>("motionState");
-		equipState = GetNode<IstateMachine>("equipState");
+		motionState = GetNode<IstateNodeMachine>("motionState");
+		equipState = GetNode<IstateNodeMachine>("equipState");
 
 		texture = GetNode<Sprite2D>("texture_pack");
 		animation = GetNode<IanimateActionSync>("texture_pack/animation_tree");
@@ -51,7 +53,7 @@ public partial class player_root : CharacterBody2D, Idefault_character
 	public override void _Ready() {
 
 		infoAction!._Ready();
-		
+
 	}
 
 

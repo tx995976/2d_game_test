@@ -39,7 +39,7 @@ public class centerHud : IserviceCenter
 	}
 
 	public void start_service() {
-		GD.Print($"hud Loading: ");
+		logLine.debug("system",$"hud Loading: ");
 		_cantainer_hud = main_node.GetNode<CanvasLayer>(path_hudNode);
 		_cantainer_ui = main_node.GetNode<CanvasLayer>(path_uiNode);
 
@@ -56,6 +56,5 @@ public class centerHud : IserviceCenter
 
 		ui_txt = _cantainer_ui!.GetNode<txtViewer>(name_uitxt);
 	}
-
 
 }
