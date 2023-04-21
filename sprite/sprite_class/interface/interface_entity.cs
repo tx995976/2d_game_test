@@ -27,10 +27,8 @@ public interface Iwalkable
 
 public interface Istatemut
 {
-
 	IstateNodeMachine? motionState { get; set; }
 	IstateNodeMachine? equipState { get; set; }
-
 }
 
 public interface Imedia
@@ -44,12 +42,13 @@ public interface Iusage
 {
 	//TODO: Iusage_node need
 	Area2D? useRange { get; set; }
-	public void trigger_usage() { }
+	
 }
 
 public interface Icontrollable
 {
 	Action<InputEvent>? inputSource { get; set; }
+
 }
 
 #endregion

@@ -18,14 +18,6 @@ public interface IstateNodeMachine
 	public void change_state(StringName state, stc_mode mode = stc_mode.st_swap);
 }
 
-public interface IstateActionMachine
-{
-	//TODO
-	
-
-
-}
-
 
 public interface IstateNode
 {

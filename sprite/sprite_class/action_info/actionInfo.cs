@@ -66,7 +66,7 @@ public class actionInfo
 		if (actionName != string.Empty)
 			_actionState += '_' + actionName;
 
-		return _actionState;
+		return (StringName)_actionState;
 	}
 
 	#region Properties changed

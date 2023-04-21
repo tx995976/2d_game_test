@@ -9,7 +9,7 @@ public partial class txtNode : RichTextLabel
 	public event Action<txtNode>? destroy;
 
 	public Action<txtNode>? extra_effect;
-	public SignalAct voice_signal = new();
+	// public SignalAct voice_signal = new();
 	// public Action? voice_action;
 
 	public bool isActive = false;
@@ -36,7 +36,7 @@ public partial class txtNode : RichTextLabel
 		effect_out(txt.effect_out);
 
 		//TODO: voice
-		voice_signal.Invoke();
+		// voice_signal.Invoke();
 
 		if (txt.time_apply != 0){
 			await Task.Delay(TimeSpan.FromSeconds(txt.time_apply));

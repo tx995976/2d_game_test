@@ -51,10 +51,11 @@ public class centerHud : IserviceCenter
 	}
 
 	void init_hud() {
+		//cost
 		hud_item = _cantainer_hud!.GetNode<hudItem>(name_huditem);
-
-
 		ui_txt = _cantainer_ui!.GetNode<txtViewer>(name_uitxt);
+
+
 	}
 
 }

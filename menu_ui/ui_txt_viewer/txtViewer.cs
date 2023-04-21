@@ -1,3 +1,4 @@
+using System.Diagnostics.CodeAnalysis;
 using Obj.effect;
 
 namespace Obj.ui;
@@ -26,10 +27,9 @@ public partial class txtViewer : Control, Iui
 
 	public override void _Ready() {
 
-		pooltxt = new(res_txtnode!, (x) =>
-		{
-			x.destroy += pooltxt!.push;
-		});
+		pooltxt = new tscnPool<txtNode>(
+			res_txtnode!,
+			(x,push) => x.destroy += push);
 
 		pooltxt.pushAction = (x) =>
 		{
@@ -52,21 +52,21 @@ public partial class txtViewer : Control, Iui
 
 		if (index != -1)
 		{
-			await exec_singal_txt(pack[index],pack);
+			await exec_singal_txt(pack[index], pack);
 			//_ = call_allclear();
 		}
 		else
 		{
 			foreach (var line in pack.pack_txt)
 			{
-				await exec_singal_txt(line,pack);
+				await exec_singal_txt(line, pack);
 			}
 			_ = call_allclear();
 		}
 	}
 
 	async Task exec_singal_txt(res_txtLine txtline, res_text_pack pack) {
-		if(!Visible)
+		if (!Visible)
 			return;
 
 		var node = pooltxt!.get();
@@ -77,7 +77,7 @@ public partial class txtViewer : Control, Iui
 			var effect_data = pack.pack_effects[txtline.effect];
 			node.extra_effect = _effector.solve(effect_data);
 		}
-		
+
 		//TODO voice
 
 		_container_list[txtline.show_pos!].add_txt(node);

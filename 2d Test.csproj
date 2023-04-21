@@ -11,5 +11,6 @@
     <PackageReference Include="CommunityToolkit.Diagnostics" Version="8.1.0" />
     <PackageReference Include="CommunityToolkit.HighPerformance" Version="8.1.0" />
     <PackageReference Include="CsvHelper" Version="30.0.1" />
+    <PackageReference Include="Curryfy" Version="3.1.0" />
   </ItemGroup>
 </Project>

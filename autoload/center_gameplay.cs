@@ -13,8 +13,8 @@ public sealed class center_gameplay : IserviceCenter
 
     public event Action<Icontrollable>? player_changed;
 
+
     public mapLoader _map_loader;
-	
 	public playerCtrlPack? _player_controller;
 
 

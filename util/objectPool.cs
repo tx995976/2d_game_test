@@ -2,46 +2,53 @@ namespace Obj.util;
 
 public class objectPool<T> where T : class, new()
 {
+	protected const int default_size = 20;
 
-	const int default_size = 20;
+	protected Queue<T> pools;
+	protected int length;
 
-	Queue<T> pools;
+	/// (T,pool.push())
+	public Action<T, Action<T>>? initAction;
 
-	public Action<T>? initAction;
 	public Action<T>? pushAction;
 	public Action<T>? getAction;
 
-	int size;
 
 	#region init
 
-	public objectPool(int size = default_size) {
-		pools = new Queue<T>(size);
-		init();
-	}
-
-	public objectPool(Action<T> action, int size = default_size) {
+	public objectPool(Action<T, Action<T>>? action = null, int size = default_size) {
 		pools = new Queue<T>(size);
 		initAction = action;
-		init();
+		length = size;
+		init(size);
 	}
 
-	virtual public T init_instance() {
+	#endregion
+
+	#region management
+
+	virtual protected T init_instance() {
 		var instance = new T();
-		initAction?.Invoke(instance);
+		initAction?.Invoke(instance, push);
 		return instance;
 	}
 
-	virtual public T shortageAction() {
+	virtual protected T shortageAction() {
 		return init_instance();
 	}
 
-	public void init() {
-		for (int i = 0;i < size;i++)
+	virtual protected void release(int len) {
+		for (int i = 0;i < len;i++)
+			pools.Dequeue();
+	}
+
+	protected void init(int len) {
+		for (int i = 0;i < len;i++)
 			pools.Enqueue(init_instance());
 	}
 
 	#endregion
+
 
 	#region actions
 
@@ -55,6 +62,18 @@ public class objectPool<T> where T : class, new()
 		getAction?.Invoke(obj);
 		return obj;
 	}
+
+	public void resize(int size) {
+		if (pools.Count < size)
+		{
+			init(size - pools.Count);
+		}
+		else if (pools.Count > size)
+		{
+			release(pools.Count - size);
+		}
+	}
+
 	#endregion
 
 

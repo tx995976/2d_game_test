@@ -14,6 +14,7 @@ public partial class itemBag :Node, IBag
 
     public event Action? selected_changed;
     public event Action? item_changed;
+    
     public event Action<IdataItem>? Dropitem;
     public event Action<IdataItem>? Swapitem;
 

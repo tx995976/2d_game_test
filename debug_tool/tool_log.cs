@@ -2,46 +2,51 @@ namespace Obj.tool;
 
 public class tool_log
 {
-	public static readonly int _Buffer_Limit = 50;
+	public static readonly int _Buffer_Limit = 500;
 
 	public static tool_log _instance = new();
 
-	public Dictionary<string, Queue<string>> _tag_buffer = new();
-	public Dictionary<string, Queue<string>> _level_buffer = new();
+	public Queue<string> _log_buffer = new(_Buffer_Limit);
 
 	public Func<logLine, bool>? fliter = (data) =>
 	{
-		return (int)data.level >= (int)logLevel.info ? true : false;
+		return (int)data.level >= (int)logLevel.debug ? true : false;
 	};
 
 	public void log(logLine data) {
 		var flag = fliter?.Invoke(data) ?? true;
 
 		var tag = data.tag;
-		var level = data.level.ToString();
-		var line = data.ToString();
+		var level = data.level;
+		var (color_line, line) = data.render();
 
-		insert_buffer(tag, level, line);
+		insert_buffer(line);
 
 		if (flag)
-			GD.PrintRich(line);
+			GD.PrintRich(color_line);
 	}
 
-	public void insert_buffer(string tag, string level, string message) {
-		if(!_tag_buffer.ContainsKey(tag))
-			_tag_buffer.Add(tag, new(_Buffer_Limit));
-		if(!_level_buffer.ContainsKey(level))
-			_level_buffer.Add(level, new(_Buffer_Limit));
+	public string dump(string path) {
+		var time = DateTime.Now.ToString("yyyy-MM-dd.HH-mm-ss");
+		var filepath = $"{path}/{time}.txt";
+		logLine.debug("tool_log", $"file name : {filepath}");
 
-		_tag_buffer[tag].Enqueue(message);
-		_level_buffer[level].Enqueue(message);
+		using var file = FileAccess.Open(filepath, FileAccess.ModeFlags.Write);
+		foreach (var line in _log_buffer)
+		{
+			file.StoreLine(line);
+		}
+		return filepath;
+	}
 
-		if(_tag_buffer.Count > _Buffer_Limit)
-			_tag_buffer[tag].Dequeue();
-		if(_level_buffer.Count > _Buffer_Limit)
-			_level_buffer[level].Dequeue();
+	public void insert_buffer(string message) {
+		if (_log_buffer.Count >= _Buffer_Limit)
+			_ = _log_buffer.Dequeue();
+
+		_log_buffer.Enqueue(message);
 	}
 }
+
 
 public enum logLevel : int
 {
@@ -49,7 +54,6 @@ public enum logLevel : int
 	info,
 	warning
 }
-
 
 public record class logLine
 {
@@ -62,6 +66,8 @@ public record class logLine
 	public static Action<logLine>? pushAction;
 
 	public static objectPool<logLine> pool = new();
+
+	#region short constructor
 
 	public static void debug(string _tag, string _message) {
 		var data = pool.get();
@@ -96,8 +102,9 @@ public record class logLine
 		pushAction?.Invoke(data);
 	}
 
+	#endregion
 
-	public override string ToString() {
+	public (string color_str, string str) render() {
 		var color = this.level switch
 		{
 			logLevel.debug => "yellow",
@@ -105,11 +112,13 @@ public record class logLine
 			logLevel.warning => "red",
 			_ => ""
 		};
-		var str = $"[color={color}][{this.tag}] {this.time.ToString("H:mm")}[/color] {this.message}";
+
+		var color_str = $"[{this.time.ToString("HH:mm:ss")}] [color={color}][{this.tag}][/color] {this.message}";
+		var str = $"[{this.time.ToString("HH:mm:ss")}] [{level.ToString()}] [{this.tag}] {this.message}";
 
 		pool.push(this);
 
-		return str;
+		return (color_str, str);
 	}
 
 }

@@ -8,7 +8,7 @@ public interface IanimateTreeSync
 
     public void motionStateChanged(string state);
     public void equipStateChanged(string state);
-    
+
     public void actionOccurred(string action);
 
     public void Travel(string state){}
