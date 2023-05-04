@@ -18,6 +18,7 @@ public class tool_log
 
 		var tag = data.tag;
 		var level = data.level;
+		
 		var (color_line, line) = data.render();
 
 		insert_buffer(line);
@@ -55,7 +56,8 @@ public enum logLevel : int
 	warning
 }
 
-public record class logLine
+
+public record class logLine : IpoolManage<logLine>
 {
 	public logLevel level;
 	public string tag = string.Empty;
@@ -67,10 +69,14 @@ public record class logLine
 
 	public static objectPool<logLine> pool = new();
 
+	public static logLine get() => pool.get();
+
+	public void enPool() => pool.push(this);
+
 	#region short constructor
 
 	public static void debug(string _tag, string _message) {
-		var data = pool.get();
+		var data = get();
 
 		data.tag = _tag;
 		data.message = _message;
@@ -81,7 +87,7 @@ public record class logLine
 	}
 
 	public static void info(string _tag, string _message) {
-		var data = pool.get();
+		var data = get();
 
 		data.tag = _tag;
 		data.message = _message;
@@ -92,7 +98,7 @@ public record class logLine
 	}
 
 	public static void warning(string _tag, string _message) {
-		var data = pool.get();
+		var data = get();
 
 		data.tag = _tag;
 		data.message = _message;
@@ -116,7 +122,7 @@ public record class logLine
 		var color_str = $"[{this.time.ToString("HH:mm:ss")}] [color={color}][{this.tag}][/color] {this.message}";
 		var str = $"[{this.time.ToString("HH:mm:ss")}] [{level.ToString()}] [{this.tag}] {this.message}";
 
-		pool.push(this);
+		enPool();
 
 		return (color_str, str);
 	}

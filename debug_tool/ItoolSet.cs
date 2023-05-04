@@ -31,17 +31,19 @@ public record terminal_result{
 	}
 
 	public string _message(){
-		return code switch{
-			status_cmd.ok => $"[color=green]{message}[/color]",
-			status_cmd.error => $"[color=red]{message}[/color]",
-			status_cmd.usage => $"[color=yellow]{message}[/color]",
+		var color = code switch{
+			status_cmd.ok => "green",
+			status_cmd.error => "red",
+			status_cmd.usage => "yellow",
 			_ => ""
 		};
+		return $"[color={color}]{message}[/color]";
 	}
 
 	public static terminal_result ok(string _message) => new(status_cmd.ok, _message);
 	public static terminal_result error(string _message) => new(status_cmd.error,_message);
 	public static terminal_result usage(string _message) => new(status_cmd.usage,_message);
+
 }
 
 

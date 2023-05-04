@@ -8,7 +8,7 @@ public partial class confimTipProgress : TextureProgressBar
 
 	public bool isActive {
 		get => _isActive;
-		set{
+		set {
 			SetProcessUnhandledInput(value);
 			_isActive = value;
 		}
@@ -19,24 +19,15 @@ public partial class confimTipProgress : TextureProgressBar
 
 
 	public override void _Ready() {
-		_tween = CreateTween();
-		_tween.Stop();
+		_tween = this.CreateStopTween(() => confimAction?.Invoke());
 		_tween.TweenProperty(this, "value", 100, default_time);
-
-		_tween.Finished += (
-			() => _tween.Stop());
-
-		_tween.Finished += (
-			() => confimAction?.Invoke());
-
 	}
 
 	public override void _UnhandledInput(InputEvent @event) {
-
-		if (Input.IsActionJustPressed("player_action_use"))
+		if (Input.IsActionJustPressed("player_action_press"))
 			_tween!.Play();
 
-		else if (Input.IsActionJustReleased("player_action_use"))
+		else if (Input.IsActionJustReleased("player_action_press"))
 		{
 			_tween!.Stop();
 			Value = 0;

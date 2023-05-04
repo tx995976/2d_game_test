@@ -18,7 +18,7 @@ public class centerHud : IserviceCenter
 	public CanvasLayer? _cantainer_ui;
 
 	//public event Action<Icontrollable>? player_changed;
-
+	
 
 	#region hud_node
 
@@ -53,8 +53,10 @@ public class centerHud : IserviceCenter
 	void init_hud() {
 		//cost
 		hud_item = _cantainer_hud!.GetNode<hudItem>(name_huditem);
+
 		ui_txt = _cantainer_ui!.GetNode<txtViewer>(name_uitxt);
 
+		
 
 	}
 

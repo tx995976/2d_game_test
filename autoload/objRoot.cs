@@ -21,6 +21,8 @@ public partial class objRoot : Node
 		System.Runtime.GCSettings.LatencyMode = System.Runtime.GCLatencyMode.LowLatency;
 
 		tool.logLine.pushAction = tool.tool_log._instance.log;
+
+		
 	}
 
 	public void finish_setting() {

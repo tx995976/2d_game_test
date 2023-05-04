@@ -11,17 +11,13 @@ public class toolSet_player : ItoolSet
 		if (args is null || args.Length < 2)
 			return terminal_result.usage("switch -name");
 
-		if(args[0] == "switch"){
-			var group = ObjMain.gameplayServe._map_loader.group_entity;
-			if(group is null)
-				return terminal_result.error("no group entity");
-			
-			var entity = group.GetNodeOrNull<Node2D>(args[1]);
-
-			if(entity is null)
+		if (args[0] == "switch")
+		{
+			var res = ObjMain.gameplayServe.call_player_switch(args[1]);
+			if (res)
+				return terminal_result.ok("ok");
+			else
 				return terminal_result.error("no such entity");
-
-			ObjMain.gameplayServe._player_controller!._switch(entity);
 		}
 
 		return terminal_result.ok("ok");

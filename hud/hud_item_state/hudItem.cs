@@ -55,10 +55,13 @@ public partial class hudItem : Control, Ihud
 
 		_comment!.Visible = visible;
 
-		if (visible)
+		if (visible){
+			logLine.debug("hud","open selector");
 			await selector!.open_select();
+		}
 		else
 		{
+			logLine.debug("hud","closing selector");
 			await selector!.end_select();
 		}
 
@@ -67,7 +70,7 @@ public partial class hudItem : Control, Ihud
 		// _label_equip!.Visible = !visible;
 	}
 
-	public override void _Input(InputEvent @event) {
+	public override void _GuiInput(InputEvent @event) {
 		if (Input.IsActionJustPressed("ui_select_equip") && !_inselected)
 			_ = selector_change(itemType.equip, true);
 
@@ -87,23 +90,23 @@ public partial class hudItem : Control, Ihud
 	public void ui_hide() => Visible = false;
 
 
-	public void equip_selected(int index) {
+	void equip_selected(int index) {
 		current_bag?.select(itemType.equip, index);
 
 		_label_equip!.itemdata = current_bag?.arr_equip[index];
 	}
 
-	public void supply_selected(int index) {
+	void supply_selected(int index) {
 		current_bag?.select(itemType.supply, index);
 
 		_label_supply!.itemdata = current_bag?.arr_supply[index];
 	}
 
-	public void peek_equip_comment(int index) {
+	void peek_equip_comment(int index) {
 		_comment!.Text = current_bag?.arr_equip[index]?.define!.comment;
 	}
 
-	public void peek_supply_comment(int index) {
+	void peek_supply_comment(int index) {
 		_comment!.Text = current_bag?.arr_supply[index]?.define!.comment;
 	}
 

@@ -6,6 +6,7 @@ namespace Obj.sp_player;
 public interface Iactor
 {
 	actionInfo? infoAction { get; set; }
+	CharacterBody2D? body { get; set; }
 }
 
 public interface Icollider
@@ -23,6 +24,8 @@ public interface Iwalkable
 
 	public void walk(double delta) { }
 
+	public event Action<CharacterBody2D,double>? move_action;
+	public event Action<CharacterBody2D,double>? walk_action;
 }
 
 public interface Istatemut
@@ -33,6 +36,7 @@ public interface Istatemut
 
 public interface Imedia
 {
+	
 	Sprite2D? texture { get; set; }
 	IanimateActionSync? animation { get; set; }
 	IaudioPlayer? audioNode { get; set; }
@@ -48,7 +52,6 @@ public interface Iusage
 public interface Icontrollable
 {
 	Action<InputEvent>? inputSource { get; set; }
-
 }
 
 #endregion
@@ -62,19 +65,20 @@ public interface Ihealth
 	public int armor { get; set; }
 	public int banlance { get; set; }
 
-	public event Action? health_break;
-	public event Action? armor_break;
-	public event Action? banlance_break;
+	public event Action<Ihealth,int>? health_changing;
+	public event Action<Ihealth,int>? armor_changing;
+	public event Action<Ihealth,int>? banlance_changing;
 
-	public void be_health_break() { }
-	public void be_armor_break() { }
-	public void be_banlance_break() { }
+	public event Action<Ihealth,int>? health_changed;
+	public event Action<Ihealth,int>? armor_changed;
+	public event Action<Ihealth,int>? banlance_changed;
 
 }
 
 public interface Iequiphave
 {
 	IBag? bagNode { get; set; }
+
 }
 
 #endregion
@@ -82,11 +86,9 @@ public interface Iequiphave
 
 #region constructor_interface
 
-public interface IequipStateSystem : Istatemut, Iequiphave { }
-
 public interface Idefault_character : Icollider, Iwalkable, Ihealth, Istatemut, Imedia, Iactor, Icontrollable, Iequiphave { }
 
-public interface Idefault_enemy : Icollider, Iwalkable, Ihealth, Istatemut, Imedia { }
+public interface Ibase_character : Icollider, Iwalkable, Ihealth, Istatemut, Imedia, Iactor, Icontrollable, Iequiphave {}
 
 
 #endregion

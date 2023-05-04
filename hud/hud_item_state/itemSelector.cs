@@ -36,7 +36,9 @@ public partial class itemSelector : Control
 				label.MouseEntered += () =>
 				{
 					mouseSelected(id);
-					//GD.Print(id + " select");
+#if DEBUG
+					logLine.debug("hud",$"label {id} mounted");
+#endif
 				};
 			}
 		}
@@ -44,7 +46,7 @@ public partial class itemSelector : Control
 		_pos_panel = GetNode<Marker2D>("pos_panel");
 
 		effect_panel_init();
-		
+
 		// GD.Print("pos_panel");
 		// _default_panel_pos.ForEach(x => GD.Print($"pos {x}"));
 		// GD.Print($"pos marked: {_pos_panel.Position}");

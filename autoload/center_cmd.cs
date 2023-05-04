@@ -14,6 +14,8 @@ public class centerCmd : IserviceCenter
 
 	public Node main_node { get; set; }
 
+	public event Action<terminal_result>? result_callback;
+
 	public centerCmd(Node main_node) {
 		this.main_node = main_node;
 		start_service();
@@ -21,7 +23,7 @@ public class centerCmd : IserviceCenter
 
 
 	public void start_service() {
-		logLine.info("system","load tools: ");
+		logLine.info("system", "load tools: ");
 		var types = Assembly.GetExecutingAssembly()
 							.GetTypes()
 							.Where(x => x.IsDefined(typeof(toolSetAttribute)))
@@ -30,21 +32,23 @@ public class centerCmd : IserviceCenter
 		var ass = Assembly.GetExecutingAssembly();
 		foreach (var type in types)
 		{
-			var tool = (ItoolSet)ass.CreateInstance(type.FullName!)!;
-			toolProvider.Add(tool.ToolName,tool);
-			logLine.info("system",$"find tool {tool.ToolName}");
+			var tool = ass.CreateInstance(type.FullName!) as ItoolSet;
+			toolProvider.Add(tool!.ToolName, tool);
+			logLine.info("system", $"find tool {tool.ToolName}");
 		}
 
 		_terminal = main_node.GetNode<tool_terminal>(tool_path);
 	}
 
-	public void stop_service() {}
+	public void stop_service() { }
 
-	public terminal_result exec_command(string tool,string[]? args){
-		if(!toolProvider.ContainsKey(tool))
-			return terminal_result.error("no tool");
-			
-		return toolProvider[tool].exec_command(args);
+	public void exec_command(string tool, string[]? args) {
+		terminal_result res;
+		if (!toolProvider.ContainsKey(tool))
+			res = terminal_result.error("no tool");
+		else
+			res = toolProvider[tool].exec_command(args);
+		result_callback?.Invoke(res);
 	}
 
 

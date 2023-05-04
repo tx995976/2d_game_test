@@ -13,7 +13,11 @@ public partial class tool_terminal : Control
 		_window = GetNode<Window>("window");
 
 		_window!.CloseRequested += () => _window.Visible = false;
+		
+
 		_input!.TextSubmitted += commit_cmd;
+		ObjMain.cmdServe.result_callback += add_line;
+
 	}
 
 	public override void _Ready() {
@@ -26,6 +30,7 @@ public partial class tool_terminal : Control
 		{
 			_window!.Visible = !_window.Visible;
 			Visible = !Visible;
+			_input!.GrabFocus();
 		}
 
 	}
@@ -42,8 +47,7 @@ public partial class tool_terminal : Control
 			var tool = token[0];
 			var arg = token.Length > 1 ? token[1..] : null;
 
-			var res = ObjMain.cmdServe!.exec_command(tool, arg);
-			add_line(res);
+			ObjMain.cmdServe!.exec_command(tool, arg);
 		}
 	}
 

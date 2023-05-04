@@ -2,18 +2,20 @@ namespace Obj.tool;
 
 public partial class tool_editLine : LineEdit
 {
-
 	Stack<string> _temp = new();
-
 
 	public override void _Ready() {
 		TextSubmitted += history;
 	}
 
-	public override void _Input(InputEvent @event) {
+	public override void _GuiInput(InputEvent @event) {
 		if (@event.IsActionPressed("ui_up"))
 		{
 			review();
+		}
+		else if (@event.IsActionPressed("ui_terminal"))
+		{
+
 		}
 	}
 

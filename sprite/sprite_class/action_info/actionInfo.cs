@@ -1,17 +1,19 @@
+using System.Text;
+
 namespace Obj.sp_player;
 
 
 public class actionInfo
 {
-	public static StringName _none_str = "none";
+	public static string _none_str = "none";
 
-	public StringName motionName { get; set; } = string.Empty;
+	public string motionName { get; set; } = string.Empty;
 
-	public StringName equipStateName { get; set; } = string.Empty;
+	public string equipStateName { get; set; } = string.Empty;
 
-	public StringName equipStyleName { get; set; } = string.Empty;
+	public string equipStyleName { get; set; } = string.Empty;
 
-	public StringName actionName { get; set; } = string.Empty;
+	public string actionName { get; set; } = string.Empty;
 
 
 	//required
@@ -36,37 +38,36 @@ public class actionInfo
 			equipSource.bagNode!.selected_changed += equip_changed;
 
 #if DEBUG
-		// GD.Print(this, " InfoSource:");
-		// GD.Print($"""
-		// 	motion_state: {Source.motionState}
-		// 	equip_state: {Source.equipState}
-		// 	equipSource: {equipSource}
-		// 	""");
-
+		logLine.debug("sprite", $"""
+			{this} , InfoSource:
+							motion_state: {Source.motionState}
+							equip_state: {Source.equipState}
+							equipSource: {equipSource}
+			""");
 #endif
 	}
 
-	public void invoke_action(StringName name, Action action) {
+	public void invoke_action(string name, Action action) {
 		actionName = name;
 		action.Invoke();
 
 		stateChanged?.Invoke();
 	}
 
-	public StringName _shortcut() {
-		var _actionState = "";
-		_actionState = motionName;
+	public string _shortcut() {
+		var _actionState = new StringBuilder("");
+		_actionState.Append(motionName);
 
 		if (equipStateName != string.Empty)
-			_actionState += '_' + equipStateName;
+			_actionState.Append('_' + equipStateName);
 
 		if (equipStyleName != string.Empty)
-			_actionState += '_' + equipStyleName;
+			_actionState.Append('_' + equipStyleName);
 
 		if (actionName != string.Empty)
-			_actionState += '_' + actionName;
+			_actionState.Append('_' + actionName);
 
-		return (StringName)_actionState;
+		return _actionState.ToString();
 	}
 
 	#region Properties changed
