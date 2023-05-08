@@ -27,6 +27,8 @@ public partial class txtViewer : Control, Iui
 
 	public override void _Ready() {
 
+		_effector._Ready();
+
 		pooltxt = new tscnPool<txtNode>(
 			res_txtnode!,
 			(x,push) => x.destroy += push);

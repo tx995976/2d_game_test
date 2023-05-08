@@ -21,7 +21,7 @@ public static class GDext
 
 		node.AddChild(child);
 
-		if(child.Owner is null)
+		if (child.Owner is null)
 			child.Owner = node;
 	}
 
@@ -38,8 +38,11 @@ public static class GDext
 		node.Owner = null;
 	}
 
-	public static void MoveSelf(this Node node, Node target){
-		node.GetParent().RemoveChild(node);
+	public static void MoveSelf(this Node node, Node target) {
+		var parent = node.GetParent();
+		if (parent == target)
+			return;
+		parent.RemoveChild(node);
 		target.AddChild(node);
 	}
 
@@ -51,7 +54,7 @@ public static class GDext
 		return tween;
 	}
 
-	public static Tween CreateStopTween(this Node node,Action actionInstop) {
+	public static Tween CreateStopTween(this Node node, Action actionInstop) {
 		var tween = node.CreateTween();
 		tween.Finished += (() => tween.Stop());
 		tween.Finished += actionInstop;

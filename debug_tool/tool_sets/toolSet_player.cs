@@ -5,11 +5,16 @@ using Obj.sp_player;
 [toolSet]
 public class toolSet_player : ItoolSet
 {
-	public string ToolName => "player";
+	public string ToolName => "playc";
 
 	public terminal_result exec_command(string[]? args) {
-		if (args is null || args.Length < 2)
+		if (args is null)
 			return terminal_result.usage("switch -name");
+		
+		if(args[0] == "free"){
+			ObjMain.gameplayServe._player_controller!.free_view();
+			return terminal_result.ok("ok");
+		}
 
 		if (args[0] == "switch")
 		{

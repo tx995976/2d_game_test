@@ -24,15 +24,13 @@ public class centerCmd : IserviceCenter
 
 	public void start_service() {
 		logLine.info("system", "load tools: ");
-		var types = Assembly.GetExecutingAssembly()
-							.GetTypes()
-							.Where(x => x.IsDefined(typeof(toolSetAttribute)))
-							.ToList();
 
-		var ass = Assembly.GetExecutingAssembly();
+		var types = typeExtend.searchClassAttribute(typeof(toolSetAttribute));
+
+		// var ass = Assembly.GetExecutingAssembly();
 		foreach (var type in types)
 		{
-			var tool = ass.CreateInstance(type.FullName!) as ItoolSet;
+			var tool = Activator.CreateInstance(type) as ItoolSet;
 			toolProvider.Add(tool!.ToolName, tool);
 			logLine.info("system", $"find tool {tool.ToolName}");
 		}

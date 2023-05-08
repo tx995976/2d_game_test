@@ -39,10 +39,11 @@ public class actionInfo
 
 #if DEBUG
 		logLine.debug("sprite", $"""
+		
 			{this} , InfoSource:
-							motion_state: {Source.motionState}
-							equip_state: {Source.equipState}
-							equipSource: {equipSource}
+			motion_state: {Source.motionState}
+			equip_state: {Source.equipState}
+			equipSource: {equipSource}
 			""");
 #endif
 	}

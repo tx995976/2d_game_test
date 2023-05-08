@@ -20,7 +20,6 @@ public class mapLoader
 	async public Task call_map_load(string map_name) {
 		//call load ui
 		
-
 		await free_map();
 
 		var mapmeta = await GDext.LoadAsync<PackedScene>(basePath + map_name + resNames.csnSuffix);

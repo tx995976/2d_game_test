@@ -2,6 +2,8 @@ namespace Obj.sp_player.status;
 
 public partial class state_walk :Node, IstateNode
 {
+	Ibase_character? _source;
+
 	Iwalkable? Source;
 
 	public string name => "walk";
@@ -10,7 +12,8 @@ public partial class state_walk :Node, IstateNode
 
 	public override void _Ready() {
 		SetPhysicsProcess(false);
-		Source = (Iwalkable)Owner;
+		_source = Owner as Ibase_character;
+		Source = _source;
 
 	}
 
@@ -21,7 +24,8 @@ public partial class state_walk :Node, IstateNode
 		}
 
 		Source.view_dir = Source.velocity_dir;
-		Source.walk(delta);
+
+		_source!.walk_action!.Invoke(delta);
 	}
 
 	public void enter_state() {

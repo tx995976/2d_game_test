@@ -39,7 +39,7 @@ public class centerHud : IserviceCenter
 	}
 
 	public void start_service() {
-		logLine.debug("system",$"hud Loading: ");
+		logLine.info("system",$"hud Loading: ");
 		_cantainer_hud = main_node.GetNode<CanvasLayer>(path_hudNode);
 		_cantainer_ui = main_node.GetNode<CanvasLayer>(path_uiNode);
 

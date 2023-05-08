@@ -3,9 +3,10 @@ using Obj.ui;
 
 namespace Obj.effect.txtSolver;
 
+[txtEffectSolver]
 public class txtEffect_timer : ItxtEffectSolver
 {
-	public static readonly string rule_type = "timer";
+	public string rule_type => "timer";
 
 	/// <summary>
 	///	type_time:(timespan) | format_str | direction_time(1,-1) | ticks_time

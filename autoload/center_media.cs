@@ -5,6 +5,7 @@ public class centerMedia : IserviceCenter
 {
 	static readonly string path_pre_txt = "res://resource/txt_pack/";
 	static readonly string path_pre_voice = "res://resource/voice/";
+	
 	static readonly string name_world_audio = "%world_audio";
 
 	public Node main_node { get; set; }

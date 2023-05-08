@@ -2,12 +2,13 @@ namespace Obj.util;
 
 public sealed class tscnPool<T> : objectPool<T> where T : Node, new()
 {
-
 	PackedScene tscn;
 
 	public tscnPool(PackedScene _tscn, Action<T, Action<T>>? action = null, int size = default_size)
 	: base(action, 0) {
 		tscn = _tscn;
+		
+		length = size;
 		init(size);
 	}
 

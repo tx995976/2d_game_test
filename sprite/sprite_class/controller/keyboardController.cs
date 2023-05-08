@@ -48,7 +48,6 @@ public partial class keyboardController : Node, IroleController
 #if DEBUG
 		logLine.info("sprite",$"controll {((Node)ctrlnode)}");
 		logLine.info("sprite",$"physics input: {(walkSource == null ? false : true)}");
-		
 #endif
 
 	}
