@@ -71,6 +71,7 @@ public partial class hudItem : Control, Ihud
 	}
 
 	public override void _GuiInput(InputEvent @event) {
+		//issue press for continue
 		if (Input.IsActionJustPressed("ui_select_equip") && !_inselected)
 			_ = selector_change(itemType.equip, true);
 

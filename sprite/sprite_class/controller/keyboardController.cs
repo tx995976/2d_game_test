@@ -38,28 +38,42 @@ public partial class keyboardController : Node, IroleController
 	public void _Redirect(Icontrollable ctrlnode) {
 		isActive = true;
 
-		if(ctrlnode is Iwalkable walkable)
-			walkSource = walkable;
-		else{
+		if(ctrlnode.inputSource is null)
+			SetProcessUnhandledInput(false);
+		
+		if(ctrlnode.veldirSource is null)
 			SetPhysicsProcess(false);
-			walkSource = null;
-		}
+
+		// if(ctrlnode is Iwalkable walkable)
+		// 	walkSource = walkable;
+		// else{
+		// 	SetPhysicsProcess(false);
+		// 	walkSource = null;
+		// }
 
 #if DEBUG
-		logLine.info("sprite",$"controll {((Node)ctrlnode)}");
-		logLine.info("sprite",$"physics input: {(walkSource == null ? false : true)}");
+		logLine.info("sprite",
+		$"""
+			controll {((Node)ctrlnode)}
+					velocity input: {(ctrlnode.veldirSource == null ? false : true)}
+					view input: {(ctrlnode.viewSource == null ? false : true)}
+		""");
 #endif
 
 	}
 
 
 	public override void _PhysicsProcess(double delta) {
-		walkSource!.velocity_dir = Input.GetVector("action_left", "action_right", "action_up", "action_down");
+		var veldir = Input.GetVector("action_left", "action_right", "action_up", "action_down");
+		// walkSource!.velocity_dir = veldir;
+
+		ctrlSource!.veldirSource!.Invoke(veldir);
+
 		//issue: view_dir?
 	}
 
 	public override void _UnhandledInput(InputEvent @event) {
-		ctrlSource!.inputSource?.Invoke(@event);
+		ctrlSource!.inputSource!.Invoke(@event);
 		// GD.Print($"input {@event}");
 	}
 

@@ -39,6 +39,9 @@ public partial class tool_terminal : Control
 	void commit_cmd(string command) {
 		if (string.IsNullOrWhiteSpace(command))
 			return;
+
+		command.TrimEnd();
+
 		_input!.Text = string.Empty;
 		add_line("] " + command);
 

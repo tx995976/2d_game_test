@@ -99,6 +99,8 @@ public partial class sp_temp_player_normal : CharacterBody2D, Ibase_character
 	#region Controllable
 
 	public Action<InputEvent>? inputSource { get; set; }
+	public Action<Vector2>? veldirSource { get; set; }
+	public Action<Vector2>? viewSource { get; set; }
 
 	#endregion
 
@@ -113,8 +115,6 @@ public partial class sp_temp_player_normal : CharacterBody2D, Ibase_character
 	public Action<double>? move_action { get; set; }
 
 	public Action<KinematicCollision2D>? collide_action { get; set; }
-
-
 
 
 	#region collider
@@ -144,6 +144,8 @@ public partial class sp_temp_player_normal : CharacterBody2D, Ibase_character
 
 	public override void _Ready() {
 		walk_action = this.move_default;
+
+		veldirSource = this.veldir_default;
 
 		infoAction!._Ready();
 	}

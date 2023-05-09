@@ -1,7 +1,7 @@
 namespace Obj.sp_player;
 
 //issue  不应实现Iwalkable
-public partial class playerCtrlPack : Node2D, Iwalkable, Icontrollable
+public partial class playerCtrlPack : Node2D,Icontrollable
 {
 	public Icontrollable? player;
 
@@ -9,21 +9,25 @@ public partial class playerCtrlPack : Node2D, Iwalkable, Icontrollable
 	IroleController? roleController;
 
 	#region  action
-	public Vector2 view_dir { get; set; }
-	public Vector2 velocity_dir { get; set; }
-
-	public Vector2 Velocity { get; set; }
-	public double speed { get; set; } = 400.0;
-
-	public Action<double>? walk_action { get; set; }
 
 	public Action<InputEvent>? inputSource { get; set; }
+	public Action<Vector2>? veldirSource { get; set; }
+	public Action<Vector2>? viewSource { get; set; }
+
+
+	[Export]
+	public double speed { get; set; } = 400.0;
+
+	public Vector2 Veldir { get; set; }
+
 	#endregion
 
 	public override void _Ready() {
 		camera = GetNode<Camera2D>("main_view");
 		roleController = GetNode<IroleController>("controller");
 		SetPhysicsProcess(false);
+
+		veldirSource = veldir_input;
 	}
 
 	public void _switch(Node2D _player) {
@@ -53,9 +57,14 @@ public partial class playerCtrlPack : Node2D, Iwalkable, Icontrollable
 
 
 	public override void _PhysicsProcess(double delta) {
-		if (velocity_dir != Vector2.Zero)
-			Position += velocity_dir * (float)(speed * delta);
+		if(Veldir != Vector2.Zero){
+			Position += Veldir * (float)(speed * delta);
+		}
 	}
+
+	void veldir_input(Vector2 dir) => Veldir = dir;
+
+
 
 
 

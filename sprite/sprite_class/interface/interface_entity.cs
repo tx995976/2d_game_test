@@ -16,6 +16,8 @@ public interface Icollider
 	// public void action_hited(hit_data context) { }
 	// public void action_collide(KinematicCollision2D info) { }
 
+
+	// Action<KinematicCollision2D> collide_action { get; set; }
 }
 
 public interface Iwalkable
@@ -58,8 +60,8 @@ public interface Iusage
 public interface Icontrollable
 {
 	Action<InputEvent>? inputSource { get; set; }
-	// Action<Vector2>? veldirSource { get; set; }
-	// Action<Vector2>? viewSource { get; set; }
+	Action<Vector2>? veldirSource { get; set; }
+	Action<Vector2>? viewSource { get; set; }
 }
 
 

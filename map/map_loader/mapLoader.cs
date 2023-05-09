@@ -19,12 +19,16 @@ public class mapLoader
 
 	async public Task call_map_load(string map_name) {
 		//call load ui
-		
-		await free_map();
+		var path = basePath + map_name + resNames.csnSuffix;
+		if (!FileAccess.FileExists(path)){
+			logLine.warning("resource",$"no such map named {map_name}");
+			return;
+		}
 
-		var mapmeta = await GDext.LoadAsync<PackedScene>(basePath + map_name + resNames.csnSuffix);
+		var mapmeta = await GDext.LoadAsync<PackedScene>(path);
 		var maptree = mapmeta.Instantiate<Node2D>();
 
+		await free_map();
 		main_node.JoinNode(maptree);
 
 		group_map = maptree.GetNode<Node2D>("map");
