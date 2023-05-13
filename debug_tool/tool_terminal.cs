@@ -2,22 +2,22 @@ namespace Obj.tool;
 
 public partial class tool_terminal : Control
 {
-	LineEdit? _input;
+	tool_editLine? _input;
 	Window? _window;
 
 	public RichTextLabel? _result;
 
 	public override void _EnterTree() {
 		_result = GetNode<RichTextLabel>("%terminal_res");
-		_input = GetNode<LineEdit>("%terminal_input");
+		_input = GetNode<tool_editLine>("%terminal_input");
 		_window = GetNode<Window>("window");
 
 		_window!.CloseRequested += () => _window.Visible = false;
-		
+		_input!.exitAction += () => _window.Visible = false;
 
 		_input!.TextSubmitted += commit_cmd;
 		ObjMain.cmdServe.result_callback += add_line;
-
+		
 	}
 
 	public override void _Ready() {

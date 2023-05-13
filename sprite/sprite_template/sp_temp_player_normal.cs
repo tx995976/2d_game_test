@@ -16,7 +16,6 @@ public partial class sp_temp_player_normal : CharacterBody2D, Ibase_character
 	public double speed { get; set; }
 
 
-
 	// public void walk(double delta) {
 	// 	Velocity = (float)speed * velocity_dir;
 	// 	MoveAndSlide();
@@ -98,9 +97,9 @@ public partial class sp_temp_player_normal : CharacterBody2D, Ibase_character
 
 	#region Controllable
 
-	public Action<InputEvent>? inputSource { get; set; }
-	public Action<Vector2>? veldirSource { get; set; }
-	public Action<Vector2>? viewSource { get; set; }
+	public Action<InputEvent>? eventInput_action { get; set; }
+	public Action<Vector2>? veldirInput_action { get; set; }
+	public Action<Vector2>? viewInput_action { get; set; }
 
 	#endregion
 
@@ -145,7 +144,7 @@ public partial class sp_temp_player_normal : CharacterBody2D, Ibase_character
 	public override void _Ready() {
 		walk_action = this.move_default;
 
-		veldirSource = this.veldir_default;
+		veldirInput_action = this.veldirInput_default;
 
 		infoAction!._Ready();
 	}

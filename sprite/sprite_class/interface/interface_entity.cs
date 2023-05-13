@@ -6,7 +6,6 @@ namespace Obj.sp_player;
 public interface Iactor
 {
 	actionInfo? infoAction { get; set; }
-
 	CharacterBody2D? body { get; set; }
 	Node2D? baseNode { get; set; }
 }
@@ -59,9 +58,9 @@ public interface Iusage
 
 public interface Icontrollable
 {
-	Action<InputEvent>? inputSource { get; set; }
-	Action<Vector2>? veldirSource { get; set; }
-	Action<Vector2>? viewSource { get; set; }
+	Action<InputEvent>? eventInput_action { get; set; }
+	Action<Vector2>? veldirInput_action { get; set; }
+	Action<Vector2>? viewInput_action { get; set; }
 }
 
 

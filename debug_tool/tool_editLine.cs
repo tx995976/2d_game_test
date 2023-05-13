@@ -4,6 +4,8 @@ public partial class tool_editLine : LineEdit
 {
 	Stack<string> _temp = new();
 
+	public Action? exitAction;
+
 	public override void _Ready() {
 		TextSubmitted += history;
 	}
@@ -15,7 +17,7 @@ public partial class tool_editLine : LineEdit
 		}
 		else if (@event.IsActionPressed("ui_terminal"))
 		{
-
+			exitAction?.Invoke();
 		}
 	}
 

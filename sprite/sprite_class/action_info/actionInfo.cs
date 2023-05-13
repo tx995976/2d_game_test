@@ -20,6 +20,9 @@ public class actionInfo
 	Istatemut Source { get; set; }
 	Iequiphave? equipSource { get; set; }
 
+	string _shortcut_cache = string.Empty;
+	StringBuilder _shortcut_builder = new("");
+
 	public event Action? stateChanged;
 
 	public actionInfo(Istatemut owner) {
@@ -49,6 +52,8 @@ public class actionInfo
 	}
 
 	public void invoke_action(string name, Action action) {
+		_shortcut_cache = string.Empty;
+
 		actionName = name;
 		action.Invoke();
 
@@ -56,39 +61,57 @@ public class actionInfo
 	}
 
 	public string _shortcut() {
-		var _actionState = new StringBuilder("");
-		_actionState.Append(motionName);
+		if (_shortcut_cache != string.Empty)
+			return _shortcut_cache;
 
-		if (equipStateName != string.Empty)
-			_actionState.Append('_' + equipStateName);
+		_shortcut_builder.Append(motionName);
 
-		if (equipStyleName != string.Empty)
-			_actionState.Append('_' + equipStyleName);
+		if (equipStateName != string.Empty){
+			_shortcut_builder.Append('_');
+			_shortcut_builder.Append(equipStateName);
+		}
 
-		if (actionName != string.Empty)
-			_actionState.Append('_' + actionName);
+		if (equipStyleName != string.Empty){
+			_shortcut_builder.Append('_');
+			_shortcut_builder.Append(equipStyleName);
+		}
 
-		return _actionState.ToString();
+		if (actionName != string.Empty){
+			_shortcut_builder.Append('_');
+			_shortcut_builder.Append(actionName);
+		}
+
+		_shortcut_cache = _shortcut_builder.ToString();
+		_shortcut_builder.Clear();
+		
+		return _shortcut_cache;
 	}
 
 	#region Properties changed
 
 	void motion_changed(string name) {
+		_shortcut_cache = string.Empty;
+
 		motionName = name;
 		stateChanged?.Invoke();
 	}
 
 	void equip_state_changed(string name) {
+		_shortcut_cache = string.Empty;
+
 		//issue 此处转换"none" 到 null
 		if (name != _none_str)
 			equipStateName = name;
 		else
 			equipStateName = "";
 
+
 		stateChanged?.Invoke();
 	}
 
 	void equip_changed() {
+		_shortcut_cache = string.Empty;
+
 		equipStyleName = equipSource!.bagNode!.selected_equip?.define?.itemStyle ?? "";
 		stateChanged?.Invoke();
 	}

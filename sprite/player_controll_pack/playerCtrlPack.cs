@@ -1,6 +1,5 @@
 namespace Obj.sp_player;
 
-//issue  不应实现Iwalkable
 public partial class playerCtrlPack : Node2D,Icontrollable
 {
 	public Icontrollable? player;
@@ -8,12 +7,11 @@ public partial class playerCtrlPack : Node2D,Icontrollable
 	Camera2D? camera;
 	IroleController? roleController;
 
-	#region  action
+	#region action
 
-	public Action<InputEvent>? inputSource { get; set; }
-	public Action<Vector2>? veldirSource { get; set; }
-	public Action<Vector2>? viewSource { get; set; }
-
+	public Action<InputEvent>? eventInput_action { get; set; }
+	public Action<Vector2>? veldirInput_action { get; set; }
+	public Action<Vector2>? viewInput_action { get; set; }
 
 	[Export]
 	public double speed { get; set; } = 400.0;
@@ -27,7 +25,7 @@ public partial class playerCtrlPack : Node2D,Icontrollable
 		roleController = GetNode<IroleController>("controller");
 		SetPhysicsProcess(false);
 
-		veldirSource = veldir_input;
+		veldirInput_action = veldir_input;
 	}
 
 	public void _switch(Node2D _player) {

@@ -25,12 +25,12 @@ public partial class state_equip_none : Node, IstateNode
 	}
 
 	public void enter_state() {
-		_controllSource!.inputSource += action_input;
+		_controllSource!.eventInput_action += action_input;
 		SetPhysicsProcess(true);
 	}
 
 	public void exit_state() {
-		_controllSource!.inputSource -= action_input;
+		_controllSource!.eventInput_action -= action_input;
 		SetPhysicsProcess(false);
 	}
 }
