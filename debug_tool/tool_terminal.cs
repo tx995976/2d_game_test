@@ -32,26 +32,16 @@ public partial class tool_terminal : Control
 			Visible = !Visible;
 			_input!.GrabFocus();
 		}
-
 	}
-
 
 	void commit_cmd(string command) {
 		if (string.IsNullOrWhiteSpace(command))
 			return;
 
-		command.TrimEnd();
-
 		_input!.Text = string.Empty;
 		add_line("] " + command);
 
-		var token = command.Split(' ');
-		if (token.Length >= 1){
-			var tool = token[0];
-			var arg = token.Length > 1 ? token[1..] : null;
-
-			ObjMain.cmdServe!.exec_command(tool, arg);
-		}
+		ObjMain.cmdServe.exec_command(command);
 	}
 
 

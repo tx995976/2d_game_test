@@ -49,6 +49,17 @@ public class centerCmd : IserviceCenter
 		result_callback?.Invoke(res);
 	}
 
+	public void exec_command(string cmd) {
+		cmd.TrimEnd();
+		var token = cmd.Split(' ');
+		if (token.Length >= 1)
+		{
+			var tool = token[0];
+			var arg = token.Length > 1 ? token[1..] : null;
+			exec_command(tool, arg);
+		}
+	}
+
 
 
 }

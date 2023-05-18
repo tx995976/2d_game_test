@@ -42,7 +42,6 @@ public class actionInfo
 
 #if DEBUG
 		logLine.debug("sprite", $"""
-		
 			{this} , InfoSource:
 			motion_state: {Source.motionState}
 			equip_state: {Source.equipState}
@@ -83,7 +82,7 @@ public class actionInfo
 
 		_shortcut_cache = _shortcut_builder.ToString();
 		_shortcut_builder.Clear();
-		
+
 		return _shortcut_cache;
 	}
 

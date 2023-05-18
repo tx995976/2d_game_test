@@ -7,6 +7,7 @@ public static class resNames
 
 	public readonly static string txtSuffix = ".csv.txtline";
 	public readonly static string effectSuffix = ".csv.effect";
+	public readonly static string scriptSuffix = ".nut";
 
 #if DEBUG
 	public readonly static string resSuffix = ".tres";

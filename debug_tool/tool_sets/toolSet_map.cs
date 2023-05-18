@@ -5,7 +5,7 @@ public sealed class toolSet_map : ItoolSet
 {
 	public string ToolName => "map";
 
-	public terminal_result exec_command(string[]? args) {
+	 public terminal_result exec_command(string[]? args) {
 		if (args is null)
 			return terminal_result.usage("map -name");
 

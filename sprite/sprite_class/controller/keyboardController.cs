@@ -64,9 +64,9 @@ public partial class keyboardController : Node, IroleController
 
 
 	public override void _PhysicsProcess(double delta) {
-		var veldir = Input.GetVector("action_left", "action_right", "action_up", "action_down");
 		// walkSource!.velocity_dir = veldir;
 
+		var veldir = Input.GetVector("action_left", "action_right", "action_up", "action_down");
 		ctrlSource!.veldirInput_action!.Invoke(veldir);
 
 		//issue: view_dir?
@@ -76,6 +76,7 @@ public partial class keyboardController : Node, IroleController
 		ctrlSource!.eventInput_action!.Invoke(@event);
 		// GD.Print($"input {@event}");
 	}
+
 
 
 }

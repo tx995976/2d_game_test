@@ -23,7 +23,6 @@ public interface Iwalkable
 {
 	Vector2 view_dir { get; set; }
 	Vector2 velocity_dir { get; set; }
-
 	Vector2 Velocity { get; set; }
 	double speed { get; set; }
 
