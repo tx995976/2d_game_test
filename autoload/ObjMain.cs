@@ -16,5 +16,10 @@ public static class ObjMain
 
 	public static Node root;
 
+	//para_time
+	public static double PhysicsTime;
+	public static double ProcessTime;
+
+
 }
 

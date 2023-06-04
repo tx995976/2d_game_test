@@ -1,4 +1,4 @@
-using Godot.NativeInterop;
+
 namespace Obj.ui;
 
 public partial class txtNode : RichTextLabel
@@ -12,46 +12,50 @@ public partial class txtNode : RichTextLabel
 	// public SignalAct voice_signal = new();
 	// public Action? voice_action;
 
-	public bool isActive = false;
-
 	public res_txtLine? txt;
+	public txtDlineEnum? txtD;
 
 	public override void _Ready() {
 		init_effect();
+		SetPhysicsProcess(false);
 	}
 
 	async public Task show() {
 		if (txt is null) return;
 
-		isActive = true;
-
 		if (txt.time_sleep != 0)
 			await Task.Delay(TimeSpan.FromSeconds(txt.time_sleep));
 
-		Text = txt.text_bbcode;
-		
-		_ = Task.Run(() => extra_effect?.Invoke(this));
+		if (txtD is not null)
+			SetPhysicsProcess(true);
+		else
+			Text = txt.text_bbcode;
+
+		// _ = Task.Run(() => extra_effect?.Invoke(this));
 		// extra_effect?.Invoke(this);
 
 		effect_out(txt.effect_out);
 
-		//TODO: voice
-		// voice_signal.Invoke();
-
-		if (txt.time_apply != 0){
+		if (txt.time_apply != 0)
+		{
 			await Task.Delay(TimeSpan.FromSeconds(txt.time_apply));
 			_ = dispose();
 		}
 	}
 
 	async public Task dispose() {
-		isActive = false;
-		
+		SetPhysicsProcess(false);
+		txtD?.enPool();
+
 		effect_out(-1);
-		await ToSignal(_exit_tween,Tween.SignalName.Finished);
+		await ToSignal(_exit_tween, Tween.SignalName.Finished);
 
 		this.RemoveSelf();
 		destroy?.Invoke(this);
+	}
+
+	public override void _PhysicsProcess(double delta) {
+		Text = txtD!.next();
 	}
 
 	#region font_effect
@@ -64,7 +68,7 @@ public partial class txtNode : RichTextLabel
 	public void init_effect() {
 		_ratio_tween = this.CreateStopTween();
 		_alpha_tween = this.CreateStopTween();
-		_exit_tween = this.CreateStopTween(() => this.Modulate = new(1,1,1,1));
+		_exit_tween = this.CreateStopTween(() => this.Modulate = new(1, 1, 1, 1));
 
 		_ratio_tween.TweenProperty(this, "visible_ratio", 1.0, tween_time)
 			.From(0.0);

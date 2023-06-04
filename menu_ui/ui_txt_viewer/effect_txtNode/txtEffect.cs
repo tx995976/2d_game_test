@@ -3,6 +3,7 @@ using Obj.ui;
 
 namespace Obj.effect;
 
+[Obsolete]
 public class txtEffect
 {
 

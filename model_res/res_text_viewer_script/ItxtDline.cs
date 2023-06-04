@@ -6,11 +6,16 @@ public interface ItxtDline
 {
 	string type { get; }
 
-	void reset();
-	IEnumerator<string> tick_flush(double delta);
+	IEnumerator<string> tick_flush(string bbcode);
+
+	txtDlineEnum init_enum(res_txtLine line);
+
 	ItxtDline Paser(string[] args);
 }
 
 public class txtDlineAttribute : Attribute { }
+
+
+
 
 

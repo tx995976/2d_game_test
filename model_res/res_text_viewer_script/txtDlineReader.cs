@@ -21,18 +21,19 @@ public static class txtDlineReader
 
 		var list = new List<ItxtDline>();
 
-		var line = file.GetCsvLine();
-		while (line is not null)
+		foreach (var line in file.GetCsvEnum())
 		{
-			var (type, rule) = (line[0], line[1..]);
+			if (line.Length != 2)
+				continue;
+
+			var (type, rule) = (line[0], line[1]);
 			var solver = solver_list!.GetValueOrDefault(type);
 			if (solver is null)
 				logLine.warning("resource", $"txtDline: no solver {type}");
-			else
-			{
-				list.Add(solver.Paser(rule));
+			else{
+				// logLine.debug("resource", $"txtDline args {rule}");
+				list.Add(solver.Paser(rule.Split('|')));
 			}
-			line = file.GetCsvLine();
 		}
 
 		return list;

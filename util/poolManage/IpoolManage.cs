@@ -4,9 +4,8 @@ namespace Obj.util;
 public interface IpoolManage<T> : IpoolDispose
 	where T : class, new()
 {
-	static objectPool<T> pool { get; } = new();
+	// static objectPool<T> pool { get; } = new();
 	abstract static T get();
-
 }
 
 public interface IpoolDispose

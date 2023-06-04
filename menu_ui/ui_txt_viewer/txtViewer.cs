@@ -15,7 +15,7 @@ public partial class txtViewer : Control, Iui
 	Dictionary<string, txtContainer> _container_list = new();
 	tscnPool<txtNode>? pooltxt;
 
-	txtEffect _effector = new();
+	// txtEffect _effector = new();
 
 	public event Action<StringName>? voice_require;
 
@@ -27,7 +27,7 @@ public partial class txtViewer : Control, Iui
 
 	public override void _Ready() {
 
-		_effector._Ready();
+		// _effector._Ready();
 
 		pooltxt = new tscnPool<txtNode>(
 			res_txtnode!,
@@ -41,6 +41,7 @@ public partial class txtViewer : Control, Iui
 		pooltxt.getAction = (x) =>
 		{
 			x.txt = null;
+			x.txtD = null;
 			x.Text = string.Empty;
 		};
 	}
@@ -74,11 +75,15 @@ public partial class txtViewer : Control, Iui
 		var node = pooltxt!.get();
 		node.txt = txtline;
 
-		if (txtline.effect > -1)
+		if (txtline.dline is not null)
 		{
-			var effect_data = pack.pack_effects[txtline.effect];
-			node.extra_effect = _effector.solve(effect_data);
+			node.txtD = txtline.dline.init_enum(txtline);
 		}
+		// if (txtline.effect > -1)
+		// {
+		// 	var effect_data = pack.pack_effects[txtline.effect];
+		// 	node.extra_effect = _effector.solve(effect_data);
+		// }
 
 		//TODO voice
 

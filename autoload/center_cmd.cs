@@ -18,7 +18,7 @@ public class centerCmd : IserviceCenter
 
 	public centerCmd(Node main_node) {
 		this.main_node = main_node;
-		start_service();
+		
 	}
 
 

@@ -18,7 +18,7 @@ public class centerItem : IserviceCenter
 
 	public centerItem(Node main_node) {
 		this.main_node = main_node;
-		start_service();
+		
 	}
 
 	public void start_service() {

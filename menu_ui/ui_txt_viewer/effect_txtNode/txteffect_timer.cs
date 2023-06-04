@@ -3,6 +3,7 @@ using Obj.ui;
 
 namespace Obj.effect.txtSolver;
 
+[Obsolete]
 [txtEffectSolver]
 public class txtEffect_timer : ItxtEffectSolver
 {
@@ -28,10 +29,10 @@ public class txtEffect_timer : ItxtEffectSolver
 				await Task.Delay(tick_time);
 				node.Text = string.Format(txt, time.ToString(format_str));
 				time += tick_time * dir;
-				if (!node.isActive || time == TimeSpan.Zero)
-				{
-					break;
-				}
+				// if (!node.isActive || time == TimeSpan.Zero)
+				// {
+				// 	break;
+				// }
 			}
 		};
 	}

@@ -27,6 +27,7 @@ public record class res_txtLine
 	public int effect_out { get; set; } = 0;
 
 	[Index(5)]
-	public int effect { get; set; }
+	public string effect { get; set; } = string.Empty;
 
+	public ItxtDline? dline;
 }

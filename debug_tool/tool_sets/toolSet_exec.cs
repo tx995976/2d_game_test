@@ -5,7 +5,7 @@ public class toolSet_exec : ItoolSet
 {
 	public string ToolName => "exec";
 
-	static readonly string script_path = "res://script";
+	static readonly string script_path = "res://script/";
 	static readonly TimeSpan time_delay = TimeSpan.FromSeconds(2.0);
 
 	public terminal_result exec_command(string[]? args) {
@@ -25,12 +25,10 @@ public class toolSet_exec : ItoolSet
 	}
 
 	async ValueTask execute(FileAccess script) {
-		var line = script.GetLine();
-		while (line is not null)
+		foreach (var line in script.GetLineEnum())
 		{
 			ObjMain.cmdServe.exec_command(line);
 			await Task.Delay(time_delay);
-			line = script.GetLine();
 		}
 
 	}

@@ -25,7 +25,7 @@ public sealed class centerGameplay : IserviceCenter
 		main_node = _main_node;
 		_map_loader = new(_main_node);
 
-		start_service();
+		
 	}
 
 	public void start_service() {

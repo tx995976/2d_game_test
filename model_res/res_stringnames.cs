@@ -6,7 +6,8 @@ public static class resNames
 	#region res_suffix
 
 	public readonly static string txtSuffix = ".csv.txtline";
-	public readonly static string effectSuffix = ".csv.effect";
+	public readonly static string txtEffectSuffix = ".csv.effect";
+	
 	public readonly static string scriptSuffix = ".nut";
 
 #if DEBUG
@@ -18,6 +19,7 @@ public static class resNames
 #endif
 
 	#endregion
+
 
 	#region res_prefix
 

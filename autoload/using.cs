@@ -14,5 +14,5 @@ global using Obj.resource;
 global using Obj.autoload;
 
 global using CommunityToolkit.Diagnostics;
-global using CommunityToolkit.HighPerformance;
+global using CommunityToolkit.HighPerformance.Buffers;
 

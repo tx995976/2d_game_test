@@ -35,7 +35,7 @@ public class centerHud : IserviceCenter
 
 	public centerHud(Node main_node) {
 		this.main_node = main_node;
-		start_service();
+		
 	}
 
 	public void start_service() {
@@ -55,8 +55,6 @@ public class centerHud : IserviceCenter
 		hud_item = _cantainer_hud!.GetNode<hudItem>(name_huditem);
 
 		ui_txt = _cantainer_ui!.GetNode<txtViewer>(name_uitxt);
-
-		
 
 	}
 
